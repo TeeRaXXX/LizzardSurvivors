@@ -3,14 +3,19 @@ using UnityEngine.Events;
 
 public class EnemyCharacter : MonoBehaviour
 {
+    [SerializeField] private SpriteRenderer _enemySpriteRenderer;
+    [SerializeField] private Animator _enemyAnimator;
     [SerializeField] private FollowPlayerComponent _followPlayerComponent;
     [SerializeField] private HealthComponent _healthComponent;
     [SerializeField] private SOEnemy _enemyParams;
 
     private readonly UnityEvent<float, GameObject> _onHealthChanged = new UnityEvent<float, GameObject>();
 
-    private void Awake()
+    public void Awake()
     {
+        _enemySpriteRenderer.sprite = _enemyParams.EnemyBaseSprite;
+        _enemyAnimator.runtimeAnimatorController = _enemyParams.EnemyAnimationController;
+
         _followPlayerComponent.SetFollowObject(GameObject.FindGameObjectWithTag("Player").transform);
 
         _healthComponent.InitHealth(

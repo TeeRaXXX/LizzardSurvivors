@@ -15,7 +15,7 @@ MonoBehaviour:
   EnemyName: Base Lizard
   EnemyDescription: The weakest lizard in the lizard army. Can be dangerous in a
     large group
-  EnemyBaseSprite: {fileID: 236238359, guid: 174cc91df3ecc3c41860fbf8ca1332b9, type: 3}
+  EnemyBaseSprite: {fileID: -332848625, guid: 174cc91df3ecc3c41860fbf8ca1332b9, type: 3}
   EnemyAnimationController: {fileID: 9100000, guid: da40fdb3f78aedc489ce03240c7d63f2, type: 2}
   EnemyBaseStats:
     _healthRecovery: 0
