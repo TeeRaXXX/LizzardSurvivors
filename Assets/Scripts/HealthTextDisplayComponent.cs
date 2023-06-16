@@ -1,15 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class HealthTextDisplayComponent : MonoBehaviour
 {
 
     [SerializeField] private TextMesh TextMesh;
-    [SerializeField] private HealthComponent healthComponent;
+    private HealthComponent _healthComponent;
+
+    private void Start()
+    {
+        _healthComponent = transform.parent.GetComponent<HealthComponent>();
+    }
 
     void Update()
     {
-        TextMesh.text = healthComponent.GetHealth().ToString();
+        TextMesh.text = _healthComponent.GetHealth().ToString();
     }
 }

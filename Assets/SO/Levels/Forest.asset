@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 598e13df43fe5974aaf7035d25a72766, type: 3}
+  m_Name: Forest
+  m_EditorClassIdentifier: 
+  LevelName: Forest
+  LevelDescription: Forest
+  EnemiesWaves:
+  - Minute: 0
+    SpawnFrequency: 2
+    Boss: 0
+    EnemiesPercents:
+    - Enemy: 0
+      Percent: 0.5
+    - Enemy: 0
+      Percent: 0.5

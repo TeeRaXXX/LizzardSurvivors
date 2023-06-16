@@ -36,7 +36,7 @@ public class RadialDamageController : MonoBehaviour
             }
 
             var healthComponent = objectsToDamage[i].GetComponent<HealthComponent>();
-            var isDead = healthComponent.ApplyDamage(damage, this.transform);
+            var isDead = healthComponent.ApplyDamage(damage, this.gameObject);
         }
 
         yield return new WaitForSeconds(damageFrequency);
@@ -45,7 +45,7 @@ public class RadialDamageController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.GetComponent<HealthComponent>())
+        if (other.GetComponent<HealthComponent>() != null)
         {
             objectsToDamage.Add(other);
         }
@@ -53,7 +53,7 @@ public class RadialDamageController : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.GetComponent<HealthComponent>())
+        if (other.GetComponent<HealthComponent>() != null)
         {
             objectsToDamage.Remove(other);
         }

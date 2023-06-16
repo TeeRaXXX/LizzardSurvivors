@@ -1,42 +1,63 @@
-using System.Collections;
+using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class HealthComponent : MonoBehaviour
 {
-    [SerializeField] private float Health = 100f;
+    private float _health;
+    private float _maxHealth;
+    private float _armor;
+    private UnityEvent<float, GameObject> _onHealthChangedEvent;
 
-    private bool isDead = false;
-
-    public bool ApplyDamage(float damage, Transform damageDealer = null)
+    public void InitHealth(float maxHealth, float armor, UnityEvent<float, GameObject> onHealthChangedEvent)
     {
-        if (isDead) return true;
-
-        if (Health - damage <= 0)
-        {
-            isDead = true;
-            Debug.Log($"{this.name} get {damage} damage from {damageDealer.name} and die!");
-            OnDeath();
-            return true;
-        }    
-
-        Health -= damage;
-        Debug.Log($"{this.name} get {damage} damage from {damageDealer.name}. {Health} health left!");
-        return false;
+        _health = maxHealth;
+        _maxHealth = maxHealth;
+        _armor = armor;
+        _onHealthChangedEvent = onHealthChangedEvent;
     }
 
-    private void OnDeath()
+    public bool ApplyDamage(float damageValue, GameObject damageSource)
     {
-        Destroy(this.gameObject);
-    }    
+        if (damageValue > 0f)
+        {
+            float totalDamage = _armor > 0 ? damageValue * _armor / 100f : damageValue;
+            float oldHealth = _health;
 
-    public bool IsDead()
+            if (_health - totalDamage <= 0)
+            {
+                _health = 0f;
+                _onHealthChangedEvent.Invoke(_health, damageSource);
+                return true;
+            }
+            else
+            {
+                _health -= totalDamage;
+                _onHealthChangedEvent.Invoke(_health, damageSource);
+                return false;
+            }
+        }
+        else throw new Exception($"Exception: {damageSource.name} try to hit with {damageValue} damage!");
+    }
+
+    public void ApplyHeal(float healValue, GameObject healSource)
     {
-        return isDead;
-    }    
+        if (_health > 0f && _health < _maxHealth)
+        {
+            float oldHealth = _health;
+            _health = Mathf.Clamp(_health + healValue, _health, _maxHealth);
+            _onHealthChangedEvent.Invoke(_health, healSource);
+        }
+    }
+
+    public void UpdateStats(float maxHealth, float armor)
+    {
+        _maxHealth = maxHealth;
+        _armor = armor;
+    }
 
     public float GetHealth()
     {
-        if (isDead) return 0f;
-        return Health;
+        return _health;
     }
 }

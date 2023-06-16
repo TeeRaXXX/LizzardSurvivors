@@ -73,7 +73,11 @@ TextureImporter:
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
+<<<<<<< Updated upstream
     compressionQuality: 7
+=======
+    compressionQuality: 50
+>>>>>>> Stashed changes
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0

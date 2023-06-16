@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 510b5ecc2b3021444be610aa2dacbb13, type: 3}
+  m_Name: LizardBase
+  m_EditorClassIdentifier: 
+  EnemyName: Base Lizard
+  EnemyDescription: The weakest lizard in the lizard army. Can be dangerous in a
+    large group
+  EnemyBaseSprite: {fileID: 236238359, guid: 174cc91df3ecc3c41860fbf8ca1332b9, type: 3}
+  EnemyAnimationController: {fileID: 9100000, guid: da40fdb3f78aedc489ce03240c7d63f2, type: 2}
+  EnemyBaseStats:
+    _healthRecovery: 0
+    _maxHealth: 50
+    _armor: 0
+    _moveSpeed: 1
+  EnemyType: 0
