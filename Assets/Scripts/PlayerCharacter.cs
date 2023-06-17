@@ -41,7 +41,7 @@ public class PlayerCharacter : MonoBehaviour, IInitializeable
 
     private void OnHelthChangedEvent(float health, GameObject damageSource)
     {
-        EventManager.OnPlayerHealthChanged.Invoke(health);
+        EventManager.OnPlayerHealthChangedEvent(health, _selectedCharacter.CharacterBaseStats.GetMaxHealth());
 
         if (health <= 0)
         {

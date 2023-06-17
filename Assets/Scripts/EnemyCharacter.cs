@@ -8,6 +8,7 @@ public class EnemyCharacter : MonoBehaviour
     [SerializeField] private FollowPlayerComponent _followPlayerComponent;
     [SerializeField] private HealthComponent _healthComponent;
     [SerializeField] private SOEnemy _enemyParams;
+    [SerializeField] private SpriteFlipper _spriteFlipper;
 
     private readonly UnityEvent<float, GameObject> _onHealthChanged = new UnityEvent<float, GameObject>();
 
@@ -15,6 +16,7 @@ public class EnemyCharacter : MonoBehaviour
     {
         _enemySpriteRenderer.sprite = _enemyParams.EnemyBaseSprite;
         _enemyAnimator.runtimeAnimatorController = _enemyParams.EnemyAnimationController;
+        _spriteFlipper.Init(this.transform, _enemySpriteRenderer);
 
         _followPlayerComponent.SetFollowObject(GameObject.FindGameObjectWithTag("Player").transform);
 

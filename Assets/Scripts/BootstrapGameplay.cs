@@ -6,6 +6,7 @@ public class BootstrapGameplay : MonoBehaviour
     [SerializeField] private EnemiesSpawnHandler _enemiesSpawnHandler;
     [SerializeField] private InputManager _inputManager;
     [SerializeField] private GameTimer _gameTimer;
+    [SerializeField] private GameplayUIManager _gameplayUIManager;
 
     private void Awake()
     {
@@ -13,5 +14,6 @@ public class BootstrapGameplay : MonoBehaviour
         _inputManager.Initialize();
         _playerCharacter.Initialize();
         _enemiesSpawnHandler.Initialize();
+        _gameplayUIManager.Initialize();
     }
 }

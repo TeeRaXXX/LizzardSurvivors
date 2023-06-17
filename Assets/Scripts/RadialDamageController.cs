@@ -4,20 +4,31 @@ using UnityEngine;
 
 public class RadialDamageController : MonoBehaviour
 {
-    [SerializeField] private float damage = 5f;
-    [SerializeField] private float damageFrequency = 1f;
+    [SerializeField] private float _damage = 5f;
+    [SerializeField] private float _damageFrequency = 1f;
+    [SerializeField] private SOEnemy _enemy;
+    [SerializeField] private SOCharacter _character;
+    [SerializeField] private bool _isEnemy;
+    [SerializeField] private bool _damageEnemies;
+    [SerializeField] private bool _damagePlayer;
 
-    [SerializeField] private List<Collider2D> objectsToDamage;
-    private bool isDamageInProcess = false;
+    private List<Collider2D> _objectsToDamage;
+    private bool _isDamageInProcess = false;
 
-    private void Start()
+    private void Awake()
     {
-        objectsToDamage = new List<Collider2D>();
+        _objectsToDamage = new List<Collider2D>();
+
+        if (_isEnemy && _enemy != null)
+        {
+            _damage = _enemy.EnemyBaseStats.GetDamage();
+            _damageFrequency = _enemy.EnemyBaseStats.GetAttackSpeed();
+        }
     }
 
     private void FixedUpdate()
     {
-        if (objectsToDamage.Count > 0 && !isDamageInProcess)
+        if (_objectsToDamage.Count > 0 && !_isDamageInProcess)
         {
             StartCoroutine(MakeDamage());
         }
@@ -25,29 +36,32 @@ public class RadialDamageController : MonoBehaviour
 
     private IEnumerator MakeDamage()
     {
-        isDamageInProcess = true;
+        _isDamageInProcess = true;
 
-        for (int i = 0; i < objectsToDamage.Count; i++)
+        for (int i = 0; i < _objectsToDamage.Count; i++)
         {
-            if (objectsToDamage[i] == null)
+            if (_objectsToDamage[i] == null)
             {
-                objectsToDamage.Remove(objectsToDamage[i]);
+                _objectsToDamage.Remove(_objectsToDamage[i]);
                 continue;
             }
 
-            var healthComponent = objectsToDamage[i].GetComponent<HealthComponent>();
-            var isDead = healthComponent.ApplyDamage(damage, this.gameObject);
+            var healthComponent = _objectsToDamage[i].GetComponent<HealthComponent>();
+            var isDead = healthComponent.ApplyDamage(_damage, this.gameObject);
         }
 
-        yield return new WaitForSeconds(damageFrequency);
-        isDamageInProcess = false;
+        yield return new WaitForSeconds(_damageFrequency);
+        _isDamageInProcess = false;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.GetComponent<HealthComponent>() != null)
         {
-            objectsToDamage.Add(other);
+            if (other.gameObject.tag == "Player" && _damagePlayer)
+                _objectsToDamage.Add(other);
+            if (other.gameObject.tag == "Enemy" && _damageEnemies)
+                _objectsToDamage.Add(other);
         }
     }
 
@@ -55,7 +69,7 @@ public class RadialDamageController : MonoBehaviour
     {
         if (other.GetComponent<HealthComponent>() != null)
         {
-            objectsToDamage.Remove(other);
+            _objectsToDamage.Remove(other);
         }
     }
 }

@@ -21,12 +21,15 @@ public class EnemiesSpawnHandler : MonoBehaviour, IInitializeable
         EventManager.OnNewGameMinute.AddListener(UpdateEnemiesList);
         EventManager.OnNewGameSecond.AddListener(SpawnEnemy);
         EventManager.OnEnemyDied.AddListener(OnEnemyDied);
+
+        UpdateEnemiesList(0);
     }
 
     private void UpdateEnemiesList(int gameMinute)
     {
         if (gameMinute < _level.EnemiesWaves.Count)
             _enemiesToSpawn = _level.EnemiesWaves[gameMinute];
+        else _enemiesToSpawn = _level.EnemiesWaves[_level.EnemiesWaves.Count - 1];
 
         Debug.Log($"New game minute - {gameMinute}");
     }
