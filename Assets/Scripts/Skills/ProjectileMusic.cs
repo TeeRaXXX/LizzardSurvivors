@@ -10,16 +10,13 @@ public class ProjectileMusic : MonoBehaviour
     [SerializeField] private Rigidbody2D Rigidbody;
     [SerializeField] private List<Sprite> Sprites;
     [SerializeField] private SpriteRenderer SpriteRenderer;
-    [SerializeField] private PlayerMovement PlayerMovement;
 
-    void Start()
+    public void Lounch(Vector3 lounchVector)
     {
-        PlayerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
-
         int index = Random.Range(0, Sprites.Count);
         SpriteRenderer.sprite = Sprites[index];
         Rigidbody.gravityScale = Random.Range(MinGravity, MaxGravity);
-        Rigidbody.AddForce(PlayerMovement.GetLookDirection() * Speed * (PlayerMovement.GetMoveSpeed() + 1f));
+        Rigidbody.AddForce(lounchVector * Speed);
     }
 
     private void OnTriggerEnter2D(Collider2D other)

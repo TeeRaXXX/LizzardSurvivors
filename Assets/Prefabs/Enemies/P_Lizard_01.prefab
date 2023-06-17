@@ -351,7 +351,7 @@ MonoBehaviour:
   _damageFrequency: 1
   _enemy: {fileID: 11400000, guid: 83fd5cada06895f4599f57f4901ad1fe, type: 2}
   _character: {fileID: 0}
-  _isEnemy: 0
+  _isEnemy: 1
   _damageEnemies: 0
   _damagePlayer: 1
 --- !u!58 &2286563050227123740

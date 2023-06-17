@@ -132,7 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damage: 25
-  Speed: 65
+  Speed: 200
   MinGravity: -0.1
   MaxGravity: 0.1
   Rigidbody: {fileID: 196440900906570114}
@@ -142,7 +142,6 @@ MonoBehaviour:
   - {fileID: 591420977, guid: c1f84537dd5f3fb49b90b69be50c1d25, type: 3}
   - {fileID: -1019353111, guid: c1f84537dd5f3fb49b90b69be50c1d25, type: 3}
   SpriteRenderer: {fileID: 3251967433615772473}
-  PlayerMovement: {fileID: 0}
 --- !u!50 &196440900906570114
 Rigidbody2D:
   serializedVersion: 4
