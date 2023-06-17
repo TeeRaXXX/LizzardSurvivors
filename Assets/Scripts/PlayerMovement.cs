@@ -60,4 +60,9 @@ public class PlayerMovement : MonoBehaviour
     {
         return Mathf.Abs(Mathf.Abs(_movement.x) >= Mathf.Abs(_movement.y) ? _movement.x * _moveSpeed : _movement.y * _moveSpeed);
     }
+
+    public Vector3 GetPlayerPosition()
+    {
+        return transform.position;
+    }
 }

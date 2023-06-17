@@ -1,17 +1,21 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UIElements;
 
-public sealed class SkillMusic : ActiveSkill
+public sealed class SkillMusicEvolved : ActiveSkill
 {
     [SerializeField] private float _coolDown = 1f;
     [SerializeField] private GameObject _projectile;
     [SerializeField] private Transform _launchPoint;
     [SerializeField] private float _spawnAngle = 10;
     [SerializeField] private int _projectileCount = 3;
-    [SerializeField] private float _projectileFrequency = 0.35f;
+    [SerializeField] private float _positionOffset = 1.5f;
+    [SerializeField] private float _rotationSpeed = 4f;
 
     private bool isAtacking = false;
     private PlayerMovement _playerMovement;
+    private float _projectileFrequency;
+
     public new void Upgrade()
     {
         base.Upgrade();
@@ -21,6 +25,7 @@ public sealed class SkillMusic : ActiveSkill
     private void Awake()
     {
         _playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
+        _projectileFrequency = 360f / _projectileCount / _rotationSpeed;
     }
 
     private IEnumerator AttackWithDelay()
@@ -31,16 +36,18 @@ public sealed class SkillMusic : ActiveSkill
 
         for (int i = 0; i < _projectileCount; i++)
         {
-            float spawnVectorX = playerLook.x * Mathf.Cos(angle / 360f) - playerLook.y * Mathf.Sin(angle / 360f);
-            float spawnVectorY = playerLook.x * Mathf.Sin(angle / 360f) + playerLook.y * Mathf.Cos(angle / 360f);
-            angle += _spawnAngle;
-            var projectile = Instantiate(_projectile, _launchPoint.position, _launchPoint.rotation);
-            projectile.GetComponent<ProjectileMusic>().Lounch(new Vector3(spawnVectorX, spawnVectorY, 0).normalized);
+            var projectile = Instantiate(_projectile, new Vector3(
+                _launchPoint.position.x + _positionOffset,
+                _launchPoint.position.y,
+                0f),
+                new Quaternion(0f, 0f, 0f, 1),
+                _launchPoint.transform);
+
+            projectile.GetComponent<ProjectileMusicEvolved>().Lounch(_rotationSpeed);
             yield return new WaitForSeconds(_projectileFrequency);
         }
         
         yield return new WaitForSeconds(_coolDown);
-        isAtacking = false;
     }
 
     private void FixedUpdate()
@@ -49,5 +56,6 @@ public sealed class SkillMusic : ActiveSkill
         {
             StartCoroutine(AttackWithDelay());
         }
+        _launchPoint.transform.Rotate(new Vector3(0f, 0f, _rotationSpeed) * Time.deltaTime);
     }
 }

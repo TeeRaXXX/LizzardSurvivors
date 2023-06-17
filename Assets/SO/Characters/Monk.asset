@@ -23,8 +23,9 @@ MonoBehaviour:
     _moveSpeed: 2.5
     _damageBonus: 0
     _aoeRadiusBonus: 0
-    _projectilesBonus: 0
     _cooldownReduceBonus: 0
     _vampirismBonus: 0
+    _projectilesBonus: 0
     _respawnTimes: 0
-  BaseActiveSkill: 0
+  CharacterType: 0
+  BaseActiveSkill: 1
