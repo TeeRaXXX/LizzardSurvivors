@@ -10,7 +10,9 @@ public class FollowPlayerComponent : MonoBehaviour
     {
         if (_followObject != null)
         {
-            var moveDirection = new Vector3(_followObject.position.x - transform.position.x, _followObject.position.y - transform.position.y, 0f).normalized;
+            var moveDirection = new Vector3(_followObject.position.x - transform.position.x,
+                                            _followObject.position.y - transform.position.y,
+                                            0f).normalized;
             _rigidbody.MovePosition(transform.position + moveDirection * _moveSpeed * Time.deltaTime);
         }
     }

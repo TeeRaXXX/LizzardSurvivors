@@ -93,9 +93,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7299195958715704980}
-  - component: {fileID: 2755754132484014070}
-  - component: {fileID: 196440900906570114}
-  - component: {fileID: 3546298824981989428}
+  - component: {fileID: 3027954508661623820}
+  - component: {fileID: 2218373524069880538}
+  - component: {fileID: 8714853104861327943}
   m_Layer: 0
   m_Name: P_Projectile_MusicEvolved
   m_TagString: Untagged
@@ -110,16 +110,16 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5869420979122637980}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2433088563783955635}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2755754132484014070
+--- !u!114 &3027954508661623820
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -133,14 +133,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damage: 25
   Speed: 150
-  Rigidbody: {fileID: 196440900906570114}
+  _sinusAmplitude: 0.01
+  _sinusSpeed: 1
+  _rigidbody: {fileID: 2218373524069880538}
   Sprites:
   - {fileID: -1510778463, guid: c1f84537dd5f3fb49b90b69be50c1d25, type: 3}
   - {fileID: 1643483436, guid: c1f84537dd5f3fb49b90b69be50c1d25, type: 3}
   - {fileID: 591420977, guid: c1f84537dd5f3fb49b90b69be50c1d25, type: 3}
   - {fileID: -1019353111, guid: c1f84537dd5f3fb49b90b69be50c1d25, type: 3}
   SpriteRenderer: {fileID: 3251967433615772473}
---- !u!50 &196440900906570114
+  _additionalObject: {fileID: 1833911276264005223, guid: 67639801ac6b61a4bb89f92b294eff52, type: 3}
+  _changeSpriteTime: 5
+--- !u!50 &2218373524069880538
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -167,7 +171,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
---- !u!58 &3546298824981989428
+--- !u!58 &8714853104861327943
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

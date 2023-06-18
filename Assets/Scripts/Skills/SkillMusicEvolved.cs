@@ -10,6 +10,7 @@ public sealed class SkillMusicEvolved : ActiveSkill
     [SerializeField] private float _spawnAngle = 10;
     [SerializeField] private int _projectileCount = 3;
     [SerializeField] private float _positionOffset = 1.5f;
+    [SerializeField] private float _positionOffset2 = 0.1f;
     [SerializeField] private float _rotationSpeed = 4f;
 
     private bool isAtacking = false;
@@ -33,17 +34,23 @@ public sealed class SkillMusicEvolved : ActiveSkill
         isAtacking = true;
         float angle = -_spawnAngle;
         Vector3 playerLook = _playerMovement.GetLookDirection();
+        bool addOffset = false;
 
         for (int i = 0; i < _projectileCount; i++)
         {
+            float x = _launchPoint.position.x + _positionOffset;
+            if (addOffset)
+                x = _launchPoint.position.x + _positionOffset + _positionOffset2;
+
             var projectile = Instantiate(_projectile, new Vector3(
-                _launchPoint.position.x + _positionOffset,
+                x,
                 _launchPoint.position.y,
                 0f),
                 new Quaternion(0f, 0f, 0f, 1),
                 _launchPoint.transform);
 
-            projectile.GetComponent<ProjectileMusicEvolved>().Lounch(_rotationSpeed);
+            projectile.GetComponent<ProjectileMusicEvolved>().Lounch(_rotationSpeed, _launchPoint.gameObject, _projectileCount);
+            addOffset = !addOffset;
             yield return new WaitForSeconds(_projectileFrequency);
         }
         
