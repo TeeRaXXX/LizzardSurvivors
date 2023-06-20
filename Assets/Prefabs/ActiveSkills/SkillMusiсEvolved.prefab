@@ -85,8 +85,7 @@ MonoBehaviour:
   _coolDown: 1
   _projectile: {fileID: 5869420979122637980, guid: c2727326bb3b32041962d10214da7829, type: 3}
   _launchPoint: {fileID: 3059323211770914359}
-  _spawnAngle: 15
-  _projectileCount: 20
+  _projectileCount: 16
   _positionOffset: 2.5
-  _positionOffset2: 1
-  _rotationSpeed: 100
+  _positionOffset2: 0
+  _rotationSpeed: 400

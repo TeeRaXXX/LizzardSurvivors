@@ -7,5 +7,6 @@ using System;
     Idol,
 
     Respawn,
-    IncreaseProjectileCount
+    IncreaseProjectileCount,
+    AutoHeal
 }

@@ -16,10 +16,30 @@ MonoBehaviour:
   LevelDescription: Forest
   EnemiesWaves:
   - Minute: 0
-    SpawnFrequency: 2
+    SpawnFrequency: 1
+    Boss: 0
+    EnemiesPercents:
+    - Enemy: 1
+      Percent: 1
+      SpawnCount: 3
+  - Minute: 1
+    SpawnFrequency: 1
     Boss: 0
     EnemiesPercents:
     - Enemy: 0
-      Percent: 0.5
+      Percent: 1
+      SpawnCount: 15
+  - Minute: 2
+    SpawnFrequency: 1
+    Boss: 0
+    EnemiesPercents:
     - Enemy: 0
-      Percent: 0.5
+      Percent: 1
+      SpawnCount: 20
+  - Minute: 3
+    SpawnFrequency: 1
+    Boss: 0
+    EnemiesPercents:
+    - Enemy: 0
+      Percent: 1
+      SpawnCount: 30

@@ -3,5 +3,7 @@ using System;
 [Serializable] public enum EnemyType
 {
     BaseLizarad,
-    BossLizard
+    SnailSmall,
+    SnailMedium,
+    SnailLarge
 }

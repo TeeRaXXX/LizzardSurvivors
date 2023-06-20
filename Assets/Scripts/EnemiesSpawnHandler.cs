@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,8 +13,12 @@ public class EnemiesSpawnHandler : MonoBehaviour, IInitializeable
     private EnemiesPerMinute _enemiesToSpawn;
     private int _currentEnemiesCount;
 
+    public static EnemiesSpawnHandler Instance;
+
     public void Initialize()
     {
+        Instance = this;
+
         _enemiesToSpawn = _level.EnemiesWaves[0];
         _currentSpawnCollider = 0;
         _currentEnemiesCount = 0;
@@ -21,9 +26,9 @@ public class EnemiesSpawnHandler : MonoBehaviour, IInitializeable
         EventManager.OnNewGameMinute.AddListener(UpdateEnemiesList);
         EventManager.OnNewGameSecond.AddListener(SpawnEnemy);
         EventManager.OnEnemyDied.AddListener(OnEnemyDied);
-
-        UpdateEnemiesList(0);
     }
+
+    private EnemiesSpawnHandler() { }
 
     private void UpdateEnemiesList(int gameMinute)
     {
@@ -38,13 +43,18 @@ public class EnemiesSpawnHandler : MonoBehaviour, IInitializeable
     {
         if (gameTimeInSeconds % _enemiesToSpawn.SpawnFrequency == 0 && _currentEnemiesCount < _maxEnemiesCount)
         {
-            GameObject enemyToSpawn = _allEnemies.EnemiesList.Find(obj => obj.EnemyType == GetRandomEnemy()).EnemyPrefab;
-            Instantiate(enemyToSpawn, GetSpawnPosition(), new Quaternion());
-            _currentEnemiesCount++;
+            int spawnCount = 1;
+            GameObject enemyToSpawn = _allEnemies.EnemiesList.Find(obj => obj.EnemyType == GetRandomEnemy(ref spawnCount)).EnemyPrefab;
+            for (int i = 0; i < spawnCount; i++)
+            {
+                Instantiate(enemyToSpawn, GetSpawnPosition(), new Quaternion());
+                _currentEnemiesCount++;
+                if (_currentEnemiesCount >= _maxEnemiesCount) break;
+            }
         }
     }
 
-    private EnemyType GetRandomEnemy()
+    private EnemyType GetRandomEnemy(ref int spawnCount)
     {
         int biggestPercentIndex = 0;
         float biggestPercent = 0f;
@@ -53,6 +63,7 @@ public class EnemiesSpawnHandler : MonoBehaviour, IInitializeable
         {
             if (Random.Range(0f, 1f) <= _enemiesToSpawn.EnemiesPercents[i].Percent)
             {
+                spawnCount = _enemiesToSpawn.EnemiesPercents[i].SpawnCount;
                 return _enemiesToSpawn.EnemiesPercents[i].Enemy;
             }
             if (_enemiesToSpawn.EnemiesPercents[i].Percent > biggestPercent)
@@ -62,6 +73,7 @@ public class EnemiesSpawnHandler : MonoBehaviour, IInitializeable
             }
         }
 
+        spawnCount = _enemiesToSpawn.EnemiesPercents[biggestPercentIndex].SpawnCount;
         return _enemiesToSpawn.EnemiesPercents[biggestPercentIndex].Enemy;
     }
 
@@ -81,5 +93,36 @@ public class EnemiesSpawnHandler : MonoBehaviour, IInitializeable
     {
         if (_currentEnemiesCount > 0)
             _currentEnemiesCount--;
+    }
+
+    public void SpawnEnemy(EnemyType enemyType, Vector3 spawnPosition)
+    {
+        GameObject enemyToSpawn = _allEnemies.EnemiesList.Find(obj => obj.EnemyType == enemyType).EnemyPrefab;
+        Instantiate(enemyToSpawn, spawnPosition, new Quaternion());
+        _currentEnemiesCount++;
+    }
+
+    public void SpawnEnemy(EnemyType enemyType, Vector3 spawnPosition, GameObject objectToDelete)
+    {
+        GameObject enemyToSpawn = _allEnemies.EnemiesList.Find(obj => obj.EnemyType == enemyType).EnemyPrefab;
+        Instantiate(enemyToSpawn, spawnPosition, new Quaternion());
+        Destroy(objectToDelete);
+    }
+
+    public IEnumerator SpawnEnemy(EnemyType enemyType, Vector3 spawnPosition, float spawnDelay)
+    {
+        yield return new WaitForSeconds(spawnDelay);
+        GameObject enemyToSpawn = _allEnemies.EnemiesList.Find(obj => obj.EnemyType == enemyType).EnemyPrefab;
+        Instantiate(enemyToSpawn, spawnPosition, new Quaternion());
+        _currentEnemiesCount++;
+    }
+
+    public IEnumerator SpawnEnemy(EnemyType enemyType, Vector3 spawnPosition, float spawnDelay, GameObject objectToDelete)
+    {
+        Destroy(objectToDelete);
+        yield return new WaitForSeconds(spawnDelay);
+        GameObject enemyToSpawn = _allEnemies.EnemiesList.Find(obj => obj.EnemyType == enemyType).EnemyPrefab;
+        Instantiate(enemyToSpawn, spawnPosition, new Quaternion());
+        _currentEnemiesCount++;
     }
 }

@@ -12,4 +12,5 @@ public class SOEnemy : ScriptableObject
     public EnemyStats EnemyBaseStats;
 
     public EnemyType EnemyType;
+    public GameObject EnemyPrefab;
 }

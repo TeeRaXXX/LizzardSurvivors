@@ -14,6 +14,7 @@ using UnityEngine;
 {
     public EnemyType Enemy;
     public float Percent;
+    public int SpawnCount;
 }
 
 [CreateAssetMenu(fileName = "LevelSO", menuName = "NastyDoll/New Level")]

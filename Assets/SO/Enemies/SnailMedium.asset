@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 510b5ecc2b3021444be610aa2dacbb13, type: 3}
-  m_Name: LizardBase
+  m_Name: SnailMedium
   m_EditorClassIdentifier: 
   EnemyName: Base Lizard
   EnemyDescription: The weakest lizard in the lizard army. Can be dangerous in a
     large group
-  EnemyBaseSprite: {fileID: -332848625, guid: 174cc91df3ecc3c41860fbf8ca1332b9, type: 3}
-  EnemyAnimationController: {fileID: 9100000, guid: da40fdb3f78aedc489ce03240c7d63f2, type: 2}
+  EnemyBaseSprite: {fileID: -1547854746, guid: 1d4f5e5c67f1b3242ac90f504ccc8944, type: 3}
+  EnemyAnimationController: {fileID: 9100000, guid: 31d2472bc1fe98a40b60bcd7dd5f529e, type: 2}
   EnemyBaseStats:
     _healthRecovery: 0
     _maxHealth: 100
     _armor: 0
-    _moveSpeed: 1
-    _damage: 2.5
+    _moveSpeed: 1.5
+    _damage: 20
     _attackSpeed: 1
-  EnemyType: 0
-  EnemyPrefab: {fileID: 4239325755424782172, guid: 6483723f0de35e8479291517ee26d8b4, type: 3}
+  EnemyType: 2
+  EnemyPrefab: {fileID: 6017871896212215155, guid: b08745adb90a9084bba8e78a27cc4b63, type: 3}

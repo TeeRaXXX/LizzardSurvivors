@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: SOEnemiesList
   m_EditorClassIdentifier: 
   EnemiesList:
-  - EnemyType: 0
-    EnemyPrefab: {fileID: 4239325755424782172, guid: 6483723f0de35e8479291517ee26d8b4, type: 3}
+  - {fileID: 11400000, guid: 83fd5cada06895f4599f57f4901ad1fe, type: 2}
+  - {fileID: 11400000, guid: 458908bc2de3b7e4eab9d6cc60f456f3, type: 2}
+  - {fileID: 11400000, guid: 34be074c5a6454d45903b388c8d7b12f, type: 2}
+  - {fileID: 11400000, guid: 8eb157b77826d7d4f946179063db2cc1, type: 2}

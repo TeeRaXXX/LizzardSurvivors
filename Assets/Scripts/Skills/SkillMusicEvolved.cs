@@ -7,7 +7,6 @@ public sealed class SkillMusicEvolved : ActiveSkill
     [SerializeField] private float _coolDown = 1f;
     [SerializeField] private GameObject _projectile;
     [SerializeField] private Transform _launchPoint;
-    [SerializeField] private float _spawnAngle = 10;
     [SerializeField] private int _projectileCount = 3;
     [SerializeField] private float _positionOffset = 1.5f;
     [SerializeField] private float _positionOffset2 = 0.1f;
@@ -32,7 +31,6 @@ public sealed class SkillMusicEvolved : ActiveSkill
     private IEnumerator AttackWithDelay()
     {
         isAtacking = true;
-        float angle = -_spawnAngle;
         Vector3 playerLook = _playerMovement.GetLookDirection();
         bool addOffset = false;
 

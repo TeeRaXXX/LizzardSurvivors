@@ -17,3 +17,5 @@ MonoBehaviour:
     SkillPrefab: {fileID: 9093520788274658227, guid: 1d3d905b7bded0d47b8a87a40914f225, type: 3}
   - SkillType: 1
     SkillPrefab: {fileID: 9093520788274658227, guid: 43886762b89294442bf6ee9963fc7b96, type: 3}
+  - SkillType: 5
+    SkillPrefab: {fileID: 4142236178876412807, guid: e9ec4dc991bd0d246afdd3269b573553, type: 3}

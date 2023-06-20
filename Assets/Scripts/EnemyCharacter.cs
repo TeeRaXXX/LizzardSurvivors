@@ -12,13 +12,15 @@ public class EnemyCharacter : MonoBehaviour
 
     private readonly UnityEvent<float, GameObject> _onHealthChanged = new UnityEvent<float, GameObject>();
 
-    public void Awake()
+    public void Start()
     {
         _enemySpriteRenderer.sprite = _enemyParams.EnemyBaseSprite;
         _enemyAnimator.runtimeAnimatorController = _enemyParams.EnemyAnimationController;
         _spriteFlipper.Init(this.transform, _enemySpriteRenderer);
 
+        _followPlayerComponent.SetMoveSpeed(_enemyParams.EnemyBaseStats.GetMoveSpeed());
         _followPlayerComponent.SetFollowObject(GameObject.FindGameObjectWithTag("Player").transform);
+        _followPlayerComponent.SetActive(true);
 
         _healthComponent.InitHealth(
             _enemyParams.EnemyBaseStats.GetMaxHealth(),
@@ -26,14 +28,16 @@ public class EnemyCharacter : MonoBehaviour
             _onHealthChanged);
 
         _onHealthChanged.AddListener(OnHelthChangedEvent);
+
     }
     private void OnHelthChangedEvent(float health, GameObject damageSource)
     {
         if (health <= 0)
         {
-            Debug.Log($"Character {gameObject.name} has been killed by {damageSource.name}");
             EventManager.OnEnemyDiedEvent(_enemyParams.EnemyType);
             Destroy(this.gameObject);
         }
     }
+
+    public EnemyStats GetStats() => _enemyParams.EnemyBaseStats;
 }

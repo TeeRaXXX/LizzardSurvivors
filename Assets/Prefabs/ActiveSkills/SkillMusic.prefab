@@ -82,9 +82,9 @@ MonoBehaviour:
   MaxLevel: 8
   CurrentLevel: 0
   SkillType: 0
-  _coolDown: 1
+  _coolDown: 0
   _projectile: {fileID: 5869420979122637980, guid: 64c80b584c89c5948acb24ad68ca2d50, type: 3}
   _launchPoint: {fileID: 3059323211770914359}
-  _spawnAngle: 90
-  _projectileCount: 15
+  _spawnAngle: 175.2
+  _projectileCount: 30
   _projectileFrequency: 0.05
