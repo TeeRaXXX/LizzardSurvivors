@@ -212,8 +212,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _snailToSpawn: {fileID: 6017871896212215155, guid: b08745adb90a9084bba8e78a27cc4b63, type: 3}
-  _snailTag: SnailSmall
+  _followObjectComponent: {fileID: 7418501207387865365}
+  _rigidbody: {fileID: 6536083953165259908}
+  _snailToSpawnType: 2
   _followPlayer: 0
+  _isTriggered: 0
 --- !u!114 &7418501207387865365
 MonoBehaviour:
   m_ObjectHideFlags: 0

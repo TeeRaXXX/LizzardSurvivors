@@ -5,7 +5,7 @@ public class EnemyCharacter : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer _enemySpriteRenderer;
     [SerializeField] private Animator _enemyAnimator;
-    [SerializeField] private FollowPlayerComponent _followPlayerComponent;
+    [SerializeField] private FollowObjectComponent _followPlayerComponent;
     [SerializeField] private HealthComponent _healthComponent;
     [SerializeField] private SOEnemy _enemyParams;
     [SerializeField] private SpriteFlipper _spriteFlipper;

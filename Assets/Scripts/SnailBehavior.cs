@@ -3,25 +3,24 @@ using UnityEngine;
 public class SnailBehavior : MonoBehaviour
 {
     [SerializeField] private GameObject _snailToSpawn;
-    [SerializeField] private string _snailTag;
-    [SerializeField] bool _followPlayer;
+    [SerializeField] private FollowObjectComponent _followObjectComponent;
+    [SerializeField] private Rigidbody2D _rigidbody;
+    [SerializeField] private EnemyType _snailToSpawnType;
+    [SerializeField] private bool _followPlayer;
 
-    private Rigidbody2D _rigidbody;
     private GameObject _otherSnail;
-    private FollowPlayerComponent _followPlayerComponent;
-    private float _moveSpeed;
+    private Transform _playerTransform;
     private bool _isSingle;
 
     public bool _isTriggered;
 
     private void Awake()
     {
+        _playerTransform = GameObject.FindGameObjectWithTag(TagsHandler.GetPlayerTag()).transform;
+
         _isTriggered = false;
-        _isSingle = true;
         _otherSnail = null;
-        _followPlayerComponent = GetComponent<FollowPlayerComponent>();
-        _rigidbody = GetComponent<Rigidbody2D>();
-        _moveSpeed = GetComponent<EnemyCharacter>().GetStats().GetMoveSpeed();
+        _isSingle = true;
     }
 
     private void Update()
@@ -30,14 +29,9 @@ public class SnailBehavior : MonoBehaviour
         {
             FindPair();
 
-            if (_followPlayer)
-                _followPlayerComponent.SetActive(true);
+            if (_followPlayer) _followObjectComponent.SetFollowObject(_playerTransform);
         }
-        else
-        {
-            _followPlayerComponent.SetActive(false);
-            MoveToOtherSnail();
-        }
+        else _followObjectComponent.SetFollowObject(_otherSnail.transform);
     }
 
     private void FindPair()
@@ -60,31 +54,23 @@ public class SnailBehavior : MonoBehaviour
                 }
         }
     }
-    
-    private void MoveToOtherSnail()
-    {
-        if (_otherSnail == null)
-            _isSingle = true;
-
-        var moveDirection = new Vector3(_otherSnail.transform.position.x - transform.position.x,
-                                            _otherSnail.transform.position.y - transform.position.y,
-                                            0f).normalized;
-        _rigidbody.MovePosition(transform.position + moveDirection * _moveSpeed * Time.deltaTime);
-    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag(transform.tag) && !_isTriggered)
         {
-            _isTriggered = true;
-            other.GetComponent<SnailBehavior>()._isTriggered = true;
+            SetTriggered(true);
+            other.GetComponent<SnailBehavior>().SetTriggered(true);
             Destroy(other.gameObject);
-            Instantiate(_snailToSpawn, transform.position, new Quaternion());
+            EnemiesSpawnHandler.Instance.SpawnEnemy(_snailToSpawnType, transform.position);
             Destroy(this.gameObject);
         }
     }
 
     public bool IsSingle() => _isSingle;
+
+    public void SetTriggered(bool isTriggered) => _isTriggered = isTriggered;
+
     public void SetPair(GameObject pair)
     {
         _isSingle = false;

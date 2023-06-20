@@ -8,7 +8,7 @@ public class EnemiesTeleportHandler : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Enemy")
+        if (TagsHandler.IsEnemy(other.gameObject.tag))
         {
             float offset = _offset;
 

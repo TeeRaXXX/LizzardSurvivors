@@ -108,21 +108,4 @@ public class EnemiesSpawnHandler : MonoBehaviour, IInitializeable
         Instantiate(enemyToSpawn, spawnPosition, new Quaternion());
         Destroy(objectToDelete);
     }
-
-    public IEnumerator SpawnEnemy(EnemyType enemyType, Vector3 spawnPosition, float spawnDelay)
-    {
-        yield return new WaitForSeconds(spawnDelay);
-        GameObject enemyToSpawn = _allEnemies.EnemiesList.Find(obj => obj.EnemyType == enemyType).EnemyPrefab;
-        Instantiate(enemyToSpawn, spawnPosition, new Quaternion());
-        _currentEnemiesCount++;
-    }
-
-    public IEnumerator SpawnEnemy(EnemyType enemyType, Vector3 spawnPosition, float spawnDelay, GameObject objectToDelete)
-    {
-        Destroy(objectToDelete);
-        yield return new WaitForSeconds(spawnDelay);
-        GameObject enemyToSpawn = _allEnemies.EnemiesList.Find(obj => obj.EnemyType == enemyType).EnemyPrefab;
-        Instantiate(enemyToSpawn, spawnPosition, new Quaternion());
-        _currentEnemiesCount++;
-    }
 }

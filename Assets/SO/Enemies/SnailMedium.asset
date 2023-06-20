@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 510b5ecc2b3021444be610aa2dacbb13, type: 3}
   m_Name: SnailMedium
   m_EditorClassIdentifier: 
-  EnemyName: Base Lizard
+  EnemyName: Medium Snail
   EnemyDescription: The weakest lizard in the lizard army. Can be dangerous in a
     large group
   EnemyBaseSprite: {fileID: -1547854746, guid: 1d4f5e5c67f1b3242ac90f504ccc8944, type: 3}
@@ -21,7 +21,7 @@ MonoBehaviour:
     _healthRecovery: 0
     _maxHealth: 100
     _armor: 0
-    _moveSpeed: 1.5
+    _moveSpeed: 0.75
     _damage: 20
     _attackSpeed: 1
   EnemyType: 2
