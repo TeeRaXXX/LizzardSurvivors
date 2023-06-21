@@ -27,7 +27,9 @@ public class HealthComponent : MonoBehaviour
             if (_health - totalDamage <= 0)
             {
                 _health = 0f;
-                _onHealthChangedEvent.Invoke(_health, damageSource);
+                if (damageSource != null)
+                    _onHealthChangedEvent.Invoke(_health, damageSource);
+                else _onHealthChangedEvent.Invoke(_health, null);
                 return true;
             }
             else
