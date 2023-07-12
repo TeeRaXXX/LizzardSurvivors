@@ -40,9 +40,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2171916439901507477}
-  - component: {fileID: 1477915881031046018}
+  - component: {fileID: 5011778784357270115}
   m_Layer: 0
-  m_Name: SkillMusic
+  m_Name: "P_SkillMusi\u0441Evolved"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -64,7 +64,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1477915881031046018
+--- !u!114 &5011778784357270115
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -73,18 +73,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 9093520788274658227}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18530adde0e36ef43aeebf19267c839d, type: 3}
+  m_Script: {fileID: 11500000, guid: c039a105cc9978941b16ce04be4f46f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SkillLogo: {fileID: 21300000, guid: 9df7a5f60b7aef64281b079a6beb9fe7, type: 3}
-  SkillName: Music
-  SkillDescription: "\u041F\u0438\u0443 \u041F\u0438\u0443 \u043D\u043E\u0442\u0430\u043C\u0438"
+  SkillLogo: {fileID: 0}
+  SkillName: Skill Name
+  SkillDescription: Skill Description
   MaxLevel: 8
   CurrentLevel: 0
-  SkillType: 0
-  _coolDown: 0
-  _projectile: {fileID: 5869420979122637980, guid: 64c80b584c89c5948acb24ad68ca2d50, type: 3}
+  SkillType: 1
+  _coolDown: 1
+  _projectile: {fileID: 5869420979122637980, guid: c2727326bb3b32041962d10214da7829, type: 3}
   _launchPoint: {fileID: 3059323211770914359}
-  _spawnAngle: 175.2
-  _projectileCount: 30
-  _projectileFrequency: 0.05
+  _projectileCount: 16
+  _positionOffset: 2.5
+  _positionOffset2: 0
+  _rotationSpeed: 400

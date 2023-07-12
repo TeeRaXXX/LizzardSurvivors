@@ -13,6 +13,7 @@ public class BootstrapGameplay : MonoBehaviour
         _gameTimer.Initialize();
         _inputManager.Initialize();
         _playerCharacter.Initialize();
+        PlayerLevel.Initialize(0);
         _enemiesSpawnHandler.Initialize();
         _gameplayUIManager.Initialize();
     }

@@ -26,3 +26,8 @@ MonoBehaviour:
     _attackSpeed: 0.75
   EnemyType: 3
   EnemyPrefab: {fileID: 4239325755424782172, guid: 050774a7159c290458f18d63002637cb, type: 3}
+  Drops:
+  - DropPrefab: {fileID: 858945274545618952, guid: 8df36d66a40e3064c9b62dcc92fc7f75, type: 3}
+    DropChance: 0.5
+  ExperienceMin: 15
+  ExperienceMax: 20

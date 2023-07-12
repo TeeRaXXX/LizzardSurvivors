@@ -11,6 +11,8 @@ public class TagsHandler
 
     private static string _playerTag = "Player";
 
+    public static string GetDropTag() => "Drop";
+
     public static bool IsEnemy(string tag) => _enemyTags.Contains(tag);
 
     public static string GetPlayerTag() => _playerTag;

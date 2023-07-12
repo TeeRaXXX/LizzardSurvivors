@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - SnailSmall
   - SnailMedium
+  - Drop
   layers:
   - Default
   - TransparentFX

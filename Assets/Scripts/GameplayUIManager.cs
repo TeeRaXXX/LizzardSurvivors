@@ -4,12 +4,15 @@ using UnityEngine;
 public class GameplayUIManager : MonoBehaviour, IInitializeable
 {
     [SerializeField] private TMP_Text _gameTimer;
+    [SerializeField] private TMP_Text _experienceCount;
     [SerializeField] private PlayerHealthBar _playerHealthBar;
 
     public void Initialize()
     {
         EventManager.OnNewGameSecond.AddListener(UpdateGameTimer);
+        EventManager.OnExperienceUp.AddListener(UpdateExperienceCount);
         _playerHealthBar.Initialize();
+        _experienceCount.text = PlayerLevel.Instance.Experience.ToString();
     }
 
     private void UpdateGameTimer(int gameSecond)
@@ -26,5 +29,10 @@ public class GameplayUIManager : MonoBehaviour, IInitializeable
         secondsString = string.Format("{0:00}", seconds);
 
         _gameTimer.text = $"{minutesString}:{secondsString}";
+    }
+
+    private void UpdateExperienceCount(float experience)
+    {
+        _experienceCount.text = string.Format("{0:0}", PlayerLevel.Instance.Experience);
     }
 }

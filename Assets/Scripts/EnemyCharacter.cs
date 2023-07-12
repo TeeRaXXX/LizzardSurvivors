@@ -33,10 +33,29 @@ public class EnemyCharacter : MonoBehaviour
     private void OnHelthChangedEvent(float health, GameObject damageSource)
     {
         if (health <= 0)
-        {
-            EventManager.OnEnemyDiedEvent(_enemyParams.EnemyType);
-            Destroy(this.gameObject);
-        }
+            OnDeath();
+    }
+
+    private void OnDeath()
+    {
+        Drop();
+        EventManager.OnEnemyDiedEvent(_enemyParams.EnemyType);
+        Destroy(this.gameObject);
+    }
+
+    private void Drop()
+    {
+        if (_enemyParams.Drops.Count > 0)
+            foreach (var drop in _enemyParams.Drops)
+                if (Random.Range(0f, 1f) <= drop.DropChance)
+                {
+                    var spawnedDrop = Instantiate(drop.DropPrefab, transform.position, Quaternion.identity);
+
+                    IDroppable droppable;
+
+                    if (spawnedDrop.TryGetComponent<IDroppable>(out droppable))
+                        droppable.Drop(_enemyParams);
+                }
     }
 
     public EnemyStats GetStats() => _enemyParams.EnemyBaseStats;
