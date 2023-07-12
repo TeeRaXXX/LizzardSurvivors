@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerHealthBar : MonoBehaviour, IInitializeable
+public class PlayerHealthView : MonoBehaviour, IInitializeable
 {
     [SerializeField] private Transform _healthBar;
 

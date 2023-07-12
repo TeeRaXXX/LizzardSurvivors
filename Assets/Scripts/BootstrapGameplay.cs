@@ -8,12 +8,14 @@ public class BootstrapGameplay : MonoBehaviour
     [SerializeField] private GameTimer _gameTimer;
     [SerializeField] private GameplayUIManager _gameplayUIManager;
 
+    [SerializeField] private int _startLevel;
+
     private void Awake()
     {
         _gameTimer.Initialize();
         _inputManager.Initialize();
         _playerCharacter.Initialize();
-        PlayerLevel.Initialize(0);
+        PlayerLevel.Initialize(_startLevel);
         _enemiesSpawnHandler.Initialize();
         _gameplayUIManager.Initialize();
     }
