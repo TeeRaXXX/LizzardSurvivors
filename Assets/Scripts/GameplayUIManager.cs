@@ -1,19 +1,21 @@
 using TMPro;
 using UnityEngine;
 
-public class GameplayUIManager : MonoBehaviour, IInitializeable
+public class GameplayUIManager : MonoBehaviour
 {
     [SerializeField] private TMP_Text _gameTimer;
     [SerializeField] private TMP_Text _playerLevel;
     [SerializeField] private PlayerHealthView _playerHealthBar;
     [SerializeField] private PlayerExperienceView _playerExperienceBar;
+    [SerializeField] private PlayerSkillsView _playerSkillsView;
 
-    public void Initialize()
+    public void Initialize(SkillsHandler skillsHandler)
     {
         EventManager.OnNewGameSecond.AddListener(UpdateGameTimer);
         EventManager.OnLevelUp.AddListener(UpdatePlayerLevel);
         _playerHealthBar.Initialize();
         _playerExperienceBar.Initialize();
+        _playerSkillsView.Initialize(skillsHandler);
         _playerLevel.text = PlayerLevel.Instance.Level.ToString();
     }
 

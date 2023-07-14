@@ -10,12 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ad69a1a97d6498e4e9d3bf4670115885, type: 3}
-  m_Name: SOActiveSkills
+  m_Name: SOSkills
   m_EditorClassIdentifier: 
-  ActiveSkillsList:
+  SkillsList:
   - SkillType: 0
+    IsActive: 1
     SkillPrefab: {fileID: 9093520788274658227, guid: 1d3d905b7bded0d47b8a87a40914f225, type: 3}
+    SkillLogo: {fileID: 21300000, guid: 9df7a5f60b7aef64281b079a6beb9fe7, type: 3}
   - SkillType: 1
+    IsActive: 1
     SkillPrefab: {fileID: 9093520788274658227, guid: 43886762b89294442bf6ee9963fc7b96, type: 3}
+    SkillLogo: {fileID: 21300000, guid: 9df7a5f60b7aef64281b079a6beb9fe7, type: 3}
   - SkillType: 5
+    IsActive: 0
     SkillPrefab: {fileID: 4142236178876412807, guid: e9ec4dc991bd0d246afdd3269b573553, type: 3}
+    SkillLogo: {fileID: 21300000, guid: 22a877a9c7cf8354299c74b6bbf6e220, type: 3}

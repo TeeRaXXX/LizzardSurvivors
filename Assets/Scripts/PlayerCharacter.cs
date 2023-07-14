@@ -1,13 +1,12 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class PlayerCharacter : MonoBehaviour, IInitializeable
+public class PlayerCharacter : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer _playerSpriteRenderer;
     [SerializeField] private Animator _playerAnimator;
     [SerializeField] private SOCharacter _selectedCharacter;
     [SerializeField] private PlayerMovement _playerMovement;
-    [SerializeField] private ActiveSkillsHandler _activeSkillsHandler;
     [SerializeField] private HealthComponent _PlayerHealthComponent;
 
     private PlayerStats _playerStats;
@@ -15,13 +14,10 @@ public class PlayerCharacter : MonoBehaviour, IInitializeable
 
     private readonly UnityEvent<float, GameObject> _onHealthChanged = new UnityEvent<float, GameObject>();
 
-    public void Initialize()
+    public void Initialize(SkillsHandler skillsHandler)
     {
         _playerStats = new PlayerStats();
         _playerStats.InitStats(_selectedCharacter);
-
-        _playerInventory = new PlayerInventory();
-        _playerInventory.InitInventory(_selectedCharacter.BaseActiveSkill, 0);
 
         _PlayerHealthComponent.InitHealth(
             _selectedCharacter.CharacterBaseStats.GetMaxHealth(),
@@ -34,9 +30,10 @@ public class PlayerCharacter : MonoBehaviour, IInitializeable
 
         _playerAnimator.runtimeAnimatorController = _selectedCharacter.CharacterAnimationController;
 
-        _activeSkillsHandler.ActiveSkillsInit(_selectedCharacter);
-
         _playerMovement.InitMovement(_selectedCharacter, _playerSpriteRenderer, _playerAnimator);
+
+        _playerInventory = new PlayerInventory();
+        _playerInventory.InitInventory(_selectedCharacter.BaseActiveSkill, skillsHandler, 0);
     }
 
     private void OnHelthChangedEvent(float health, GameObject damageSource)
