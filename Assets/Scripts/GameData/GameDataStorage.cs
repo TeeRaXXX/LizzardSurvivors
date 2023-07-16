@@ -53,6 +53,7 @@ public class GameDataStorage : MonoBehaviour, IInitializeable
         GameData.AddOpenedSkill(SkillType.AutoHeal, true);
         GameData.AddOpenedSkill(SkillType.MusicEvolved, true);
         GameData.AddOpenedSkill(SkillType.Music, true);
+        GameData.AddOpenedSkill(SkillType.IncreaseProjectileCount, true);
         SaveData();
     }
 }

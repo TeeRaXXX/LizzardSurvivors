@@ -38,11 +38,15 @@ public class SkillAutoHeaal : MonoBehaviour, IUpgradable
 
     public int GetMaxLevel() => _maxLevel;
 
-    public void Upgrade()
+    public int GetCurrentLevel() => _currentLevel;
+
+    public void Upgrade(bool isNewLevel)
     {
-        if (_currentLevel < _maxLevel)
-        {
+        if (isNewLevel)
             _currentLevel++;
+
+        if (_currentLevel <= _maxLevel)
+        {
             switch (_currentLevel)
             {
                 case 2:

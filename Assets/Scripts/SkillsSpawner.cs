@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class SkillsSpawner : MonoBehaviour
@@ -22,7 +23,7 @@ public class SkillsSpawner : MonoBehaviour
         }
         else
         {
-            _skills[skill].GetComponent<IUpgradable>().Upgrade();
+            _skills[skill].GetComponent<IUpgradable>().Upgrade(true);
             EventManager.OnSkillAddedEvent(skill);
         }
     }
@@ -91,5 +92,14 @@ public class SkillsSpawner : MonoBehaviour
         }
 
         return "Skill Description";
+    }
+
+    public int GetCurrentSkillLevel(SkillType skillType)
+    {
+       GameObject skill = null;
+
+        if (_skills.TryGetValue(skillType, out skill))
+            return _skills[skillType].GetComponent<IUpgradable>().GetCurrentLevel();
+        else return 0;
     }
 }

@@ -9,7 +9,7 @@ public sealed class SkillMusic : MonoBehaviour, IUpgradable
     [SerializeField] private Transform _launchPoint;
     [SerializeField] private float _spawnAngle = 10;
     [SerializeField] private int _projectileCount = 3;
-    [SerializeField] private float _projectileFrequency = 0.35f;
+    [SerializeField] private float _projectileFrequency = 0.25f;
 
     private bool isAtacking = false;
     private PlayerMovement _playerMovement;
@@ -20,7 +20,10 @@ public sealed class SkillMusic : MonoBehaviour, IUpgradable
     {
         _maxLevel = 8;
         _currentLevel = 1;
+        _projectileFrequency = 0.25f;
+        _projectileCount = 3 + GlobalBonuses.Instance.GetAdditionalProjectilesCount();
         _playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
+        EventManager.OnProjectilesUpdate.AddListener(Upgrade);
     }
 
     private IEnumerator AttackWithDelay()
@@ -51,11 +54,13 @@ public sealed class SkillMusic : MonoBehaviour, IUpgradable
         }
     }
 
-    public void Upgrade()
+    public void Upgrade(bool isNewLevel)
     {
-        if (_currentLevel < _maxLevel)
-        {
+        if (isNewLevel)
             _currentLevel++;
+
+        if (_currentLevel <= _maxLevel)
+        {
             switch (_currentLevel)
             {
                 case 2:
@@ -64,6 +69,7 @@ public sealed class SkillMusic : MonoBehaviour, IUpgradable
 
                 case 3:
                     _coolDown = 0.35f;
+                    _projectileFrequency = 0.2f;
                     break;
 
                 case 4:
@@ -72,6 +78,7 @@ public sealed class SkillMusic : MonoBehaviour, IUpgradable
 
                 case 5:
                     _coolDown = 0.25f;
+                    _projectileFrequency = 0.15f;
                     break;
 
                 case 6:
@@ -80,12 +87,16 @@ public sealed class SkillMusic : MonoBehaviour, IUpgradable
 
                 case 7:
                     _coolDown = 0.15f;
+                    _projectileFrequency = 0.1f;
                     break;
 
                 case 8:
                     _coolDown = 0.0f;
+                    _projectileFrequency = 0.05f;
                     break;
             }
+
+            _projectileCount += GlobalBonuses.Instance.GetAdditionalProjectilesCount();
         }
     }
 

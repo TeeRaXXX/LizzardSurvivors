@@ -24,8 +24,10 @@ public class SkillMusicEvolved : MonoBehaviour, IUpgradable
         _projectiles = new List<GameObject>();
         _currentLevel = 1;
         _maxLevel = 8;
+        _projectileCount = 3 + GlobalBonuses.Instance.GetAdditionalProjectilesCount();
         _playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
         _projectileFrequency = 360f / _projectileCount / _rotationSpeed;
+        EventManager.OnProjectilesUpdate.AddListener(Upgrade);
     }
 
     private IEnumerator AttackWithDelay()
@@ -80,48 +82,48 @@ public class SkillMusicEvolved : MonoBehaviour, IUpgradable
 
     public int GetMaxLevel() => _maxLevel;
 
-    public void Upgrade()
+    public int GetCurrentLevel() => _currentLevel;
+
+    public void Upgrade(bool isNewLevel)
     {
-        if (_currentLevel < _maxLevel)
-        {
+        if (isNewLevel)
             _currentLevel++;
+
+        if (_currentLevel <= _maxLevel)
+        {
             switch (_currentLevel)
             {
                 case 2:
                     _projectileCount = 4;
-                    ResetProjectiles();
                     break;
 
                 case 3:
                     _rotationSpeed = 150f;
-                    ResetProjectiles();
                     break;
 
                 case 4:
                     _projectileCount = 5;
-                    ResetProjectiles();
                     break;
 
                 case 5:
                     _rotationSpeed = 200f;
-                    ResetProjectiles();
                     break;
 
                 case 6:
                     _projectileCount = 6;
-                    ResetProjectiles();
                     break;
 
                 case 7:
                     _rotationSpeed = 300f;
-                    ResetProjectiles();
                     break;
 
                 case 8:
                     _projectileCount = 7;
-                    ResetProjectiles();
                     break;
             }
+
+            _projectileCount += GlobalBonuses.Instance.GetAdditionalProjectilesCount();
+            ResetProjectiles();
         }
     }
 }

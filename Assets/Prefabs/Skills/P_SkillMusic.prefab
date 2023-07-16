@@ -79,6 +79,6 @@ MonoBehaviour:
   _coolDown: 0.5
   _projectile: {fileID: 5869420979122637980, guid: 64c80b584c89c5948acb24ad68ca2d50, type: 3}
   _launchPoint: {fileID: 3059323211770914359}
-  _spawnAngle: 175.2
+  _spawnAngle: 100
   _projectileCount: 3
   _projectileFrequency: 0.5

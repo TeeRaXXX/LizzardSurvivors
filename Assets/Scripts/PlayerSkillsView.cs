@@ -87,7 +87,8 @@ public class PlayerSkillsView : MonoBehaviour
         {
             _currentChoice[i] = skillsToOffer[i];
             _skillsOfferFrames[i].sprite = _skillsHandler.GetSkillLogo(skillsToOffer[i]);
-            _skillsOfferDescriptions[i].text = _skillsHandler.GetSkillName(skillsToOffer[i]);
+            _skillsOfferDescriptions[i].text = _skillsHandler.GetSkillName(skillsToOffer[i])
+                + " level " + (_skillsHandler.GetCurrentSkillLevel(skillsToOffer[i]) + 1);
         }
     }
 

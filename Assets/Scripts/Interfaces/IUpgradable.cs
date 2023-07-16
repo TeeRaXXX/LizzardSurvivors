@@ -1,6 +1,8 @@
 public interface IUpgradable
 {
-    void Upgrade();
+    void Upgrade(bool isNewLevel);
 
     int GetMaxLevel();
+
+    int GetCurrentLevel();
 }
