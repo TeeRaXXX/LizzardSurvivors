@@ -178,8 +178,8 @@ MonoBehaviour:
   _healthComponent: {fileID: 5423103506854328110}
   _enemyParams: {fileID: 11400000, guid: 8eb157b77826d7d4f946179063db2cc1, type: 2}
   _spriteFlipper: {fileID: 8000395224056481004}
-  _damageDigitView: {fileID: 0}
-  _damageDigitViewPosition: {fileID: 0}
+  _damageDigitView: {fileID: 8385778797898642923, guid: 9a40cbae0e40ae647a2c363471140c0e, type: 3}
+  _damageDigitViewPosition: {fileID: 6059010557553370890}
 --- !u!114 &2504083351737121902
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -442,7 +442,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7518045275703363452}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.6, z: -1}
+  m_LocalPosition: {x: 0, y: 0.5, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
