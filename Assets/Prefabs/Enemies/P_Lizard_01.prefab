@@ -156,6 +156,7 @@ Transform:
   m_Children:
   - {fileID: 2459959937916936425}
   - {fileID: 6441290200533399199}
+  - {fileID: 3366313941017750381}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -204,6 +205,8 @@ MonoBehaviour:
   _healthComponent: {fileID: 5423103506854328110}
   _enemyParams: {fileID: 11400000, guid: 83fd5cada06895f4599f57f4901ad1fe, type: 2}
   _spriteFlipper: {fileID: 8000395224056481004}
+  _damageDigitView: {fileID: 8385778797898642923, guid: 9a40cbae0e40ae647a2c363471140c0e, type: 3}
+  _damageDigitViewPosition: {fileID: 3366313941017750381}
 --- !u!114 &2504083351737121902
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -300,6 +303,37 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: -0.15}
   m_Size: {x: 0.37, y: 0.6}
   m_Direction: 0
+--- !u!1 &6086459266995362925
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3366313941017750381}
+  m_Layer: 0
+  m_Name: DamageDigitViewPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3366313941017750381
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6086459266995362925}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.6, z: -1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7793830763616420920}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6535635679095075172
 GameObject:
   m_ObjectHideFlags: 0

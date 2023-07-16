@@ -7,9 +7,9 @@ public class HealthComponent : MonoBehaviour
     private float _health;
     private float _maxHealth;
     private float _armor;
-    private UnityEvent<float, GameObject> _onHealthChangedEvent;
+    private UnityEvent<float, float, GameObject> _onHealthChangedEvent;
 
-    public void InitHealth(float maxHealth, float armor, UnityEvent<float, GameObject> onHealthChangedEvent)
+    public void InitHealth(float maxHealth, float armor, UnityEvent<float, float, GameObject> onHealthChangedEvent)
     {
         _health = maxHealth;
         _maxHealth = maxHealth;
@@ -28,14 +28,14 @@ public class HealthComponent : MonoBehaviour
             {
                 _health = 0f;
                 if (damageSource != null)
-                    _onHealthChangedEvent.Invoke(_health, damageSource);
-                else _onHealthChangedEvent.Invoke(_health, null);
+                    _onHealthChangedEvent.Invoke(_health, oldHealth, damageSource);
+                else _onHealthChangedEvent.Invoke(_health, oldHealth, null);
                 return true;
             }
             else
             {
                 _health -= totalDamage;
-                _onHealthChangedEvent.Invoke(_health, damageSource);
+                _onHealthChangedEvent.Invoke(_health, oldHealth, damageSource);
                 return false;
             }
         }
@@ -48,7 +48,7 @@ public class HealthComponent : MonoBehaviour
         {
             float oldHealth = _health;
             _health = Mathf.Clamp(_health + healValue, _health, _maxHealth);
-            _onHealthChangedEvent.Invoke(_health, healSource);
+            _onHealthChangedEvent.Invoke(_health, oldHealth, healSource);
         }
     }
 

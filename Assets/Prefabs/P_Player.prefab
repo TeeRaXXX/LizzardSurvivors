@@ -69,6 +69,7 @@ Transform:
   - {fileID: 5784008854028164784}
   - {fileID: 4913275662355175662}
   - {fileID: 4236527799955903281}
+  - {fileID: 6932968541287564071}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -88,8 +89,9 @@ MonoBehaviour:
   _playerAnimator: {fileID: 2606522942747113439}
   _selectedCharacter: {fileID: 11400000, guid: 9efaeaf3ce221374f9441ea6a3e1f206, type: 2}
   _playerMovement: {fileID: 1044438382056455400}
-  _activeSkillsHandler: {fileID: 7301585642440600129}
   _PlayerHealthComponent: {fileID: 5400630407861528725}
+  _damageDigitView: {fileID: 8385778797898642923, guid: 9a40cbae0e40ae647a2c363471140c0e, type: 3}
+  _damageDigitViewPosition: {fileID: 6932968541287564071}
 --- !u!114 &1044438382056455400
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,7 +117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58a36e54f608c3a479de44b71f5a3f47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _activeSkillsSO: {fileID: 11400000, guid: e15cbd248e525e7479f5a4c4ad496b66, type: 2}
+  _skillsSO: {fileID: 0}
   _skillsHolder: {fileID: 4913275662355175662}
 --- !u!114 &5400630407861528725
 MonoBehaviour:
@@ -191,6 +193,37 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: -0.1}
   m_Size: {x: 0.5, y: 0.75}
   m_Direction: 0
+--- !u!1 &4524765422374535517
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6932968541287564071}
+  m_Layer: 0
+  m_Name: DamageDigitViewPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6932968541287564071
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4524765422374535517}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.6, z: -1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7205413643672830204}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4878209127714348867
 GameObject:
   m_ObjectHideFlags: 0
@@ -435,6 +468,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a4d5782eb0de0d47a43574fcd94e12d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _pickupCollider: {fileID: 0}
 --- !u!1 &7535786598643156712
 GameObject:
   m_ObjectHideFlags: 0

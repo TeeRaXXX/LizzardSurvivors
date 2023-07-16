@@ -1,3 +1,4 @@
+using Unity.Burst;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -9,8 +10,10 @@ public class EnemyCharacter : MonoBehaviour
     [SerializeField] private HealthComponent _healthComponent;
     [SerializeField] private SOEnemy _enemyParams;
     [SerializeField] private SpriteFlipper _spriteFlipper;
+    [SerializeField] private GameObject _damageDigitView;
+    [SerializeField] private Transform _damageDigitViewPosition;
 
-    private readonly UnityEvent<float, GameObject> _onHealthChanged = new UnityEvent<float, GameObject>();
+    private readonly UnityEvent<float, float, GameObject> _onHealthChanged = new UnityEvent<float, float, GameObject>();
 
     public void Start()
     {
@@ -30,9 +33,12 @@ public class EnemyCharacter : MonoBehaviour
         _onHealthChanged.AddListener(OnHelthChangedEvent);
 
     }
-    private void OnHelthChangedEvent(float health, GameObject damageSource)
+    private void OnHelthChangedEvent(float newHealth, float oldHealth, GameObject damageSource)
     {
-        if (health <= 0)
+        var damageDigitView = Instantiate(_damageDigitView, _damageDigitViewPosition.position, Quaternion.identity);
+        damageDigitView.GetComponent<DamageDigitView>().Initialize(oldHealth - newHealth);
+
+        if (newHealth <= 0)
             OnDeath();
     }
 
@@ -40,6 +46,7 @@ public class EnemyCharacter : MonoBehaviour
     {
         Drop();
         EventManager.OnEnemyDiedEvent(_enemyParams.EnemyType);
+        _onHealthChanged.RemoveAllListeners();
         Destroy(this.gameObject);
     }
 

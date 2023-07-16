@@ -8,11 +8,13 @@ public class PlayerCharacter : MonoBehaviour
     [SerializeField] private SOCharacter _selectedCharacter;
     [SerializeField] private PlayerMovement _playerMovement;
     [SerializeField] private HealthComponent _PlayerHealthComponent;
+    [SerializeField] private GameObject _damageDigitView;
+    [SerializeField] private Transform _damageDigitViewPosition;
 
     private PlayerStats _playerStats;
     private PlayerInventory _playerInventory;
 
-    private readonly UnityEvent<float, GameObject> _onHealthChanged = new UnityEvent<float, GameObject>();
+    private readonly UnityEvent<float, float, GameObject> _onHealthChanged = new UnityEvent<float, float, GameObject>();
 
     public void Initialize(SkillsSpawner skillsHandler)
     {
@@ -36,11 +38,17 @@ public class PlayerCharacter : MonoBehaviour
         _playerInventory.InitInventory(_selectedCharacter.BaseActiveSkill, skillsHandler, 0);
     }
 
-    private void OnHelthChangedEvent(float health, GameObject damageSource)
+    private void OnHelthChangedEvent(float newHealth, float oldHealth, GameObject damageSource)
     {
-        EventManager.OnPlayerHealthChangedEvent(health, _selectedCharacter.CharacterBaseStats.GetMaxHealth());
+        EventManager.OnPlayerHealthChangedEvent(newHealth, _selectedCharacter.CharacterBaseStats.GetMaxHealth());
 
-        if (health <= 0)
+        if (oldHealth - newHealth <= 0)
+        {
+            var damageDigitView = Instantiate(_damageDigitView, _damageDigitViewPosition.position, Quaternion.identity, gameObject.transform);
+            damageDigitView.GetComponent<DamageDigitView>().Initialize(oldHealth - newHealth);
+        }
+
+        if (newHealth <= 0)
         {
             Debug.Log($"Character has been killed by {damageSource.name}");
         }
