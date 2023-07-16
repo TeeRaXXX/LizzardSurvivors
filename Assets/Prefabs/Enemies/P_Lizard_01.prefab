@@ -216,7 +216,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb13ac4c06fdb9c468195bc92576d897, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 1
   _followObject: {fileID: 0}
   _rigidbody: {fileID: 3027705605221543841}
 --- !u!114 &5423103506854328110

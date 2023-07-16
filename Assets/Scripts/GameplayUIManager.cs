@@ -9,7 +9,7 @@ public class GameplayUIManager : MonoBehaviour
     [SerializeField] private PlayerExperienceView _playerExperienceBar;
     [SerializeField] private PlayerSkillsView _playerSkillsView;
 
-    public void Initialize(SkillsHandler skillsHandler)
+    public void Initialize(SkillsSpawner skillsHandler)
     {
         EventManager.OnNewGameSecond.AddListener(UpdateGameTimer);
         EventManager.OnLevelUp.AddListener(UpdatePlayerLevel);

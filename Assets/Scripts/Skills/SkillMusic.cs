@@ -1,7 +1,8 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public sealed class SkillMusic : ActiveSkill
+public sealed class SkillMusic : MonoBehaviour, IUpgradable
 {
     [SerializeField] private float _coolDown = 1f;
     [SerializeField] private GameObject _projectile;
@@ -12,14 +13,13 @@ public sealed class SkillMusic : ActiveSkill
 
     private bool isAtacking = false;
     private PlayerMovement _playerMovement;
-    public new void Upgrade()
-    {
-        base.Upgrade();
-        //
-    }
+    private int _maxLevel;
+    private int _currentLevel;
 
     private void Awake()
     {
+        _maxLevel = 8;
+        _currentLevel = 1;
         _playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
     }
 
@@ -50,4 +50,45 @@ public sealed class SkillMusic : ActiveSkill
             StartCoroutine(AttackWithDelay());
         }
     }
+
+    public void Upgrade()
+    {
+        if (_currentLevel < _maxLevel)
+        {
+            _currentLevel++;
+            switch (_currentLevel)
+            {
+                case 2:
+                    _projectileCount = 4;
+                    break;
+
+                case 3:
+                    _coolDown = 0.35f;
+                    break;
+
+                case 4:
+                    _projectileCount = 6;
+                    break;
+
+                case 5:
+                    _coolDown = 0.25f;
+                    break;
+
+                case 6:
+                    _projectileCount = 8;
+                    break;
+
+                case 7:
+                    _coolDown = 0.15f;
+                    break;
+
+                case 8:
+                    _coolDown = 0.0f;
+                    break;
+            }
+        }
+    }
+
+    public int GetMaxLevel() => _maxLevel;
+    public int GetCurrentLevel() => _currentLevel;
 }

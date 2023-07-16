@@ -18,7 +18,7 @@ public class EnemiesTeleportHandler : MonoBehaviour
                     offset = _offset * -1;
                 other.transform.position = new Vector3(_colliderToTeleport.bounds.center.x + offset, other.transform.position.y, 0f);
             }
-            else
+            else if (!_isHorizontal)
             {
                 if (transform.position.y < 0f)
                     offset = _offset * -1;

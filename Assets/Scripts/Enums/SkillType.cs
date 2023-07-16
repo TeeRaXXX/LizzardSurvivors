@@ -8,5 +8,7 @@ using System;
 
     Respawn,
     IncreaseProjectileCount,
-    AutoHeal
+    AutoHeal,
+
+    None
 }

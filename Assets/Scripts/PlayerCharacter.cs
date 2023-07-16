@@ -14,7 +14,7 @@ public class PlayerCharacter : MonoBehaviour
 
     private readonly UnityEvent<float, GameObject> _onHealthChanged = new UnityEvent<float, GameObject>();
 
-    public void Initialize(SkillsHandler skillsHandler)
+    public void Initialize(SkillsSpawner skillsHandler)
     {
         _playerStats = new PlayerStats();
         _playerStats.InitStats(_selectedCharacter);

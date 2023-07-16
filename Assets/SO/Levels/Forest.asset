@@ -19,16 +19,19 @@ MonoBehaviour:
     SpawnFrequency: 1
     Boss: 0
     EnemiesPercents:
-    - Enemy: 1
+    - Enemy: 0
       Percent: 1
-      SpawnCount: 3
+      SpawnCount: 2
   - Minute: 1
     SpawnFrequency: 1
     Boss: 0
     EnemiesPercents:
     - Enemy: 0
       Percent: 1
-      SpawnCount: 15
+      SpawnCount: 5
+    - Enemy: 1
+      Percent: 1
+      SpawnCount: 3
   - Minute: 2
     SpawnFrequency: 1
     Boss: 0
@@ -42,4 +45,4 @@ MonoBehaviour:
     EnemiesPercents:
     - Enemy: 0
       Percent: 1
-      SpawnCount: 30
+      SpawnCount: 15

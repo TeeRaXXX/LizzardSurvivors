@@ -1,8 +1,8 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
-public sealed class SkillMusicEvolved : ActiveSkill
+public class SkillMusicEvolved : MonoBehaviour, IUpgradable
 {
     [SerializeField] private float _coolDown = 1f;
     [SerializeField] private GameObject _projectile;
@@ -15,15 +15,15 @@ public sealed class SkillMusicEvolved : ActiveSkill
     private bool isAtacking = false;
     private PlayerMovement _playerMovement;
     private float _projectileFrequency;
-
-    public new void Upgrade()
-    {
-        base.Upgrade();
-        //
-    }
+    private int _maxLevel;
+    private int _currentLevel;
+    private List<GameObject> _projectiles;
 
     private void Awake()
     {
+        _projectiles = new List<GameObject>();
+        _currentLevel = 1;
+        _maxLevel = 8;
         _playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
         _projectileFrequency = 360f / _projectileCount / _rotationSpeed;
     }
@@ -47,6 +47,8 @@ public sealed class SkillMusicEvolved : ActiveSkill
                 new Quaternion(0f, 0f, 0f, 1),
                 _launchPoint.transform);
 
+            _projectiles.Add(projectile);
+
             projectile.GetComponent<ProjectileMusicEvolved>().Lounch(_rotationSpeed, _launchPoint.gameObject, _projectileCount);
             addOffset = !addOffset;
             yield return new WaitForSeconds(_projectileFrequency);
@@ -62,5 +64,64 @@ public sealed class SkillMusicEvolved : ActiveSkill
             StartCoroutine(AttackWithDelay());
         }
         _launchPoint.transform.Rotate(new Vector3(0f, 0f, _rotationSpeed) * Time.deltaTime);
+    }
+
+    private void ResetProjectiles()
+    {
+        foreach (var projectile in _projectiles)
+        {
+            Destroy(projectile);
+        }
+
+        _projectiles.Clear();
+        _projectileFrequency = 360f / _projectileCount / _rotationSpeed;
+        isAtacking = false;
+    }
+
+    public int GetMaxLevel() => _maxLevel;
+
+    public void Upgrade()
+    {
+        if (_currentLevel < _maxLevel)
+        {
+            _currentLevel++;
+            switch (_currentLevel)
+            {
+                case 2:
+                    _projectileCount = 4;
+                    ResetProjectiles();
+                    break;
+
+                case 3:
+                    _rotationSpeed = 150f;
+                    ResetProjectiles();
+                    break;
+
+                case 4:
+                    _projectileCount = 5;
+                    ResetProjectiles();
+                    break;
+
+                case 5:
+                    _rotationSpeed = 200f;
+                    ResetProjectiles();
+                    break;
+
+                case 6:
+                    _projectileCount = 6;
+                    ResetProjectiles();
+                    break;
+
+                case 7:
+                    _rotationSpeed = 300f;
+                    ResetProjectiles();
+                    break;
+
+                case 8:
+                    _projectileCount = 7;
+                    ResetProjectiles();
+                    break;
+            }
+        }
     }
 }

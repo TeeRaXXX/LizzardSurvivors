@@ -181,7 +181,6 @@ MonoBehaviour:
   _snailToSpawnType: 2
   _followPlayer: 0
   _spawnDistance: 1
-  _isTriggered: 0
 --- !u!114 &7418501207387865365
 MonoBehaviour:
   m_ObjectHideFlags: 0

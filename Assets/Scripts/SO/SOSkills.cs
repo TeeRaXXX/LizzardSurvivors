@@ -5,6 +5,9 @@ using UnityEngine;
 [Serializable] public struct SkillSO
 {
     public SkillType SkillType;
+    public string Name;
+    public string Description;
+    public int MaxLevel;
     public bool IsActive;
     public GameObject SkillPrefab;
     public Sprite SkillLogo;

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class GameDataStorage : MonoBehaviour, IInitializeable
 {
-    public GameDataStorage Instance { get; private set; }
+    public static GameDataStorage Instance { get; private set; }
 
     public GameData GameData { get; private set; }
 
@@ -50,6 +50,9 @@ public class GameDataStorage : MonoBehaviour, IInitializeable
         GameData = new GameData();
         GameData.AddOpenedCharacter(CharacterType.Dino);
         GameData.BuyCharacter(CharacterType.Dino);
+        GameData.AddOpenedSkill(SkillType.AutoHeal, true);
+        GameData.AddOpenedSkill(SkillType.MusicEvolved, true);
+        GameData.AddOpenedSkill(SkillType.Music, true);
         SaveData();
     }
 }

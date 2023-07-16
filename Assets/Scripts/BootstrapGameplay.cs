@@ -7,7 +7,7 @@ public class BootstrapGameplay : MonoBehaviour
     [SerializeField] private InputManager _inputManager;
     [SerializeField] private GameTimer _gameTimer;
     [SerializeField] private GameplayUIManager _gameplayUIManager;
-    [SerializeField] private SkillsHandler _skillsHandler;
+    [SerializeField] private SkillsSpawner _skillsSpawner;
 
     [SerializeField] private int _startLevel;
 
@@ -17,7 +17,7 @@ public class BootstrapGameplay : MonoBehaviour
         _inputManager.Initialize();
         PlayerLevel.Initialize(_startLevel);
         _enemiesSpawnHandler.Initialize();
-        _gameplayUIManager.Initialize(_skillsHandler);
-        _playerCharacter.Initialize(_skillsHandler);
+        _gameplayUIManager.Initialize(_skillsSpawner);
+        _playerCharacter.Initialize(_skillsSpawner);
     }
 }

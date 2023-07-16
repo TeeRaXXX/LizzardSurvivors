@@ -76,15 +76,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18530adde0e36ef43aeebf19267c839d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SkillLogo: {fileID: 21300000, guid: 9df7a5f60b7aef64281b079a6beb9fe7, type: 3}
-  SkillName: Music
-  SkillDescription: "\u041F\u0438\u0443 \u041F\u0438\u0443 \u043D\u043E\u0442\u0430\u043C\u0438"
-  MaxLevel: 8
-  CurrentLevel: 0
-  SkillType: 0
-  _coolDown: 0
+  _coolDown: 0.5
   _projectile: {fileID: 5869420979122637980, guid: 64c80b584c89c5948acb24ad68ca2d50, type: 3}
   _launchPoint: {fileID: 3059323211770914359}
   _spawnAngle: 175.2
-  _projectileCount: 30
-  _projectileFrequency: 0.05
+  _projectileCount: 3
+  _projectileFrequency: 0.5

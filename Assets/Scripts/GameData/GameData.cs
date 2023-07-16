@@ -43,6 +43,7 @@ using UnityEngine;
         baseCharacter.IsOpened = true;
         baseCharacter.IsBought = true;
         _discoveredCharacters = new List<CharacterData>();
+        _discoveredSkills = new List<SkillsData>();
         _discoveredCharacters.Add(baseCharacter);
     }
 
@@ -106,5 +107,27 @@ using UnityEngine;
     public PlayerStats GetPermanentPlayerStats()
     {
         return _permanentPlayerStats;
+    }
+
+    public List<SkillType> GetDiscoveredSkillsInstead(List<SkillType> instead = null)
+    {
+        var skills = new List<SkillType>();
+
+        if (instead == null)
+        {
+            foreach (var skill in _discoveredSkills)
+                if (skill.IsOpened)
+                    skills.Add(skill.Type);
+        }
+        else
+        {
+            foreach (var skill in _discoveredSkills)
+                if (skill.IsOpened && !instead.Exists(type => type == skill.Type))
+                {
+                    skills.Add(skill.Type);
+                }
+        }
+
+        return skills;
     }
 }

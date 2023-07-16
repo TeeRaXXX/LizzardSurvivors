@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,23 +8,31 @@ public class PlayerSkillsView : MonoBehaviour
     [SerializeField] private List<Image> _activeSkillSprites;
     [SerializeField] private List<Image> _passiveSkillSprites;
     [SerializeField] Sprite _skillSpritePlaceholder;
+    [SerializeField] GameObject _skillsOfferScreen;
+    [SerializeField] List<Image> _skillsOfferFrames;
+    [SerializeField] List<TMP_Text> _skillsOfferDescriptions;
 
-    SkillsHandler _skillsHandler;
-    private List<SkillType> _activeSkills;
-    private List<SkillType> _passiveSkills;
+    [SerializeField] private List<SkillType> _activeSkills;
+    [SerializeField] private List<SkillType> _passiveSkills;
 
-    public void Initialize(SkillsHandler skillsHandler)
+    private SkillsSpawner _skillsHandler;
+    private List<SkillType> _currentChoice;
+
+    public void Initialize(SkillsSpawner skillsHandler)
     {
+        _currentChoice = new List<SkillType>();
+        _skillsOfferScreen.gameObject.SetActive(false);
         _skillsHandler = skillsHandler;
         ResetAllSkills();
         EventManager.OnSkillAdded.AddListener(AddSkill);
+        EventManager.OnNewSkillsOffer.AddListener(OfferNewSkills);
     }
 
     private void AddSkill(SkillType skillType)
     {
         int index = 0;
         
-        if (_skillsHandler.IsSkillActive(skillType))
+        if (_skillsHandler.IsSkillActive(skillType) && !_activeSkills.Contains(skillType))
         {
             foreach (var skillSprite in _activeSkillSprites)
             {
@@ -31,12 +40,13 @@ public class PlayerSkillsView : MonoBehaviour
                 {
                     skillSprite.sprite = _skillsHandler.GetSkillLogo(skillType);
                     _activeSkills[index] = skillType;
+                    break;
                 }
 
                 index++;
             }
         }
-        else
+        else if (!_skillsHandler.IsSkillActive(skillType) && !_passiveSkills.Contains(skillType))
         {
             foreach (var skillSprite in _passiveSkillSprites)
             {
@@ -44,6 +54,7 @@ public class PlayerSkillsView : MonoBehaviour
                 {
                     skillSprite.sprite = _skillsHandler.GetSkillLogo(skillType);
                     _passiveSkills[index] = skillType;
+                    break;
                 }
 
                 index++;
@@ -53,14 +64,52 @@ public class PlayerSkillsView : MonoBehaviour
 
     private void ResetAllSkills()
     {
-        foreach (var skillImage in _activeSkillSprites)
+        for (int i = 0; i < _activeSkills.Count; i++)
         {
-            skillImage.sprite = _skillSpritePlaceholder;
+            _activeSkillSprites[i].sprite = _skillSpritePlaceholder;
+            _activeSkills[i] = SkillType.None;
         }
 
-        foreach (var skillImage in _passiveSkillSprites)
+        for (int i = 0; i < _activeSkills.Count; i++)
         {
-            skillImage.sprite = _skillSpritePlaceholder;
+            _passiveSkillSprites[i].sprite = _skillSpritePlaceholder;
+            _passiveSkills[i] = SkillType.None;
         }
+    }
+
+    private void OfferNewSkills(List<SkillType> skillsToOffer)
+    {
+        Time.timeScale = 0;
+        ResetSkillsOfferWindow();
+        _skillsOfferScreen.gameObject.SetActive(true);
+
+        for (int i = 0; i < skillsToOffer.Count; i++)
+        {
+            _currentChoice[i] = skillsToOffer[i];
+            _skillsOfferFrames[i].sprite = _skillsHandler.GetSkillLogo(skillsToOffer[i]);
+            _skillsOfferDescriptions[i].text = _skillsHandler.GetSkillName(skillsToOffer[i]);
+        }
+    }
+
+    private void ResetSkillsOfferWindow()
+    {
+        _currentChoice = new List<SkillType>();
+
+        for (int i = 0; i < _skillsOfferFrames.Count; i++)
+        {
+            _currentChoice.Add(SkillType.None);
+            _skillsOfferFrames[i].sprite = _skillSpritePlaceholder;
+            _skillsOfferDescriptions[i].text = string.Empty;
+        }
+    }
+
+    public void OnNewSkillClick(int skillNumber)
+    {
+        if (_currentChoice[skillNumber] == SkillType.None)
+            return;
+
+        _skillsHandler.SpawnSkill(_currentChoice[skillNumber]);
+        _skillsOfferScreen.gameObject.SetActive(false);
+        Time.timeScale = 1;
     }
 }
