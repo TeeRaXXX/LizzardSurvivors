@@ -1,24 +1,39 @@
 using UnityEngine;
 
-public class GameDataStorage : MonoBehaviour, IInitializeable
+public class GameDataStorage
 {
-    public static GameDataStorage Instance { get; private set; }
+    private bool _isInitialized;
+
+    public static GameDataStorage Instance 
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = new GameDataStorage();
+                _instance._isInitialized = false;
+            }
+
+            return _instance;
+        }
+        private set { }
+    }
 
     public GameData GameData { get; private set; }
 
+    private static GameDataStorage _instance;
     private GameDataFileHandler _fileHandler;
 
     public void Initialize()
     {
-        DontDestroyOnLoad(this);
-
-        if (Instance == null)
-            Instance = this;
+        if (_isInitialized)
+            return;
 
         if (_fileHandler == null)
             _fileHandler = new GameDataFileHandler(Application.persistentDataPath);
 
         LoadData();
+        _isInitialized = true;
     }
 
     public void SaveData()

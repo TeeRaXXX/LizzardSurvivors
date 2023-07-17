@@ -13,6 +13,8 @@ public class BootstrapGameplay : MonoBehaviour
 
     private void Awake()
     {
+        GameDataStorage.Instance.Initialize();
+
         _gameTimer.Initialize();
         _inputManager.Initialize();
         PlayerLevel.Initialize(_startLevel);

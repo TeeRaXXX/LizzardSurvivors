@@ -3,11 +3,9 @@ using UnityEngine.SceneManagement;
 
 public class BootstrapGame : MonoBehaviour
 {
-    [SerializeField] private GameDataStorage _gameDataStorage;
-
     private void Awake()
     {
-        _gameDataStorage.Initialize();
-        SceneManager.LoadScene("Forest");
+        GameDataStorage.Instance.Initialize();
+        SceneManager.LoadScene("MainMenu");
     }
 }

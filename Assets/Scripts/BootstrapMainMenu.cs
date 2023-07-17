@@ -1,11 +1,15 @@
 using UnityEngine;
 
-public class BootstrapMainGame : MonoBehaviour
+public class BootstrapMainMenu : MonoBehaviour
 {
     [SerializeField] private InputManager _inputManager;
+    [SerializeField] private StudioLogoView _studioLogoView;
 
     private void Awake()
     {
+        GameDataStorage.Instance.Initialize();
+
         _inputManager.Initialize();
+        _studioLogoView.Initialize();
     }
 }

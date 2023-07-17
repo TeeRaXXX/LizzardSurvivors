@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public sealed class SkillMusic : MonoBehaviour, IUpgradable
@@ -65,32 +64,42 @@ public sealed class SkillMusic : MonoBehaviour, IUpgradable
             {
                 case 2:
                     _projectileCount = 4;
+                    _coolDown = 0.35f;
+                    _projectileFrequency = 0.25f;
                     break;
 
                 case 3:
+                    _projectileCount = 4;
                     _coolDown = 0.35f;
                     _projectileFrequency = 0.2f;
                     break;
 
                 case 4:
                     _projectileCount = 6;
+                    _coolDown = 0.35f;
+                    _projectileFrequency = 0.2f;
                     break;
 
                 case 5:
+                    _projectileCount = 6;
                     _coolDown = 0.25f;
                     _projectileFrequency = 0.15f;
                     break;
 
                 case 6:
                     _projectileCount = 8;
+                    _coolDown = 0.25f;
+                    _projectileFrequency = 0.15f;
                     break;
 
                 case 7:
+                    _projectileCount = 8;
                     _coolDown = 0.15f;
                     _projectileFrequency = 0.1f;
                     break;
 
                 case 8:
+                    _projectileCount = 8;
                     _coolDown = 0.0f;
                     _projectileFrequency = 0.05f;
                     break;

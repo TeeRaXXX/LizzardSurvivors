@@ -94,30 +94,37 @@ public class SkillMusicEvolved : MonoBehaviour, IUpgradable
             switch (_currentLevel)
             {
                 case 2:
+                    _rotationSpeed = 100f;
                     _projectileCount = 4;
                     break;
 
                 case 3:
                     _rotationSpeed = 150f;
+                    _projectileCount = 4;
                     break;
 
                 case 4:
+                    _rotationSpeed = 150f;
                     _projectileCount = 5;
                     break;
 
                 case 5:
                     _rotationSpeed = 200f;
+                    _projectileCount = 5;
                     break;
 
                 case 6:
+                    _rotationSpeed = 200f;
                     _projectileCount = 6;
                     break;
 
                 case 7:
                     _rotationSpeed = 300f;
+                    _projectileCount = 6;
                     break;
 
                 case 8:
+                    _rotationSpeed = 300f;
                     _projectileCount = 7;
                     break;
             }
