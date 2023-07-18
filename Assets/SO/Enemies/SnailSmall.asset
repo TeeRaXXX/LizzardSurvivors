@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 510b5ecc2b3021444be610aa2dacbb13, type: 3}
   m_Name: SnailSmall
   m_EditorClassIdentifier: 
-  EnemyName: Smal Snail
+  EnemyName: Small Snail
   EnemyDescription: The weakest lizard in the lizard army. Can be dangerous in a
     large group
   EnemyBaseSprite: {fileID: -1261846592, guid: 1d4f5e5c67f1b3242ac90f504ccc8944, type: 3}

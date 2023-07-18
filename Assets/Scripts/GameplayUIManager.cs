@@ -9,9 +9,11 @@ public class GameplayUIManager : MonoBehaviour
     [SerializeField] private PlayerExperienceView _playerExperienceBar;
     [SerializeField] private PlayerSkillsView _playerSkillsView;
 
+    private int _gameMinute;
+
     public void Initialize(SkillsSpawner skillsHandler)
     {
-        EventManager.OnNewGameSecond.AddListener(UpdateGameTimer);
+        EventManager.OnNewGameSecond.AddListener(UpdateSecondsTimer);
         EventManager.OnLevelUp.AddListener(UpdatePlayerLevel);
         _playerHealthBar.Initialize();
         _playerExperienceBar.Initialize();
@@ -19,20 +21,15 @@ public class GameplayUIManager : MonoBehaviour
         _playerLevel.text = PlayerLevel.Instance.Level.ToString();
     }
 
-    private void UpdateGameTimer(int gameSecond)
+    private void UpdateSecondsTimer(int gameSecond)
     {
-        int minutes = gameSecond / 60;
-        int seconds = gameSecond % 60;
-        string minutesString;
-        string secondsString;
+        if (gameSecond == 60)
+        {
+            gameSecond = 0;
+            _gameMinute++;
+        }
 
-        if (minutes > 99)
-            minutesString = string.Format("{0:000}", minutes);
-        else minutesString = string.Format("{0:00}", minutes);
-
-        secondsString = string.Format("{0:00}", seconds);
-
-        _gameTimer.text = $"{minutesString}:{secondsString}";
+        _gameTimer.text = string.Format("{0:00}:{1:00}", _gameMinute, gameSecond);
     }
 
     private void UpdatePlayerLevel(int level)

@@ -35,8 +35,6 @@ public class EnemiesSpawnHandler : MonoBehaviour, IInitializeable
         if (gameMinute < _level.EnemiesWaves.Count)
             _enemiesToSpawn = _level.EnemiesWaves[gameMinute];
         else _enemiesToSpawn = _level.EnemiesWaves[_level.EnemiesWaves.Count - 1];
-
-        Debug.Log($"New game minute - {gameMinute}");
     }
 
     private void SpawnEnemy(int gameTimeInSeconds)
@@ -44,7 +42,10 @@ public class EnemiesSpawnHandler : MonoBehaviour, IInitializeable
         if (gameTimeInSeconds % _enemiesToSpawn.SpawnFrequency == 0 && _currentEnemiesCount < _maxEnemiesCount)
         {
             int spawnCount = 1;
-            GameObject enemyToSpawn = _allEnemies.EnemiesList.Find(obj => obj.EnemyType == GetRandomEnemy(ref spawnCount)).EnemyPrefab;
+            var enemy = GetRandomEnemy(out spawnCount);
+
+            GameObject enemyToSpawn = _allEnemies.EnemiesList.Find(obj => obj.EnemyType == enemy).EnemyPrefab;
+            
             for (int i = 0; i < spawnCount; i++)
             {
                 Instantiate(enemyToSpawn, GetSpawnPosition(), new Quaternion());
@@ -54,7 +55,7 @@ public class EnemiesSpawnHandler : MonoBehaviour, IInitializeable
         }
     }
 
-    private EnemyType GetRandomEnemy(ref int spawnCount)
+    private EnemyType GetRandomEnemy(out int spawnCount)
     {
         int biggestPercentIndex = 0;
         float biggestPercent = 0f;
@@ -66,7 +67,7 @@ public class EnemiesSpawnHandler : MonoBehaviour, IInitializeable
                 spawnCount = _enemiesToSpawn.EnemiesPercents[i].SpawnCount;
                 return _enemiesToSpawn.EnemiesPercents[i].Enemy;
             }
-            if (_enemiesToSpawn.EnemiesPercents[i].Percent > biggestPercent)
+            else if(_enemiesToSpawn.EnemiesPercents[i].Percent > biggestPercent)
             {
                 biggestPercent = _enemiesToSpawn.EnemiesPercents[i].Percent;
                 biggestPercentIndex = i;

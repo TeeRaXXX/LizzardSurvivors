@@ -4,11 +4,11 @@ public class GameTimer : MonoBehaviour, IInitializeable
 {
     public static GameTimer Instance;
 
-    private int _gameTimeInSeconds;
-    private bool _isTimerWorks;
-
     private float _localGameTime;
     private int _localGameSecond;
+    private int _gameMinute;
+
+    private bool _isTimerWorks;
 
     private GameTimer() { }
 
@@ -17,7 +17,7 @@ public class GameTimer : MonoBehaviour, IInitializeable
         Instance = this;
         _localGameTime = 0f;
         _localGameSecond = 0;
-        _gameTimeInSeconds = 0;
+        _gameMinute = 0;
         _isTimerWorks = true;
     }
 
@@ -27,22 +27,20 @@ public class GameTimer : MonoBehaviour, IInitializeable
         {
             _localGameTime += Time.deltaTime;
 
-            if (_localGameTime > 0.99f)
+            if (_localGameTime >= 1f)
             {
                 _localGameTime = 0f;
-                _gameTimeInSeconds++;
                 _localGameSecond++;
-                EventManager.OnNewGameSecondEvent(_gameTimeInSeconds);
+                EventManager.OnNewGameSecondEvent(_localGameSecond);
             }
 
             if (_localGameSecond >= 60)
             {
-                EventManager.OnNewGameMinuteEvent(_gameTimeInSeconds / 60);
-            }
-
-            if (_localGameSecond >= 60)
-            {
+                _gameMinute++;
                 _localGameSecond = 0;
+                _localGameTime = 0;
+                Debug.Log($"New game minute - {_gameMinute}");
+                EventManager.OnNewGameMinuteEvent(_gameMinute);
             }
         }
     }
