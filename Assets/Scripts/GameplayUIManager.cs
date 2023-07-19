@@ -8,6 +8,7 @@ public class GameplayUIManager : MonoBehaviour
     [SerializeField] private PlayerHealthView _playerHealthBar;
     [SerializeField] private PlayerExperienceView _playerExperienceBar;
     [SerializeField] private PlayerSkillsView _playerSkillsView;
+    [SerializeField] private GameOverView _gameOverView;
 
     private int _gameMinute;
 
@@ -18,6 +19,7 @@ public class GameplayUIManager : MonoBehaviour
         _playerHealthBar.Initialize();
         _playerExperienceBar.Initialize();
         _playerSkillsView.Initialize(skillsHandler);
+        _gameOverView.Initialize();
         _playerLevel.text = PlayerLevel.Instance.Level.ToString();
     }
 

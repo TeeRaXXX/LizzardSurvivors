@@ -12,14 +12,26 @@ public class StudioLogoView : MonoBehaviour
 
     private bool _showingLogo;
 
+    private static bool _showLogo = true;
+
     public void Initialize()
     {
-        _showingLogo = false;
-        _studioLogo.SetActive(true);
-        _startScreen.SetActive(false);
-        _mainMenu.SetActive(false);
+        if (_showLogo)
+        {
+            _showingLogo = false;
+            _studioLogo.SetActive(true);
+            _startScreen.SetActive(false);
+            _showLogo = false;
+            _mainMenu.SetActive(false);
 
-        StartCoroutine(ShowStudioLogo(_showStudioLogoTime));
+            StartCoroutine(ShowStudioLogo(_showStudioLogoTime));
+        }
+        else
+        {
+            _studioLogo.SetActive(false);
+            _startScreen.SetActive(false);
+            _mainMenu.SetActive(true);
+        }
     }
 
     private IEnumerator ShowStudioLogo(float showTimeInSeconds)

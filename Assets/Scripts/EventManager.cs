@@ -12,6 +12,7 @@ public static class EventManager
     public static readonly UnityEvent<int> OnNewGameMinute = new UnityEvent<int>();
     public static readonly UnityEvent<float, float> OnExperienceUp = new UnityEvent<float, float>();
     public static readonly UnityEvent OnEscapePressed = new UnityEvent();
+    public static readonly UnityEvent OnGameOver = new UnityEvent();
     public static readonly UnityEvent<bool> OnProjectilesUpdate = new UnityEvent<bool>();
     public static readonly UnityEvent<List<SkillType>> OnNewSkillsOffer = new UnityEvent<List<SkillType>>();
 
@@ -26,6 +27,7 @@ public static class EventManager
     public static void OnNewGameSecondEvent(int newSecond) => OnNewGameSecond.Invoke(newSecond);
     public static void OnNewGameMinuteEvent(int newMinute) => OnNewGameMinute.Invoke(newMinute);
     public static void OnEscapePressedEvent() => OnEscapePressed.Invoke();
+    public static void OnGameOverEvent() => OnGameOver.Invoke();
     public static void OnProjectilesUpdateEvent(bool isNewLevel) => OnProjectilesUpdate.Invoke(isNewLevel);
     public static void OnNewSkillsOfferEvent(List<SkillType> newSkills) => OnNewSkillsOffer.Invoke(newSkills);
 }

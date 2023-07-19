@@ -113,4 +113,10 @@ public class PlayerSkillsView : MonoBehaviour
         _skillsOfferScreen.gameObject.SetActive(false);
         Time.timeScale = 1;
     }
+
+    public void SkipSkillChoice()
+    {
+        _skillsOfferScreen.gameObject.SetActive(false);
+        Time.timeScale = 1;
+    }
 }

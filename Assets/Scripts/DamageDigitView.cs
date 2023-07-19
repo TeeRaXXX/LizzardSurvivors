@@ -13,11 +13,15 @@ public class DamageDigitView : MonoBehaviour
     [SerializeField] float _scaleSpeed;
 
     private bool isInit = false;
+    private bool isHeal = false;
 
     public void Initialize(float value)
     {
         if (value < 0)
-            _text.text = Mathf.Abs(value).ToString("0.0");
+        {
+            isHeal = true;
+            _text.text = Mathf.Abs(value).ToString("+0.0");
+        }
         else _text.text = ((int)Mathf.Abs(value)).ToString();
 
         if (value < 0)
@@ -30,7 +34,14 @@ public class DamageDigitView : MonoBehaviour
 
     public void Update()
     {
-        if (isInit)
+        if (isInit && isHeal)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y + _moveSpeed / 3f * Time.deltaTime, transform.position.z);
+            transform.localScale = new Vector3(transform.localScale.x - _scaleSpeed / 2f * Time.deltaTime,
+                                               transform.localScale.y - _scaleSpeed / 2f * Time.deltaTime,
+                                               transform.localScale.z);
+        }
+        else
         {
             transform.position = new Vector3(transform.position.x, transform.position.y + _moveSpeed * Time.deltaTime, transform.position.z);
             transform.localScale = new Vector3(transform.localScale.x - _scaleSpeed * Time.deltaTime,

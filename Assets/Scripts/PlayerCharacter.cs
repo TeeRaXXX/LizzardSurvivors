@@ -50,7 +50,13 @@ public class PlayerCharacter : MonoBehaviour
 
         if (newHealth <= 0)
         {
-            Debug.Log($"Character has been killed by {damageSource.name}");
+            OnDeath(damageSource);
         }
+    }
+
+    private void OnDeath(GameObject killer)
+    {
+        Debug.Log($"Character has been killed by {killer.name}");
+        EventManager.OnGameOverEvent();
     }
 }
