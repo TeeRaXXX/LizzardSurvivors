@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using UnityEditor.Animations;
 using UnityEngine;
 
 [Serializable] public struct Drop
@@ -17,7 +16,7 @@ public class SOEnemy : ScriptableObject
     public string EnemyDescription;
 
     public Sprite EnemyBaseSprite;
-    public AnimatorController EnemyAnimationController;
+    public RuntimeAnimatorController EnemyAnimationController;
     public EnemyStats EnemyBaseStats;
 
     public EnemyType EnemyType;
