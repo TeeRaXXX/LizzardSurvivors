@@ -47,3 +47,4 @@ MonoBehaviour:
   _spawnCoolDown: 0.1
   _totems:
   - {fileID: 8618024904710383509, guid: 413128f3d9ae6804888d24d50c04e4ce, type: 3}
+  - {fileID: 8618024904710383509, guid: 039cb8d489b0f314684fd990a511c9a5, type: 3}
