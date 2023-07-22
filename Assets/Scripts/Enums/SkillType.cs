@@ -9,6 +9,7 @@ using System;
 
     Respawn,
     IncreaseProjectileCount,
+    IncreaseAoeRadius,
     AutoHeal,
 
     None

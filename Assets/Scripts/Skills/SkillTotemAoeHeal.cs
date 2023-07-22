@@ -27,12 +27,14 @@ public class SkillTotemAoeHeal : MonoBehaviour, IUpgradable
 
         _spawnFrequency = 3f;
         _totemLifeTime = 3f;
-        _healFrequency = .5f;
-        _healRadius = 2f;
+        _healFrequency = 1f;
+        _healRadius = 1f;
         _heal = 0.5f;
 
         _maxLevel = 8;
         _currentLevel = 1;
+
+        EventManager.OnAoeUpdate.AddListener(Upgrade);
 
         _isActive = false;
     }
@@ -71,26 +73,42 @@ public class SkillTotemAoeHeal : MonoBehaviour, IUpgradable
             switch (_currentLevel)
             {
                 case 2:
+                    _heal = 0.5f;
+                    _healFrequency = 0.9f;
                     break;
 
                 case 3:
+                    _heal = 1f;
+                    _healFrequency = 0.9f;
                     break;
 
                 case 4:
+                    _heal = 1f;
+                    _healFrequency = 0.8f;
                     break;
 
                 case 5:
+                    _heal = 1.5f;
+                    _healFrequency = 0.8f;
                     break;
 
                 case 6:
+                    _heal = 1.5f;
+                    _healFrequency = 0.7f;
                     break;
 
                 case 7:
+                    _heal = 2f;
+                    _healFrequency = 0.7f;
                     break;
 
                 case 8:
+                    _heal = 2f;
+                    _healFrequency = 0.6f;
                     break;
             }
+
+            _healRadius *= GlobalBonuses.Instance.GetAdditionalAoeRadius();
         }
     }
 }

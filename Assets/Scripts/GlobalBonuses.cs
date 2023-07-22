@@ -1,6 +1,8 @@
 public class GlobalBonuses
 {
     private int _additionalProjectilesCount;
+    private float _additionalAoeRadius;
+
     private static GlobalBonuses _instance = null;
 
     public static GlobalBonuses Instance
@@ -12,6 +14,7 @@ public class GlobalBonuses
                 _instance = new GlobalBonuses();
 
                 _instance._additionalProjectilesCount = 0;
+                _instance._additionalAoeRadius = 1f;
             }
 
             return _instance;
@@ -25,5 +28,13 @@ public class GlobalBonuses
         EventManager.OnProjectilesUpdateEvent(false);
     }
 
+    public void UpdateAdditionalAoeRadius(float count)
+    {
+        _additionalAoeRadius = count;
+        EventManager.OnAoeUpdateEvent(false);
+    }
+
     public int GetAdditionalProjectilesCount() => _additionalProjectilesCount;
+
+    public float GetAdditionalAoeRadius() => _additionalAoeRadius;
 }

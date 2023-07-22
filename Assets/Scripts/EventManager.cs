@@ -14,6 +14,7 @@ public static class EventManager
     public static readonly UnityEvent OnEscapePressed = new UnityEvent();
     public static readonly UnityEvent OnGameOver = new UnityEvent();
     public static readonly UnityEvent<bool> OnProjectilesUpdate = new UnityEvent<bool>();
+    public static readonly UnityEvent<bool> OnAoeUpdate = new UnityEvent<bool>();
     public static readonly UnityEvent<List<SkillType>> OnNewSkillsOffer = new UnityEvent<List<SkillType>>();
 
     public static void OnPlayerHealthChangedEvent(float newHealth, float maxHealth) =>
@@ -29,5 +30,6 @@ public static class EventManager
     public static void OnEscapePressedEvent() => OnEscapePressed.Invoke();
     public static void OnGameOverEvent() => OnGameOver.Invoke();
     public static void OnProjectilesUpdateEvent(bool isNewLevel) => OnProjectilesUpdate.Invoke(isNewLevel);
+    public static void OnAoeUpdateEvent(bool isNewLevel) => OnAoeUpdate.Invoke(isNewLevel);
     public static void OnNewSkillsOfferEvent(List<SkillType> newSkills) => OnNewSkillsOffer.Invoke(newSkills);
 }

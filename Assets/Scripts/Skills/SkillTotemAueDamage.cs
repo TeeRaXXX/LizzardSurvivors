@@ -24,11 +24,13 @@ public class SkillTotemAoeDamage : MonoBehaviour, IUpgradable
         _spawnFrequency = 3f;
         _totemLifeTime = 3f;
         _damageFrequency = .5f;
-        _damageRadius = 2f;
+        _damageRadius = 1f;
         _damage = 10f;
 
         _maxLevel = 8;
         _currentLevel = 1;
+
+        EventManager.OnAoeUpdate.AddListener(Upgrade);
 
         _isActive = false;
     }
@@ -83,26 +85,42 @@ public class SkillTotemAoeDamage : MonoBehaviour, IUpgradable
             switch (_currentLevel)
             {
                 case 2:
+                    _damage = 15f;
+                    _damageRadius = 1f;
                     break;
 
                 case 3:
+                    _damage = 15f;
+                    _damageRadius = 1.1f;
                     break;
 
                 case 4:
+                    _damage = 20f;
+                    _damageRadius = 1.1f;
                     break;
 
                 case 5:
+                    _damage = 20f;
+                    _damageRadius = 1.2f;
                     break;
 
                 case 6:
+                    _damage = 25f;
+                    _damageRadius = 1.2f;
                     break;
 
                 case 7:
+                    _damage = 25f;
+                    _damageRadius = 1.3f;
                     break;
 
                 case 8:
+                    _damage = 30f;
+                    _damageRadius = 1.3f;
                     break;
             }
+
+            _damageRadius *= GlobalBonuses.Instance.GetAdditionalAoeRadius();
         }
     }
 }

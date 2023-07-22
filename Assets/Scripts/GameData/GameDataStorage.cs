@@ -68,11 +68,13 @@ public class GameDataStorage
         GameData.BuyCharacter(CharacterType.Dino);
 
         GameData.AddOpenedSkill(SkillType.AutoHeal, true);
+        GameData.AddOpenedSkill(SkillType.IncreaseProjectileCount, true);
+        GameData.AddOpenedSkill(SkillType.IncreaseAoeRadius, true);
+
         GameData.AddOpenedSkill(SkillType.TotemAoeDamage, true);
         GameData.AddOpenedSkill(SkillType.TotemAoeHeal, true);
         GameData.AddOpenedSkill(SkillType.MusicEvolved, true);
         GameData.AddOpenedSkill(SkillType.Music, true);
-        GameData.AddOpenedSkill(SkillType.IncreaseProjectileCount, true);
 
         SaveData();
     }

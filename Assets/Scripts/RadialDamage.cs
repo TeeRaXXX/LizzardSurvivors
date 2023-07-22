@@ -30,6 +30,8 @@ public class RadialDamage : MonoBehaviour
         _damage = damage;
         _damageFrequency = damageFrequency;
         _damageRadius = damageRadius;
+
+        transform.localScale = new Vector3(_damageRadius, _damageRadius, 0f);
     }
 
     private void FixedUpdate()

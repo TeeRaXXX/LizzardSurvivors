@@ -30,6 +30,8 @@ public class RadialHeal : MonoBehaviour
         _heal = heal;
         _healFrequency = healFrequency;
         _healRadius = healRadius;
+
+        transform.localScale = new Vector3(_healRadius, _healRadius, 0f);
     }
 
     private void FixedUpdate()
