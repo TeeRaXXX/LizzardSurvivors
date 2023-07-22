@@ -9,19 +9,21 @@ public class RadialDamage : MonoBehaviour
     private float _damageFrequency = 1f;
     private float _damageRadius;
 
-    private List<Collider2D> _objectsToDamage;
-    private bool _isReadyToWork = false;
+    [SerializeField] private List<Collider2D> _objectsToDamage;
+    private bool _isWorking = false;
+    private bool _isEnable = false;
 
     private void Awake()
     {
-        _isReadyToWork = false;
+        _isWorking = false;
+        _isEnable = false;
         _objectsToDamage = new List<Collider2D>();
     }
 
     public void Initialize(List<string> tagsToDamage, float damageRadius, float damage, float damageFrequency)
     {
         UpdateStats(tagsToDamage, damageRadius, damage, damageFrequency);
-        _isReadyToWork = true;
+        _isEnable = true;
     }
 
     public void UpdateStats(List<string> tagsToDamage, float damageRadius, float damage, float damageFrequency)
@@ -36,7 +38,7 @@ public class RadialDamage : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (_objectsToDamage.Count > 0 && _isReadyToWork)
+        if (_objectsToDamage.Count > 0 && !_isWorking && _isEnable)
         {
             StartCoroutine(MakeDamage());
         }
@@ -44,7 +46,7 @@ public class RadialDamage : MonoBehaviour
 
     private IEnumerator MakeDamage()
     {
-        _isReadyToWork = false;
+        _isWorking = true;
 
         for (int i = 0; i < _objectsToDamage.Count; i++)
         {
@@ -59,12 +61,12 @@ public class RadialDamage : MonoBehaviour
         }
 
         yield return new WaitForSeconds(_damageFrequency);
-        _isReadyToWork = true;
+        _isWorking = false;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (_isReadyToWork && other.GetComponent<HealthComponent>() != null && _tagsToDamage.Contains(other.gameObject.tag))
+        if (_isEnable && other.GetComponent<HealthComponent>() != null && _tagsToDamage.Contains(other.gameObject.tag))
             _objectsToDamage.Add(other);
     }
 

@@ -28,8 +28,8 @@ public class SkillTotemAoeHeal : MonoBehaviour, IUpgradable
         _spawnFrequency = 3f;
         _totemLifeTime = 3f;
         _healFrequency = 1f;
-        _healRadius = 1f;
         _heal = 0.5f;
+        _healRadius = 1f * GlobalBonuses.Instance.GetAdditionalAoeRadius();
 
         _maxLevel = 8;
         _currentLevel = 1;

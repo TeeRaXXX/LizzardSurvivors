@@ -24,8 +24,8 @@ public class SkillTotemAoeDamage : MonoBehaviour, IUpgradable
         _spawnFrequency = 3f;
         _totemLifeTime = 3f;
         _damageFrequency = .5f;
-        _damageRadius = 1f;
         _damage = 10f;
+        _damageRadius = 1f * GlobalBonuses.Instance.GetAdditionalAoeRadius();
 
         _maxLevel = 8;
         _currentLevel = 1;
