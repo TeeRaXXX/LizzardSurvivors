@@ -9,6 +9,7 @@ using UnityEngine;
     [SerializeField] private float _moveSpeed = 2.5f;
     [SerializeField] private float _damage = 10f;
     [SerializeField] private float _attackSpeed = 1f;
+    [SerializeField] private float _attackRadius = 0.5f;
 
     public float GetHealthRecovery() => _healthRecovery;
     public float GetMaxHealth() => _maxHealth;
@@ -16,6 +17,7 @@ using UnityEngine;
     public float GetMoveSpeed() => _moveSpeed;
     public float GetDamage() => _damage;
     public float GetAttackSpeed() => _attackSpeed;
+    public float GetAttackRadius() => _attackRadius;
 
     public void InitStats(SOCharacter character)
     {

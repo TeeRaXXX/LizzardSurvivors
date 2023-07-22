@@ -21,9 +21,10 @@ MonoBehaviour:
     _healthRecovery: 0
     _maxHealth: 100
     _armor: 0
-    _moveSpeed: 1
-    _damage: 2.5
-    _attackSpeed: 1
+    _moveSpeed: 4
+    _damage: 2
+    _attackSpeed: 0.5
+    _attackRadius: 0.5
   EnemyType: 0
   EnemyPrefab: {fileID: 4239325755424782172, guid: 6483723f0de35e8479291517ee26d8b4, type: 3}
   Drops:

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Unity.Burst;
 using UnityEngine;
 using UnityEngine.Events;
@@ -12,6 +13,7 @@ public class EnemyCharacter : MonoBehaviour
     [SerializeField] private SpriteFlipper _spriteFlipper;
     [SerializeField] private GameObject _damageDigitView;
     [SerializeField] private Transform _damageDigitViewPosition;
+    [SerializeField] private RadialDamage _radialDamage;
 
     private readonly UnityEvent<float, float, GameObject> _onHealthChanged = new UnityEvent<float, float, GameObject>();
 
@@ -22,8 +24,16 @@ public class EnemyCharacter : MonoBehaviour
         _spriteFlipper.Init(this.transform, _enemySpriteRenderer);
 
         _followPlayerComponent.SetMoveSpeed(_enemyParams.EnemyBaseStats.GetMoveSpeed());
-        _followPlayerComponent.SetFollowObject(GameObject.FindGameObjectWithTag("Player").transform);
+        _followPlayerComponent.SetFollowObject(GameObject.FindGameObjectWithTag(TagsHandler.GetPlayerTag()).transform);
         _followPlayerComponent.SetActive(true);
+
+        if (_radialDamage != null)
+        {
+            _radialDamage.Initialize(new List<string>() { TagsHandler.GetPlayerTag() },
+                                     _enemyParams.EnemyBaseStats.GetAttackRadius(),
+                                     _enemyParams.EnemyBaseStats.GetDamage(),
+                                     _enemyParams.EnemyBaseStats.GetAttackSpeed());
+        }
 
         _healthComponent.InitHealth(
             _enemyParams.EnemyBaseStats.GetMaxHealth(),
