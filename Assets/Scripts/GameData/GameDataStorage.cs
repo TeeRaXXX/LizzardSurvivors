@@ -38,6 +38,9 @@ public class GameDataStorage
 
     public void SaveData()
     {
+        if (_fileHandler == null)
+            _fileHandler = new GameDataFileHandler(Application.persistentDataPath);
+
         if (GameData == null)
         {
             Debug.Log("Game data was not found. Initializing data to defaults!");
