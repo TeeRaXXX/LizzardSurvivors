@@ -54,4 +54,4 @@ MonoBehaviour:
     MaxLevel: 8
     IsActive: 1
     SkillPrefab: {fileID: 1390659264823969448, guid: faa1e4541993f204ba797425572c203d, type: 3}
-    SkillLogo: {fileID: 21300000, guid: e591b8a7cb86dfc4abb76870171ff987, type: 3}
+    SkillLogo: {fileID: 21300000, guid: c7cac832300b1b94f886df344ceeb094, type: 3}

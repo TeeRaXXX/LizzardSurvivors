@@ -44,4 +44,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17f3b288021d4244da9038a41a3b9e57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _totemPrefab: {fileID: 8618024904710383509, guid: 039cb8d489b0f314684fd990a511c9a5, type: 3}
+  _totemPrefab: {fileID: 8618024904710383509, guid: 972d6ac07224d4e4dacbc4243a02fcd9, type: 3}
