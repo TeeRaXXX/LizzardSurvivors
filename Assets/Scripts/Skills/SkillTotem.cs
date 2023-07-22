@@ -2,38 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SkillTotemAoeHeal : MonoBehaviour, IUpgradable
+public enum TotemType
 {
-    [SerializeField] private GameObject _totemPrefab;
+    TotemAoeDamage,
+    TotemProjectiles,
+    TotemAoeHeal
+}
 
-    private List<string> _tagsToHeal;
-    private float _spawnFrequency;
-    private float _healFrequency;
-    private float _totemLifeTime;
-    private float _healRadius;
-    private float _heal;
+public class SkillTotem : MonoBehaviour, IUpgradable
+{
+    [SerializeField] private float _spawnCoolDown;
+    [SerializeField] private List<GameObject> _totems;
+
     private int _maxLevel;
     private int _currentLevel;
     private bool _isActive;
 
+    private int _currentTotemIndex;
+
     private void Awake()
     {
         _isActive = true;
-
-        _tagsToHeal = new List<string>()
-        {
-            TagsHandler.GetPlayerTag()
-        };
-
-        _spawnFrequency = 3f;
-        _totemLifeTime = 3f;
-        _healFrequency = .5f;
-        _healRadius = 2f;
-        _heal = 0.5f;
-
+        _spawnCoolDown = 3f;
         _maxLevel = 8;
         _currentLevel = 1;
-
+        _currentTotemIndex = 0;
         _isActive = false;
     }
 
@@ -49,12 +42,21 @@ public class SkillTotemAoeHeal : MonoBehaviour, IUpgradable
     {
         _isActive = true;
 
-        var totem = Instantiate(_totemPrefab, transform.position, Quaternion.identity);
-        totem.GetComponent<TotemAoeHeal>().Initialize(_tagsToHeal, _healRadius, _heal, _healFrequency, _totemLifeTime);
+        Instantiate(_totems[_currentTotemIndex], transform.position, Quaternion.identity);
+        
+        yield return new WaitForSeconds(_spawnCoolDown);
 
-        yield return new WaitForSeconds(_spawnFrequency);
+        if (_currentTotemIndex == _totems.Count - 1)
+            _currentTotemIndex = 0;
+        else _currentTotemIndex++;
 
         _isActive = false;
+    }
+
+    private TotemType GetRandomTotem()
+    {
+        var values = System.Enum.GetValues(typeof(TotemType)); 
+        return (TotemType)values.GetValue(Random.Range(0, values.Length));
     }
 
     public int GetCurrentLevel() => _currentLevel;

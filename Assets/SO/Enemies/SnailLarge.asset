@@ -24,7 +24,6 @@ MonoBehaviour:
     _moveSpeed: 0.5
     _damage: 20
     _attackSpeed: 0.75
-    _attackRadius: 1
   EnemyType: 3
   EnemyPrefab: {fileID: 4239325755424782172, guid: 050774a7159c290458f18d63002637cb, type: 3}
   Drops:

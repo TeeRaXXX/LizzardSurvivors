@@ -4,8 +4,7 @@ using System;
 {
     Music,
     MusicEvolved,
-    TotemAoeDamage,
-    TotemAoeHeal,
+    Idol,
 
     Respawn,
     IncreaseProjectileCount,

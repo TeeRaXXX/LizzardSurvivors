@@ -4,8 +4,8 @@ public class FollowObjectComponent : MonoBehaviour
 {
     [SerializeField] private Transform _followObject;
     [SerializeField] private Rigidbody2D _rigidbody;
-    [SerializeField] private float _moveSpeed;
 
+    private float _moveSpeed;
     private bool _isEnable;
 
     private void Awake()

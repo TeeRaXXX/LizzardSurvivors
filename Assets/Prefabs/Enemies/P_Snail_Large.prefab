@@ -180,7 +180,6 @@ MonoBehaviour:
   _spriteFlipper: {fileID: 8000395224056481004}
   _damageDigitView: {fileID: 8385778797898642923, guid: 9a40cbae0e40ae647a2c363471140c0e, type: 3}
   _damageDigitViewPosition: {fileID: 6059010557553370890}
-  _radialDamage: {fileID: 1945318315037353241}
 --- !u!114 &2504083351737121902
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,7 +194,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _followObject: {fileID: 6506923021674781527, guid: 9a40cbae0e40ae647a2c363471140c0e, type: 3}
   _rigidbody: {fileID: 3027705605221543841}
-  _moveSpeed: 0
 --- !u!114 &5423103506854328110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -351,6 +349,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b8023d32ebb25d4b854da517118e705, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _damage: 5
+  _damageFrequency: 1
+  _enemy: {fileID: 11400000, guid: 83fd5cada06895f4599f57f4901ad1fe, type: 2}
+  _character: {fileID: 0}
+  _isEnemy: 1
+  _damageEnemies: 0
+  _damagePlayer: 1
 --- !u!58 &2286563050227123740
 CircleCollider2D:
   m_ObjectHideFlags: 0
