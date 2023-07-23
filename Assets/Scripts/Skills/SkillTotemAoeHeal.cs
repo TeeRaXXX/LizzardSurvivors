@@ -75,36 +75,43 @@ public class SkillTotemAoeHeal : MonoBehaviour, IUpgradable
                 case 2:
                     _heal = 0.5f;
                     _healFrequency = 0.9f;
+                    _healRadius = 1f;
                     break;
 
                 case 3:
                     _heal = 1f;
                     _healFrequency = 0.9f;
+                    _healRadius = 1f;
                     break;
 
                 case 4:
                     _heal = 1f;
                     _healFrequency = 0.8f;
+                    _healRadius = 1f;
                     break;
 
                 case 5:
                     _heal = 1.5f;
                     _healFrequency = 0.8f;
+                    _healRadius = 1f;
                     break;
 
                 case 6:
                     _heal = 1.5f;
                     _healFrequency = 0.7f;
+                    _healRadius = 1f;
                     break;
 
                 case 7:
                     _heal = 2f;
                     _healFrequency = 0.7f;
+                    _healRadius = 1f;
                     break;
 
                 case 8:
                     _heal = 2f;
                     _healFrequency = 0.6f;
+                    _healRadius = 1f;
                     break;
             }
 

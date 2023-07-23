@@ -109,7 +109,7 @@ public class PlayerSkillsView : MonoBehaviour
         if (_currentChoice[skillNumber] == SkillType.None)
             return;
 
-        _skillsHandler.SpawnSkill(_currentChoice[skillNumber]);
+        _skillsHandler.SpawnSkill(_currentChoice[skillNumber], out bool isMaxLevel);
         _skillsOfferScreen.gameObject.SetActive(false);
         Time.timeScale = 1;
     }

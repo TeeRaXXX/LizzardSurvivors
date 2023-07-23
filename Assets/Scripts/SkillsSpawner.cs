@@ -7,21 +7,37 @@ public class SkillsSpawner : MonoBehaviour
     [SerializeField] private Transform _skillsHolder;
 
     private Dictionary<SkillType, GameObject> _skills;
+    private Dictionary<SkillType, int> _skillsLevels;
 
     private void Awake()
     {
         _skills = new Dictionary<SkillType, GameObject>();
+        _skillsLevels = new Dictionary<SkillType, int>();
     }
 
-    public void SpawnSkill(SkillType skill)
+    public void SpawnSkill(SkillType skill, out bool isMaxLevel)
     {
+        isMaxLevel = false;
+
         if (!_skills.ContainsKey(skill))
         {
             _skills.Add(skill, Instantiate(GetSkillPrefab(skill), _skillsHolder));
+            _skillsLevels.Add(skill, 1);
+
+            if (_skillsLevels[skill] == GetMaxLevelOfSkill(skill))
+                isMaxLevel = true;
+
             EventManager.OnSkillAddedEvent(skill);
         }
         else
         {
+            if (_skillsLevels[skill] == GetMaxLevelOfSkill(skill))
+            {
+                isMaxLevel = true;
+                return;
+            }
+
+            _skillsLevels[skill]++;
             _skills[skill].GetComponent<IUpgradable>().Upgrade(true);
             EventManager.OnSkillAddedEvent(skill);
         }
@@ -52,6 +68,11 @@ public class SkillsSpawner : MonoBehaviour
                 return skill.IsActive;
 
         return true;
+    }
+
+    public bool IsSkillOnMaxLevel(SkillType skillType) 
+    {
+        return _skillsLevels[skillType] == GetMaxLevelOfSkill(skillType);
     }
 
     public int GetMaxLevelOfSkill(SkillType skillType)

@@ -14,6 +14,7 @@ public class BootstrapGameplay : MonoBehaviour
     private void Awake()
     {
         GameDataStorage.Instance.Initialize();
+        EditorGodMode.Initialize(_skillsSpawner);
 
         _gameTimer.Initialize();
         _inputManager.Initialize();

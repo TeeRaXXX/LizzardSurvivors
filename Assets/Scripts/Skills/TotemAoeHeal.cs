@@ -15,13 +15,13 @@ public class TotemAoeHeal : MonoBehaviour
 
     private GameObject _radialHealInstance;
 
-    public void Initialize(List<string> tagsToHeal, float damageRadius, float damage, float damageFrequency, float lifeTime)
+    public void Initialize(List<string> tagsToHeal, float healRadius, float heal, float healFrequency, float lifeTime)
     {
         _tagsToHeal = new List<string>(tagsToHeal);
         _lifeTime = lifeTime;
-        _heal = damage;
-        _healFrequency = damageFrequency;
-        _healRadius = damageRadius;
+        _heal = heal;
+        _healFrequency = healFrequency;
+        _healRadius = healRadius;
 
         _radialHealInstance = InstantiateRadialHeal();
         StartCoroutine(OnLifeTime());

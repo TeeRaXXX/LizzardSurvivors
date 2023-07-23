@@ -20,7 +20,7 @@ public class PlayerInventory
         Coins = coins;
         LevelPoints = 0;
         Level = 1;
-        _skillsSpawner.SpawnSkill(baseSkill);
+        _skillsSpawner.SpawnSkill(baseSkill, out bool isMaxLevel);
     }
 
     public void AddSkill(SkillType skill)
