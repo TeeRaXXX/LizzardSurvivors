@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System;
 using UnityEditor;
 using UnityEngine;
-using Unity.VisualScripting;
 
 public class EditorGodMode : EditorWindow
 {
@@ -34,8 +33,6 @@ public class EditorGodMode : EditorWindow
             {
                 _skillsSpawner.SpawnSkill((SkillType)index, out bool isMaxLevel);
             }
-
-            GUILayout.Space(100);
             
             foreach (var skill in _skillsLevels)
             {
@@ -60,6 +57,7 @@ public class EditorGodMode : EditorWindow
 
                 EditorGUILayout.EndHorizontal();
             }
+            Repaint();
         }
     }
 
@@ -71,10 +69,11 @@ public class EditorGodMode : EditorWindow
 
     private string[] GetSkills()
     {
-        string[] skills = new string[Enum.GetNames(typeof(SkillType)).Length];
+        string[] skills = new string[Enum.GetNames(typeof(SkillType)).Length - 1];
 
         for (int i = 0; i < skills.Length; i++)
         {
+            if (Enum.GetNames(typeof(SkillType))[i] != SkillType.None.ToString())
             skills[i] = Enum.GetNames(typeof(SkillType))[i];
         }
 

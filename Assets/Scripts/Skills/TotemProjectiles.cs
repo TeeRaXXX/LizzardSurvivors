@@ -49,7 +49,7 @@ public class TotemProjectiles : MonoBehaviour
 
         for (int i = 0; i < _projectilesCount; i++)
         {
-            GameObject projectile = Instantiate(_projectilePrefab, _spawnPosition.position, Quaternion.identity, transform);
+            GameObject projectile = Instantiate(_projectilePrefab, _spawnPosition.position, Quaternion.identity);
             projectile.GetComponent<ProjectileTotem>().Initialize(_tagsToDamage, _damage, _projectileSpeed);
         }
 
