@@ -27,9 +27,10 @@ public class ProjectileMusic : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.tag == "DestroyVolume")
+        if (other.tag == TagsHandler.GetDestroyVolumeTag())
         {
             Destroy(this.gameObject);
         }
