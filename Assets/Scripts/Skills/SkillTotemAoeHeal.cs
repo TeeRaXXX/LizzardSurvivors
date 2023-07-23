@@ -51,7 +51,11 @@ public class SkillTotemAoeHeal : MonoBehaviour, IUpgradable
     {
         _isActive = true;
 
-        var totem = Instantiate(_totemPrefab, transform.position, Quaternion.identity);
+        Vector3 spawnPosition = new Vector3(transform.position.x + Random.Range(-1f, 1f),
+                                            transform.position.y + Random.Range(-1f, 1f),
+                                            0);
+
+        var totem = Instantiate(_totemPrefab, spawnPosition, Quaternion.identity);
         totem.GetComponent<TotemAoeHeal>().Initialize(_tagsToHeal, _healRadius, _heal, _healFrequency, _totemLifeTime);
 
         yield return new WaitForSeconds(_spawnFrequency);

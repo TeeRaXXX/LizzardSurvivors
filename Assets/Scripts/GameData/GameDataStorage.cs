@@ -76,6 +76,7 @@ public class GameDataStorage
 
         GameData.AddOpenedSkill(SkillType.TotemAoeDamage, true);
         GameData.AddOpenedSkill(SkillType.TotemAoeHeal, true);
+        GameData.AddOpenedSkill(SkillType.TotemProjectiles, true);
         GameData.AddOpenedSkill(SkillType.MusicEvolved, true);
         GameData.AddOpenedSkill(SkillType.Music, true);
 

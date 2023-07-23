@@ -62,6 +62,10 @@ public class SkillTotemAoeDamage : MonoBehaviour, IUpgradable
 
         if (spawnPosition != Vector3.zero)
         {
+            spawnPosition = new Vector3(spawnPosition.x + Random.Range(-2f, 2f),
+                                        spawnPosition.y + Random.Range(-2f, 2f),
+                                        0);
+
             var totem = Instantiate(_totemPrefab, spawnPosition, Quaternion.identity);
             totem.GetComponent<TotemAoeDamage>().Initialize(_tagsToDamage, _damageRadius, _damage, _damageFrequency, _totemLifeTime);
         }

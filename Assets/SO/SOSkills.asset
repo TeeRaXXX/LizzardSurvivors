@@ -34,7 +34,7 @@ MonoBehaviour:
     IsActive: 0
     SkillPrefab: {fileID: 4142236178876412807, guid: d8ac93ee9cb22c841926afc583b14f21, type: 3}
     SkillLogo: {fileID: 21300000, guid: efb70162ee6f6e641a7e15375afb09d5, type: 3}
-  - SkillType: 7
+  - SkillType: 8
     Name: Auto Heal
     Description: Auto heal player character
     MaxLevel: 8
@@ -55,9 +55,23 @@ MonoBehaviour:
     IsActive: 1
     SkillPrefab: {fileID: 1390659264823969448, guid: faa1e4541993f204ba797425572c203d, type: 3}
     SkillLogo: {fileID: 21300000, guid: c7cac832300b1b94f886df344ceeb094, type: 3}
+  - SkillType: 4
+    Name: Totem Projectiles
+    Description: Totem Projectiles
+    MaxLevel: 8
+    IsActive: 1
+    SkillPrefab: {fileID: 1390659264823969448, guid: 0ff78206bd5f2bc48aeb6db36ff01c84, type: 3}
+    SkillLogo: {fileID: 21300000, guid: 4f51828bec2d314439ad8779ce8ec01d, type: 3}
   - SkillType: 6
-    Name: Additioonal AOE Radius
-    Description: Additioonal AOE Radius
+    Name: Additional Projectiles
+    Description: Additional Projectiles
+    MaxLevel: 8
+    IsActive: 0
+    SkillPrefab: {fileID: 4142236178876412807, guid: d8ac93ee9cb22c841926afc583b14f21, type: 3}
+    SkillLogo: {fileID: 21300000, guid: efb70162ee6f6e641a7e15375afb09d5, type: 3}
+  - SkillType: 7
+    Name: Additional AOE Radius
+    Description: Additional AOE Radius
     MaxLevel: 8
     IsActive: 0
     SkillPrefab: {fileID: 4142236178876412807, guid: 223aa8c0f80be7a4b97a53281896d025, type: 3}

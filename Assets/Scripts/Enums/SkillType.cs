@@ -6,6 +6,7 @@ using System;
     MusicEvolved,
     TotemAoeDamage,
     TotemAoeHeal,
+    TotemProjectiles,
 
     Respawn,
     IncreaseProjectileCount,
