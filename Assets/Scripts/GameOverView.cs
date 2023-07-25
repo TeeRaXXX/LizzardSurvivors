@@ -18,7 +18,7 @@ public class GameOverView : MonoBehaviour
     public void ToMainMenu()
     {
         GameDataStorage.Instance.SaveData();
-        SceneManager.LoadScene("MainMenu");
         Time.timeScale = 1f;
+        SceneManager.LoadScene("MainMenu");
     }
 }
