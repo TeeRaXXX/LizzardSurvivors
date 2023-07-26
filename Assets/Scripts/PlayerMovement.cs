@@ -18,12 +18,14 @@ public class PlayerMovement : MonoBehaviour
         _spriteRenderer = spriteRenderer;
         _animator = animator;
         _animator.runtimeAnimatorController = character.CharacterAnimationController;
+
+        InputManager.OnMoveButtonPressed.AddListener(UpdateMovement);
     }
 
-    void Update()
+    void UpdateMovement(Vector2 movement)
     {
-        _movement.x = InputManager.Instance.GetMovementVector().x;
-        _movement.y = InputManager.Instance.GetMovementVector().y;
+        _movement.x = movement.x;
+        _movement.y = movement.y;
 
         if (Mathf.Abs(_movement.x) + Mathf.Abs(_movement.y) > 0.1f)
         {
