@@ -14,6 +14,7 @@ public class TagsHandler
     private static string _destroyVolume = "DestroyVolume";
 
     public static string GetDropTag() => "Drop";
+    public static string GetExperienceTakerTag() => "ExperienceTaker";
 
     public static bool IsEnemy(string tag) => _enemyTags.Contains(tag);
 

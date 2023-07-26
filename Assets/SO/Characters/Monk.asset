@@ -20,7 +20,7 @@ MonoBehaviour:
     _healthRecovery: 0
     _maxHealth: 100
     _armor: 0
-    _moveSpeed: 2.5
+    _moveSpeed: 3
     _damageBonus: 0
     _aoeRadiusBonus: 0
     _cooldownReduceBonus: 0

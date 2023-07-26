@@ -9,6 +9,7 @@ TagManager:
   - SnailSmall
   - SnailMedium
   - Drop
+  - ExperienceTaker
   layers:
   - Default
   - TransparentFX

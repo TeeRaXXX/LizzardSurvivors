@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 872368569894043596}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.3, z: 0}
+  m_LocalPosition: {x: 0, y: 0.3, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -104,7 +104,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: -1261846592, guid: 1d4f5e5c67f1b3242ac90f504ccc8944, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -197,6 +197,7 @@ MonoBehaviour:
   _spriteFlipper: {fileID: 2950316078321226769}
   _damageDigitView: {fileID: 8385778797898642923, guid: 9a40cbae0e40ae647a2c363471140c0e, type: 3}
   _damageDigitViewPosition: {fileID: 2938728109082237541}
+  _radialDamage: {fileID: 0}
 --- !u!114 &6628282171582870138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -229,6 +230,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _followObject: {fileID: 0}
   _rigidbody: {fileID: 6536083953165259908}
+  _moveSpeed: 0
 --- !u!114 &2950316078321226769
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -74,7 +74,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: 455086820, guid: 6a41f461b85d9cb45a48fcb73c631d2a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -120,4 +120,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 8355679069642330983}
-  _radialHealPrefab: {fileID: 3174905808608953075, guid: 6e971bb9cc998f448903a5f491d7766d, type: 3}
+  _radialHealPrefab: {fileID: 4873418771912845284, guid: b229582815bc7024ba8da0fffdd4ed94, type: 3}
