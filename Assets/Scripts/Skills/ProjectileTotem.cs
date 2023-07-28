@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class ProjectileTotem : MonoBehaviour
 {
@@ -13,7 +14,12 @@ public class ProjectileTotem : MonoBehaviour
         _tagsToDamage = tagsToDamage;
         _damage = damage;
 
-        _rigidbody.AddForce(GetRandomEnemyPosition().normalized * speed);
+        Vector3 enemyPosition = GetRandomEnemyPosition();
+
+        transform.rotation = Quaternion.LookRotation(new Vector3 (0f, 0f, 1f), enemyPosition);
+        transform.Rotate(transform.rotation.x, transform.rotation.y, transform.rotation.z - 90f);
+
+        _rigidbody.AddForce(enemyPosition.normalized * speed);
     }
 
     private Vector3 GetRandomEnemyPosition()

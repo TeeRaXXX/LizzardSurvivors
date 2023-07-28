@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3dc3e797ff3e2ed43ac9265f0d3b407a, type: 3}
+  m_Name: BabaYaga
+  m_EditorClassIdentifier: 
+  CharacterName: Baba Yaga
+  CharacterDescription: Baba Yaga
+  CharacterBaseSprite: {fileID: -2088792614, guid: 09f76d842d5869247967e08ad7e34e18, type: 3}
+  CharacterAnimationController: {fileID: 9100000, guid: 52d76178d2006cf4a968d9b653c24b20, type: 2}
+  CharacterBaseStats:
+    _healthRecovery: 0
+    _maxHealth: 100
+    _armor: 2
+    _moveSpeed: 4
+    _damageBonus: 0
+    _aoeRadiusBonus: 0
+    _cooldownReduceBonus: 0
+    _vampirismBonus: 0
+    _projectilesBonus: 0
+    _respawnTimes: 0
+  CharacterType: 4
+  BaseActiveSkill: 4

@@ -1,5 +1,5 @@
+using System.Linq;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class BootstrapGameplay : MonoBehaviour
 {
@@ -9,6 +9,7 @@ public class BootstrapGameplay : MonoBehaviour
     [SerializeField] private GameTimer _gameTimer;
     [SerializeField] private GameplayUIManager _gameplayUIManager;
     [SerializeField] private SkillsSpawner _skillsSpawner;
+    [SerializeField] private SOCharacters _charactersList;
 
     [SerializeField] private int _startLevel;
 
@@ -19,9 +20,10 @@ public class BootstrapGameplay : MonoBehaviour
 
         _gameTimer.Initialize();
         _inputManager.Initialize();
-        PlayerLevel.Initialize(_startLevel);
+        PlayerLevel.Instance.Initialize(_startLevel);
         _enemiesSpawnHandler.Initialize();
         _gameplayUIManager.Initialize(_skillsSpawner);
-        _playerCharacter.Initialize(_skillsSpawner);
+        _playerCharacter.Initialize(_skillsSpawner,
+                                    _charactersList.CharactersList.FirstOrDefault(obj => obj.CharacterType == CharacterType.BabaYaga));
     }
 }

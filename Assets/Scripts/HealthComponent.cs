@@ -21,7 +21,7 @@ public class HealthComponent : MonoBehaviour
     {
         if (damageValue > 0f)
         {
-            float totalDamage = _armor > 0 ? damageValue * _armor / 100f : damageValue;
+            float totalDamage = _armor > 0 ? damageValue - damageValue * _armor / 100f : damageValue;
             float oldHealth = _health;
 
             if (_health - totalDamage <= 0)

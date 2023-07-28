@@ -120,4 +120,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 8355679069642330983}
-  _radialDamagePrefab: {fileID: 3174905808608953075, guid: 8463db0b35e853b4983a33017c89ef93, type: 3}
+  _radialDamagePrefab: {fileID: 7816151503992098207, guid: f623ee70bb568354192fcb02743a8755, type: 3}

@@ -27,8 +27,8 @@ public class SkillTotemAoeHeal : MonoBehaviour, IUpgradable
 
         _spawnFrequency = 3f;
         _totemLifeTime = 3f;
-        _healFrequency = 1f;
-        _heal = 0.5f;
+        _healFrequency = 0.5f;
+        _heal = 1f;
         _healRadius = 1f * GlobalBonuses.Instance.GetAdditionalAoeRadius();
 
         _maxLevel = 8;
@@ -77,44 +77,44 @@ public class SkillTotemAoeHeal : MonoBehaviour, IUpgradable
             switch (_currentLevel)
             {
                 case 2:
-                    _heal = 0.5f;
-                    _healFrequency = 0.9f;
+                    _heal = 1f;
+                    _healFrequency = 0.45f;
                     _healRadius = 1f;
                     break;
 
                 case 3:
-                    _heal = 1f;
-                    _healFrequency = 0.9f;
+                    _heal = 2f;
+                    _healFrequency = 0.45f;
                     _healRadius = 1f;
                     break;
 
                 case 4:
-                    _heal = 1f;
-                    _healFrequency = 0.8f;
+                    _heal = 2f;
+                    _healFrequency = 0.4f;
                     _healRadius = 1f;
                     break;
 
                 case 5:
-                    _heal = 1.5f;
-                    _healFrequency = 0.8f;
+                    _heal = 3f;
+                    _healFrequency = 0.4f;
                     _healRadius = 1f;
                     break;
 
                 case 6:
-                    _heal = 1.5f;
-                    _healFrequency = 0.7f;
+                    _heal = 3f;
+                    _healFrequency = 0.35f;
                     _healRadius = 1f;
                     break;
 
                 case 7:
-                    _heal = 2f;
-                    _healFrequency = 0.7f;
+                    _heal = 4f;
+                    _healFrequency = 0.35f;
                     _healRadius = 1f;
                     break;
 
                 case 8:
-                    _heal = 2f;
-                    _healFrequency = 0.6f;
+                    _heal = 4f;
+                    _healFrequency = 0.3f;
                     _healRadius = 1f;
                     break;
             }

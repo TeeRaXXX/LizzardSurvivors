@@ -138,10 +138,10 @@ MonoBehaviour:
   - {fileID: -2125748297, guid: 751966ef7c155c64aa40f383fe2b8141, type: 3}
   - {fileID: -585476231, guid: 751966ef7c155c64aa40f383fe2b8141, type: 3}
   _experienceMaxValue:
-  - 1
-  - 2
-  - 3
-  - 4
+  - 10
+  - 25
+  - 40
+  - 60
   _rigidbody: {fileID: 1657237754184504667}
   _bounceForce: 450
   _speed: 12.5

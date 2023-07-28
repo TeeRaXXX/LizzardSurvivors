@@ -13,7 +13,7 @@ public class FollowObjectComponent : MonoBehaviour
         _isEnable = false;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (_followObject != null && _isEnable)
         {

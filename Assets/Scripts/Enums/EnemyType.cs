@@ -5,5 +5,7 @@ using System;
     BaseLizarad,
     SnailSmall,
     SnailMedium,
-    SnailLarge
+    SnailLarge,
+    Kikimora,
+    SnailLargeBoss
 }

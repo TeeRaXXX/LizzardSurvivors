@@ -21,7 +21,7 @@ MonoBehaviour:
     EnemiesPercents:
     - Enemy: 0
       Percent: 0.8
-      SpawnCount: 2
+      SpawnCount: 1
     - Enemy: 1
       Percent: 0.2
       SpawnCount: 1
@@ -31,30 +31,30 @@ MonoBehaviour:
     EnemiesPercents:
     - Enemy: 0
       Percent: 0.5
-      SpawnCount: 5
-    - Enemy: 1
+      SpawnCount: 2
+    - Enemy: 4
       Percent: 0.5
-      SpawnCount: 3
+      SpawnCount: 1
   - Minute: 2
     SpawnFrequency: 1
     Boss: 0
     EnemiesPercents:
-    - Enemy: 0
+    - Enemy: 4
       Percent: 0.5
-      SpawnCount: 15
+      SpawnCount: 4
     - Enemy: 2
       Percent: 0.5
-      SpawnCount: 10
+      SpawnCount: 3
   - Minute: 3
     SpawnFrequency: 1
     Boss: 0
     EnemiesPercents:
     - Enemy: 0
       Percent: 0.5
-      SpawnCount: 15
-    - Enemy: 2
+      SpawnCount: 5
+    - Enemy: 4
       Percent: 0.3
-      SpawnCount: 10
+      SpawnCount: 4
     - Enemy: 3
       Percent: 0.2
-      SpawnCount: 5
+      SpawnCount: 3

@@ -69,6 +69,8 @@ public class GameDataStorage
 
         GameData.AddOpenedCharacter(CharacterType.Dino);
         GameData.BuyCharacter(CharacterType.Dino);
+        GameData.AddOpenedCharacter(CharacterType.BabaYaga);
+        GameData.BuyCharacter(CharacterType.BabaYaga);
 
         GameData.AddOpenedSkill(SkillType.AutoHeal, true);
         GameData.AddOpenedSkill(SkillType.IncreaseProjectileCount, true);

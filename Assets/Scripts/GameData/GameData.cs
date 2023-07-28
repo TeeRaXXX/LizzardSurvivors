@@ -39,7 +39,7 @@ using UnityEngine;
         _audioVolume = 1f;
 
         CharacterData baseCharacter = new CharacterData();
-        baseCharacter.Type = CharacterType.Monk;
+        baseCharacter.Type = CharacterType.BabaYaga;
         baseCharacter.IsOpened = true;
         baseCharacter.IsBought = true;
         _discoveredCharacters = new List<CharacterData>();

@@ -19,7 +19,7 @@ MonoBehaviour:
   CharacterBaseStats:
     _healthRecovery: 0
     _maxHealth: 100
-    _armor: 0
+    _armor: 1
     _moveSpeed: 3
     _damageBonus: 0
     _aoeRadiusBonus: 0

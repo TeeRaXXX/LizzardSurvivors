@@ -2,8 +2,21 @@ using System;
 
 public class PlayerLevel
 {
-    public static PlayerLevel Instance { get; private set; }
+    public static PlayerLevel Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = new PlayerLevel();
+            }
 
+            return _instance;
+        }
+        private set { }
+    }
+
+    private static PlayerLevel _instance;
     private int _level;
     private float _experience;
     private float _experienceToLevelUp;
@@ -13,18 +26,11 @@ public class PlayerLevel
 
     private PlayerLevel() { }
 
-    public static void Initialize(int startLevel)
+    public void Initialize(int startLevel)
     {
-        if (Instance == null)
-            Instance = new PlayerLevel();
-        else return;
-
-        if (startLevel < 0)
-            throw new IndexOutOfRangeException($"startLevel equals {startLevel}");
-
-        Instance._level = startLevel;
-        Instance.UpdateExperienceToLevelUp();
-        Instance._experience = 0f;
+        _level = startLevel;
+        UpdateExperienceToLevelUp();
+        _experience = 0f;
     }
 
     public void GetExperience(float experience)
@@ -44,6 +50,11 @@ public class PlayerLevel
             _experience = 0;
             LevelUp();
         }
+    }
+
+    public void ResetLevel()
+    {
+        _instance = null;
     }
 
     private void UpdateExperienceToLevelUp()

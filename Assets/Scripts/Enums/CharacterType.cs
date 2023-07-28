@@ -5,5 +5,6 @@ using System;
     Monk,
     Druid,
     Dino,
-    WiseTree
+    WiseTree,
+    BabaYaga
 }

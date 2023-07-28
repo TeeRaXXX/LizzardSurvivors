@@ -5,7 +5,6 @@ public class PlayerCharacter : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer _playerSpriteRenderer;
     [SerializeField] private Animator _playerAnimator;
-    [SerializeField] private SOCharacter _selectedCharacter;
     [SerializeField] private PlayerMovement _playerMovement;
     [SerializeField] private HealthComponent _PlayerHealthComponent;
     [SerializeField] private GameObject _damageDigitView;
@@ -13,11 +12,13 @@ public class PlayerCharacter : MonoBehaviour
 
     private PlayerStats _playerStats;
     private PlayerInventory _playerInventory;
+    private SOCharacter _selectedCharacter;
 
     private readonly UnityEvent<float, float, GameObject> _onHealthChanged = new UnityEvent<float, float, GameObject>();
 
-    public void Initialize(SkillsSpawner skillsHandler)
+    public void Initialize(SkillsSpawner skillsHandler, SOCharacter selectedCharacter)
     {
+        _selectedCharacter = selectedCharacter;
         _playerStats = new PlayerStats();
         _playerStats.InitStats(_selectedCharacter);
 
