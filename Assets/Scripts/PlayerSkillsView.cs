@@ -25,10 +25,11 @@ public class PlayerSkillsView : MonoBehaviour
         _skillsHandler = skillsHandler;
         ResetAllSkills();
         EventManager.OnSkillAdded.AddListener(AddSkill);
+        EventManager.OnSkillDeleted.AddListener(DeleteSkill);
         EventManager.OnNewSkillsOffer.AddListener(OfferNewSkills);
     }
 
-    private void AddSkill(SkillType skillType)
+    private void AddSkill(SkillType skillType, int skillLevel)
     {
         int index = 0;
         
@@ -54,6 +55,40 @@ public class PlayerSkillsView : MonoBehaviour
                 {
                     skillSprite.sprite = _skillsHandler.GetSkillLogo(skillType);
                     _passiveSkills[index] = skillType;
+                    break;
+                }
+
+                index++;
+            }
+        }
+    }
+
+    private void DeleteSkill(SkillType skillType, int skillLevel)
+    {
+        int index = 0;
+
+        if (_skillsHandler.IsSkillActive(skillType) && _activeSkills.Contains(skillType))
+        {
+            foreach (var skillSprite in _activeSkillSprites)
+            {
+                if (skillSprite.sprite == _skillsHandler.GetSkillLogo(skillType))
+                {
+                    skillSprite.sprite = _skillSpritePlaceholder;
+                    _activeSkills[index] = SkillType.None;
+                    break;
+                }
+
+                index++;
+            }
+        }
+        else if (!_skillsHandler.IsSkillActive(skillType) && _passiveSkills.Contains(skillType))
+        {
+            foreach (var skillSprite in _passiveSkillSprites)
+            {
+                if (skillSprite.sprite == _skillsHandler.GetSkillLogo(skillType))
+                {
+                    skillSprite.sprite = _skillSpritePlaceholder;
+                    _activeSkills[index] = SkillType.None;
                     break;
                 }
 
@@ -109,7 +144,10 @@ public class PlayerSkillsView : MonoBehaviour
         if (_currentChoice[skillNumber] == SkillType.None)
             return;
 
-        _skillsHandler.SpawnSkill(_currentChoice[skillNumber], out bool isMaxLevel);
+        _skillsHandler.SpawnSkill(_currentChoice[skillNumber],
+                                  _skillsHandler.GetCurrentSkillLevel(++_currentChoice[skillNumber]),
+                                  out bool isMaxLevel);
+
         _skillsOfferScreen.gameObject.SetActive(false);
         Time.timeScale = 1;
     }

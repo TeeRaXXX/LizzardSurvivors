@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SkillMusicEvolved : MonoBehaviour, IUpgradable
+public class SkillMusicEvolved : MonoBehaviour, IUpgradable, IEvolvedSkill
 {
     [SerializeField] private float _coolDown = 1f;
     [SerializeField] private GameObject _projectile;
@@ -21,13 +21,20 @@ public class SkillMusicEvolved : MonoBehaviour, IUpgradable
 
     private void Awake()
     {
+        isAtacking = true;
         _projectiles = new List<GameObject>();
-        _currentLevel = 1;
         _maxLevel = 8;
         _projectileCount = 3 + GlobalBonuses.Instance.GetAdditionalProjectilesCount();
         _playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
         _projectileFrequency = 360f / _projectileCount / _rotationSpeed;
         EventManager.OnProjectilesUpdate.AddListener(Upgrade);
+    }
+
+    public void Initialize(int level)
+    {
+        _currentLevel = level;
+        Upgrade(false);
+        isAtacking = false;
     }
 
     private IEnumerator AttackWithDelay()

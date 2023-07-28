@@ -15,32 +15,47 @@ public class SkillsSpawner : MonoBehaviour
         _skillsLevels = new Dictionary<SkillType, int>();
     }
 
-    public void SpawnSkill(SkillType skill, out bool isMaxLevel)
+    public void SpawnSkill(SkillType skillType, int level, out bool isMaxLevel)
     {
         isMaxLevel = false;
 
-        if (!_skills.ContainsKey(skill))
+        if (!_skills.ContainsKey(skillType))
         {
-            _skills.Add(skill, Instantiate(GetSkillPrefab(skill), _skillsHolder));
-            _skillsLevels.Add(skill, 1);
+            GameObject skillPrefab = Instantiate(GetSkillPrefab(skillType), _skillsHolder);
+            _skills.Add(skillType, skillPrefab);
+            _skillsLevels.Add(skillType, level);
 
-            if (_skillsLevels[skill] == GetMaxLevelOfSkill(skill))
+            if (_skillsLevels[skillType] == GetMaxLevelOfSkill(skillType))
                 isMaxLevel = true;
 
-            EventManager.OnSkillAddedEvent(skill);
+            if (IsEvolutionSkill(skillType))
+                skillPrefab.GetComponent<IEvolvedSkill>().Initialize(level);
+
+
+            EventManager.OnSkillAddedEvent(skillType, level);
         }
         else
         {
-            if (_skillsLevels[skill] == GetMaxLevelOfSkill(skill))
+            if (_skillsLevels[skillType] == GetMaxLevelOfSkill(skillType))
             {
                 isMaxLevel = true;
                 return;
             }
 
-            _skillsLevels[skill]++;
-            _skills[skill].GetComponent<IUpgradable>().Upgrade(true);
-            EventManager.OnSkillAddedEvent(skill);
+            _skillsLevels[skillType]++;
+            _skills[skillType].GetComponent<IUpgradable>().Upgrade(true);
+            EventManager.OnSkillAddedEvent(skillType, level);
         }
+    }
+
+    public bool IsEvolutionSkill(SkillType skillType) 
+    {
+        foreach (var skill in _skillsSO.SkillsList)
+            if (skill.SkillType == skillType)
+                if (skill.IsEvolution)
+                    return true;
+
+        return false;
     }
 
     private GameObject GetSkillPrefab(SkillType skillType)
@@ -50,6 +65,17 @@ public class SkillsSpawner : MonoBehaviour
                 return skill.SkillPrefab;
         
         return null;
+    }
+
+    public List<SkillType> GetEvolvedSkills()
+    {
+        List<SkillType> skills = new List<SkillType>();
+
+        foreach (var skill in _skillsSO.SkillsList)
+            if (skill.IsEvolution)
+                skills.Add(skill.SkillType);
+        
+        return skills;
     }
 
     public Sprite GetSkillLogo(SkillType skillType) 
@@ -121,5 +147,17 @@ public class SkillsSpawner : MonoBehaviour
         if (_skills.TryGetValue(skillType, out skill))
             return _skills[skillType].GetComponent<IUpgradable>().GetCurrentLevel();
         else return 0;
+    }
+
+    public List<SkillsEvolutionSO> GetSkillsEvolutionList()
+    {
+        return new List<SkillsEvolutionSO>(_skillsSO.SkillsEvolutionList);
+    }
+
+    public void DeleteSkill(SkillType skillToDelete)
+    {
+        Destroy(_skills[skillToDelete]);
+        _skills.Remove(skillToDelete);
+        _skillsLevels.Remove(skillToDelete);
     }
 }

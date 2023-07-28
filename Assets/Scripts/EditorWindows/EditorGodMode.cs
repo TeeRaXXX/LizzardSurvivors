@@ -6,7 +6,7 @@ using UnityEngine;
 public class EditorGodMode : EditorWindow
 {
     private int index = 0;
-    private static Dictionary<SkillType, int> _skillsLevels;
+    private static List<SkillType> _skills;
     private bool _isPlaying = false;
     private static SkillsSpawner _skillsSpawner;
 
@@ -19,8 +19,9 @@ public class EditorGodMode : EditorWindow
     public static void Initialize(SkillsSpawner skillsSpawner)
     {
         _skillsSpawner = skillsSpawner;
-        _skillsLevels = new Dictionary<SkillType, int>();
+        _skills = new List<SkillType>();
         EventManager.OnSkillAdded.AddListener(OnNewSkillAdded);
+        EventManager.OnSkillDeleted.AddListener(OnSkillDelete);
     }
 
     public void OnGUI()
@@ -31,28 +32,32 @@ public class EditorGodMode : EditorWindow
 
             if (GUILayout.Button("Add Skill"))
             {
-                _skillsSpawner.SpawnSkill((SkillType)index, out bool isMaxLevel);
+                _skillsSpawner.SpawnSkill((SkillType)index, 1, out bool isMaxLevel);
             }
             
-            foreach (var skill in _skillsLevels)
+            foreach (var skill in _skills)
             {
                 Rect rect = EditorGUILayout.BeginHorizontal();
 
-                if (GUI.Button(rect, $"{Enum.GetName(typeof(SkillType), skill.Key)}"))
+                if (GUI.Button(rect, $"{Enum.GetName(typeof(SkillType), skill)}"))
                 {
-                    if (!_skillsSpawner.IsSkillOnMaxLevel(skill.Key))
-                        _skillsSpawner.SpawnSkill(skill.Key, out bool isMaxLevel);
+                    if (!_skillsSpawner.IsSkillOnMaxLevel(skill))
+                    {
+                        int skillLevel = _skillsSpawner.GetCurrentSkillLevel(skill) + 1;
+                        _skillsSpawner.SpawnSkill(skill, skillLevel, out bool isMaxLevel);
+                    }
+                        
                 }
 
-                GUILayout.Label(_skillsSpawner.GetSkillLogo(skill.Key).texture);
+                GUILayout.Label(_skillsSpawner.GetSkillLogo(skill).texture);
 
                 rect.position = new Vector2(rect.x - 30, rect.y);
                 GUIStyle style = new GUIStyle();
                 style.normal.textColor = Color.green;
                 style.alignment = TextAnchor.MiddleRight;
 
-                if (!_skillsSpawner.IsSkillOnMaxLevel(skill.Key))
-                    GUI.Label(rect, $"Level {_skillsSpawner.GetCurrentSkillLevel(skill.Key)}", style);
+                if (!_skillsSpawner.IsSkillOnMaxLevel(skill))
+                    GUI.Label(rect, $"Level {_skillsSpawner.GetCurrentSkillLevel(skill)}", style);
                 else GUI.Label(rect, $"Max Level", style);
 
                 EditorGUILayout.EndHorizontal();
@@ -61,10 +66,15 @@ public class EditorGodMode : EditorWindow
         }
     }
 
-    private static void OnNewSkillAdded(SkillType skill)
+    private static void OnNewSkillAdded(SkillType skill, int level)
     {
-        if (!_skillsLevels.ContainsKey(skill))
-            _skillsLevels.Add(skill, 1);
+        if (!_skills.Contains(skill))
+            _skills.Add(skill);
+    }
+
+    private static void OnSkillDelete(SkillType skill, int level)
+    {
+        _skills.Remove(skill);
     }
 
     private string[] GetSkills()
@@ -73,8 +83,8 @@ public class EditorGodMode : EditorWindow
 
         for (int i = 0; i < skills.Length; i++)
         {
-            if (Enum.GetNames(typeof(SkillType))[i] != SkillType.None.ToString())
-            skills[i] = Enum.GetNames(typeof(SkillType))[i];
+            if (Enum.GetNames(typeof(SkillType))[i] != SkillType.None.ToString() && !_skillsSpawner.IsEvolutionSkill((SkillType)i))
+                skills[i] = Enum.GetNames(typeof(SkillType))[i];
         }
 
         return skills;
@@ -95,7 +105,7 @@ public class EditorGodMode : EditorWindow
 
             case PlayModeStateChange.ExitingPlayMode:
                 _isPlaying = false;
-                _skillsLevels.Clear();
+                _skills.Clear();
                 break;
         }  
     }

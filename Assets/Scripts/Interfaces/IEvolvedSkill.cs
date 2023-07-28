@@ -1,0 +1,4 @@
+public interface IEvolvedSkill
+{
+    public void Initialize(int level);
+}
