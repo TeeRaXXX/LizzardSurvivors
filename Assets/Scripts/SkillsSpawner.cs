@@ -26,7 +26,10 @@ public class SkillsSpawner : MonoBehaviour
             _skillsLevels.Add(skillType, level);
 
             if (_skillsLevels[skillType] == GetMaxLevelOfSkill(skillType))
+            {
                 isMaxLevel = true;
+                return;
+            }
 
             if (IsEvolutionSkill(skillType))
                 skillPrefab.GetComponent<IEvolvedSkill>().Initialize(level);

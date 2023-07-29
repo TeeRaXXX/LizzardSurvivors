@@ -145,7 +145,7 @@ public class PlayerSkillsView : MonoBehaviour
             return;
 
         _skillsHandler.SpawnSkill(_currentChoice[skillNumber],
-                                  _skillsHandler.GetCurrentSkillLevel(++_currentChoice[skillNumber]),
+                                  _skillsHandler.GetCurrentSkillLevel(_currentChoice[skillNumber]) + 1,
                                   out bool isMaxLevel);
 
         _skillsOfferScreen.gameObject.SetActive(false);

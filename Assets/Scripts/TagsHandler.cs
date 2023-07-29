@@ -11,6 +11,8 @@ public class TagsHandler
 
     private static string _playerTag = "Player";
 
+    private static string _playerCamera = "MainCamera";
+
     private static string _destroyVolume = "DestroyVolume";
 
     public static string GetDropTag() => "Drop";
@@ -19,6 +21,8 @@ public class TagsHandler
     public static bool IsEnemy(string tag) => _enemyTags.Contains(tag);
 
     public static string GetPlayerTag() => _playerTag;
+
+    public static string GetPlayerCamera() => _playerCamera;
 
     public static string GetDestroyVolumeTag() => _destroyVolume;
 

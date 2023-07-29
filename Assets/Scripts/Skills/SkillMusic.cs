@@ -102,6 +102,7 @@ public sealed class SkillMusic : MonoBehaviour, IUpgradable
                     _projectileCount = 8;
                     _coolDown = 0.0f;
                     _projectileFrequency = 0.05f;
+                    _spawnAngle = 360f / _projectileFrequency * (_projectileCount + GlobalBonuses.Instance.GetAdditionalProjectilesCount());
                     break;
             }
 
