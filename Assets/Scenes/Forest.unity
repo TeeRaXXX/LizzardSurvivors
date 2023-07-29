@@ -17119,9 +17119,29 @@ PrefabInstance:
       propertyPath: _pickupCollider
       value: 
       objectReference: {fileID: 2035090196}
+    - target: {fileID: 888276704592537586, guid: dff3e4405503f774ba631c05201f2c23, type: 3}
+      propertyPath: m_Size.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 888276704592537586, guid: dff3e4405503f774ba631c05201f2c23, type: 3}
+      propertyPath: m_Size.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 888276704592537586, guid: dff3e4405503f774ba631c05201f2c23, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2327821200362620280, guid: dff3e4405503f774ba631c05201f2c23, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 2592152727284783939, guid: dff3e4405503f774ba631c05201f2c23, type: 3}
+      propertyPath: m_Size.x
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 2592152727284783939, guid: dff3e4405503f774ba631c05201f2c23, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5219232333935778266, guid: dff3e4405503f774ba631c05201f2c23, type: 3}
       propertyPath: m_Sprite
@@ -17149,7 +17169,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7205413643672830204, guid: dff3e4405503f774ba631c05201f2c23, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -3.03
       objectReference: {fileID: 0}
     - target: {fileID: 7205413643672830204, guid: dff3e4405503f774ba631c05201f2c23, type: 3}
       propertyPath: m_LocalPosition.y

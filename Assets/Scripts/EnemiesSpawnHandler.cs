@@ -35,6 +35,8 @@ public class EnemiesSpawnHandler : MonoBehaviour, IInitializeable
         if (gameMinute < _level.EnemiesWaves.Count)
             _enemiesToSpawn = _level.EnemiesWaves[gameMinute];
         else _enemiesToSpawn = _level.EnemiesWaves[_level.EnemiesWaves.Count - 1];
+
+        SpawnBoss(_enemiesToSpawn.Boss);
     }
 
     private void SpawnEnemy(int gameTimeInSeconds)
@@ -53,6 +55,13 @@ public class EnemiesSpawnHandler : MonoBehaviour, IInitializeable
                 if (_currentEnemiesCount >= _maxEnemiesCount) break;
             }
         }
+    }
+
+    private void SpawnBoss(EnemyType boss)
+    {
+        GameObject bossToSpawn = _allEnemies.EnemiesList.Find(obj => obj.EnemyType == boss).EnemyPrefab;
+        Instantiate(bossToSpawn, GetSpawnPosition(), new Quaternion());
+        _currentEnemiesCount++;
     }
 
     private EnemyType GetRandomEnemy(out int spawnCount)

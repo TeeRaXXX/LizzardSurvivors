@@ -18,11 +18,11 @@ public class PlayerLevel
 
     private static PlayerLevel _instance;
     private int _level;
-    private float _experience;
-    private float _experienceToLevelUp;
+    private int _experience;
+    private int _experienceToLevelUp;
 
-    public float Experience => _experience;
-    public float Level => _level;
+    public int Experience => _experience;
+    public int Level => _level;
 
     private PlayerLevel() { }
 
@@ -30,31 +30,42 @@ public class PlayerLevel
     {
         _level = startLevel;
         UpdateExperienceToLevelUp();
-        _experience = 0f;
+        _experience = 0;
     }
 
-    public void GetExperience(float experience)
+    public void GetExperience(int experience)
     {
         if (experience <= 0)
             throw new IndexOutOfRangeException($"try to apply {experience} experience");
 
-        _experience += experience;
-        CheckExperience();
-        EventManager.OnExperienceUpEvent(_experience, _experienceToLevelUp);
-    }
+        int expToAdd = experience;
+        int levelsToAdd = 0;
 
-    private void CheckExperience()
-    {
-        if (_experience >= _experienceToLevelUp)
+        while (expToAdd > _experienceToLevelUp - _experience)
         {
+            levelsToAdd++;
+            expToAdd -= _experienceToLevelUp - _experience;
             _experience = 0;
-            LevelUp();
+            UpdateExperienceToLevelUp();
         }
+
+        _experience += expToAdd;
+
+        EventManager.OnExperienceUpEvent(_experience, _experienceToLevelUp);
+
+        if (levelsToAdd > 0)
+            LevelUp(levelsToAdd);
     }
 
     public void ResetLevel()
     {
         _instance = null;
+    }
+
+    private void LevelUp(int levelsToAdd)
+    {
+        _level += levelsToAdd;
+        EventManager.OnLevelUpEvent(levelsToAdd);
     }
 
     private void UpdateExperienceToLevelUp()
@@ -85,12 +96,5 @@ public class PlayerLevel
 
         else if (_level >= 1001)
             _experienceToLevelUp = _level * 300;
-    }
-
-    private void LevelUp()
-    {
-        _level++;
-        UpdateExperienceToLevelUp();
-        EventManager.OnLevelUpEvent(_level);
     }
 }

@@ -6,6 +6,8 @@ public class PlayerInventory
     private SkillsSpawner _skillsSpawner;
     private static int _maximumSkillsCount = 12;
     private List<SkillsEvolutionSO> _skillsEvolutionList;
+    private List<SkillType> _skillsToAvoid;
+    private int skillsToOfferCount;
 
     public static Dictionary<SkillType, int> Skills { get; private set; }
     public static int Coins { get; private set; } = 0;
@@ -15,12 +17,14 @@ public class PlayerInventory
     public void InitInventory(SkillType baseSkill, SkillsSpawner skillsSpawner, int coins = 0)
     {
         Skills = new Dictionary<SkillType, int>();
+        _skillsToAvoid = new List<SkillType>();
         EventManager.OnLevelUp.AddListener(OnLevelUp);
         EventManager.OnSkillAdded.AddListener(AddSkill);
         EventManager.OnChestPickUp.AddListener(OnChestPickUp);
         _skillsSpawner = skillsSpawner;
         _skillsEvolutionList = skillsSpawner.GetSkillsEvolutionList();
         Coins = coins;
+        skillsToOfferCount = 3;
         LevelPoints = 0;
         Level = 1;
         _skillsSpawner.SpawnSkill(baseSkill, 1, out bool isMaxLevel);
@@ -51,7 +55,7 @@ public class PlayerInventory
         GetNewSkills();
     }
 
-    private void GetNewSkills(int skillsCount = 3)
+    public List<SkillType> GetNewSkills()
     {
         List<SkillType> avoidSkills = new List<SkillType>();
 
@@ -62,10 +66,15 @@ public class PlayerInventory
         foreach (var skill in _skillsSpawner.GetEvolvedSkills())
             avoidSkills.Add(skill);
 
+        foreach (var skill in _skillsToAvoid)
+            avoidSkills.Add(skill);
+
         List<SkillType> skills = new List<SkillType>(GameDataStorage.Instance.GameData.GetDiscoveredSkillsInstead(avoidSkills));
         List<SkillType> newSkills = new List<SkillType>();
-        
-        if (skills.Count < skillsCount)
+
+        int skillsCount = skillsToOfferCount;
+
+        if (skills.Count < skillsToOfferCount)
             skillsCount = skills.Count;
 
         for (int i = 0; i < skillsCount; i++)
@@ -75,7 +84,7 @@ public class PlayerInventory
             skills.Remove(skills[index]);
         }
 
-        EventManager.OnNewSkillsOfferEvent(newSkills);
+        return newSkills;
     }
 
     private void OnChestPickUp()
@@ -100,6 +109,7 @@ public class PlayerInventory
         foreach (var skillToDelete in skillsToDelete)
         {
             Skills.Remove(skillToDelete);
+            _skillsToAvoid.Add(skillToDelete);
             EventManager.OnSkillDeletedEvent(skillToDelete, _skillsSpawner.GetCurrentSkillLevel(skillToDelete));
             _skillsSpawner.DeleteSkill(skillToDelete);
         }

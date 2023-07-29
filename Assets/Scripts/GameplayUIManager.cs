@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -38,6 +39,6 @@ public class GameplayUIManager : MonoBehaviour
 
     private void UpdatePlayerLevel(int level)
     {
-        _playerLevel.text = level.ToString();
+        _playerLevel.text = (Int32.Parse(_playerLevel.text) + level).ToString();
     }
 }

@@ -39,6 +39,8 @@ public class PlayerCharacter : MonoBehaviour
         _playerInventory.InitInventory(_selectedCharacter.BaseActiveSkill, skillsHandler, 0);
     }
 
+    public PlayerInventory GetPlayerInventory() => _playerInventory;
+
     private void OnHelthChangedEvent(float newHealth, float oldHealth, GameObject damageSource)
     {
         EventManager.OnPlayerHealthChangedEvent(newHealth, _selectedCharacter.CharacterBaseStats.GetMaxHealth());

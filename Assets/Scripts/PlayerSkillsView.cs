@@ -17,6 +17,7 @@ public class PlayerSkillsView : MonoBehaviour
 
     private SkillsSpawner _skillsHandler;
     private List<SkillType> _currentChoice;
+    private int _skillsToOfferCount;
 
     public void Initialize(SkillsSpawner skillsHandler)
     {
@@ -26,7 +27,7 @@ public class PlayerSkillsView : MonoBehaviour
         ResetAllSkills();
         EventManager.OnSkillAdded.AddListener(AddSkill);
         EventManager.OnSkillDeleted.AddListener(DeleteSkill);
-        EventManager.OnNewSkillsOffer.AddListener(OfferNewSkills);
+        EventManager.OnLevelUp.AddListener(OfferNewSkills);
     }
 
     private void AddSkill(SkillType skillType, int skillLevel)
@@ -112,11 +113,19 @@ public class PlayerSkillsView : MonoBehaviour
         }
     }
 
-    private void OfferNewSkills(List<SkillType> skillsToOffer)
+    private void OfferNewSkills(int levelsCount)
+    {
+        _skillsToOfferCount = levelsCount;
+        OfferNewSkillsView();
+    }
+
+    private void OfferNewSkillsView()
     {
         Time.timeScale = 0;
         ResetSkillsOfferWindow();
         _skillsOfferScreen.gameObject.SetActive(true);
+
+        var skillsToOffer = FindAnyObjectByType<PlayerCharacter>().GetPlayerInventory().GetNewSkills();
 
         for (int i = 0; i < skillsToOffer.Count; i++)
         {
@@ -125,6 +134,8 @@ public class PlayerSkillsView : MonoBehaviour
             _skillsOfferDescriptions[i].text = _skillsHandler.GetSkillName(skillsToOffer[i])
                 + " level " + (_skillsHandler.GetCurrentSkillLevel(skillsToOffer[i]) + 1);
         }
+
+        _skillsToOfferCount--;
     }
 
     private void ResetSkillsOfferWindow()
@@ -147,9 +158,14 @@ public class PlayerSkillsView : MonoBehaviour
         _skillsHandler.SpawnSkill(_currentChoice[skillNumber],
                                   _skillsHandler.GetCurrentSkillLevel(_currentChoice[skillNumber]) + 1,
                                   out bool isMaxLevel);
-
-        _skillsOfferScreen.gameObject.SetActive(false);
-        Time.timeScale = 1;
+        if (_skillsToOfferCount > 0)
+            OfferNewSkillsView();
+        else
+        {
+            _skillsOfferScreen.gameObject.SetActive(false);
+            Time.timeScale = 1;
+        }
+        
     }
 
     public void SkipSkillChoice()

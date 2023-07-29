@@ -17,17 +17,17 @@ MonoBehaviour:
   EnemiesWaves:
   - Minute: 0
     SpawnFrequency: 1
-    Boss: 0
+    Boss: 3
     EnemiesPercents:
     - Enemy: 0
-      Percent: 0.8
+      Percent: 0.7
       SpawnCount: 1
-    - Enemy: 1
-      Percent: 0.2
+    - Enemy: 4
+      Percent: 0.3
       SpawnCount: 1
   - Minute: 1
     SpawnFrequency: 1
-    Boss: 0
+    Boss: 5
     EnemiesPercents:
     - Enemy: 0
       Percent: 0.5

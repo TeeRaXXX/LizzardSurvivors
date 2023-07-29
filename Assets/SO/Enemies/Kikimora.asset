@@ -18,12 +18,12 @@ MonoBehaviour:
   EnemyAnimationController: {fileID: 9100000, guid: 2464f723290502f45b7a137ffd132541, type: 2}
   EnemyBaseStats:
     _healthRecovery: 0
-    _maxHealth: 50
+    _maxHealth: 75
     _armor: 0
     _moveSpeed: 1.25
     _damage: 2
     _attackSpeed: 0.1
-    _attackRadius: 1
+    _attackRadius: 0.4
   EnemyType: 4
   EnemyPrefab: {fileID: 4239325755424782172, guid: e1fb562255c8c8c4c8b1d58e63c70b12, type: 3}
   Drops:

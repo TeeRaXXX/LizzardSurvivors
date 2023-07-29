@@ -10,25 +10,27 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 510b5ecc2b3021444be610aa2dacbb13, type: 3}
-  m_Name: SnailMedium
+  m_Name: Boss_SnailLarge
   m_EditorClassIdentifier: 
-  EnemyName: Medium Snail
+  EnemyName: Large Snail
   EnemyDescription: The weakest lizard in the lizard army. Can be dangerous in a
     large group
-  EnemyBaseSprite: {fileID: -1547854746, guid: 1d4f5e5c67f1b3242ac90f504ccc8944, type: 3}
-  EnemyAnimationController: {fileID: 9100000, guid: 31d2472bc1fe98a40b60bcd7dd5f529e, type: 2}
+  EnemyBaseSprite: {fileID: -555305329, guid: 1d4f5e5c67f1b3242ac90f504ccc8944, type: 3}
+  EnemyAnimationController: {fileID: 9100000, guid: cc2aa6a120a62974b88d6819ea484ae6, type: 2}
   EnemyBaseStats:
     _healthRecovery: 0
-    _maxHealth: 100
+    _maxHealth: 500
     _armor: 0
-    _moveSpeed: 0.75
-    _damage: 0.25
-    _attackSpeed: 1
-    _attackRadius: 0.4
-  EnemyType: 2
-  EnemyPrefab: {fileID: 6017871896212215155, guid: b08745adb90a9084bba8e78a27cc4b63, type: 3}
+    _moveSpeed: 0.5
+    _damage: 3
+    _attackSpeed: 0.1
+    _attackRadius: 0.5
+  EnemyType: 5
+  EnemyPrefab: {fileID: 4239325755424782172, guid: 06c68b119753bfb45804e89efecec7b6, type: 3}
   Drops:
   - DropPrefab: {fileID: 858945274545618952, guid: 8df36d66a40e3064c9b62dcc92fc7f75, type: 3}
-    DropChance: 0.5
-  ExperienceMin: 15
-  ExperienceMax: 20
+    DropChance: 1
+  - DropPrefab: {fileID: 3291764566432609683, guid: 971e82e11d063e74fb63090b9758c30a, type: 3}
+    DropChance: 1
+  ExperienceMin: 100
+  ExperienceMax: 150

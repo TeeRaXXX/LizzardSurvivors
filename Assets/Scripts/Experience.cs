@@ -12,14 +12,14 @@ public class Experience : MonoBehaviour, IDroppable
     [SerializeField] private float _bounceTime = 0.75f;
     [SerializeField] private float _speedMultiplier = 1.025f;
 
-    private float _experienceCount;
+    private int _experienceCount;
     private bool _isTaken;
     private Transform _captorTransform;
 
     public void Drop(SOEnemy enemy)
     {
         _isTaken = false;
-        _experienceCount = Random.Range(enemy.ExperienceMin, enemy.ExperienceMax);
+        _experienceCount = Random.Range((int)enemy.ExperienceMin, (int)enemy.ExperienceMax);
 
         for (int i = 0; i < _experienceMaxValue.Count - 1; i++)
         {
