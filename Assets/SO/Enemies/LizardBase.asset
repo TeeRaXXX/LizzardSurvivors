@@ -29,6 +29,6 @@ MonoBehaviour:
   EnemyPrefab: {fileID: 4239325755424782172, guid: 6483723f0de35e8479291517ee26d8b4, type: 3}
   Drops:
   - DropPrefab: {fileID: 858945274545618952, guid: 8df36d66a40e3064c9b62dcc92fc7f75, type: 3}
-    DropChance: 0.5
-  ExperienceMin: 10
-  ExperienceMax: 15
+    DropChance: 0.65
+  ExperienceMin: 15
+  ExperienceMax: 20

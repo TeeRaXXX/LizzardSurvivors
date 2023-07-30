@@ -88,42 +88,49 @@ public class SkillDiarrheaCurse : MonoBehaviour, IUpgradable
             switch (_currentLevel)
             {
                 case 2:
+                    _spawnFrequency = 1.5f;
                     _moveSpeedReducePercent = 0.45f;
                     _damageRadius = 1.2f;
                     _damage = 5f;
                     break;
 
                 case 3:
+                    _spawnFrequency = 1.5f;
                     _moveSpeedReducePercent = 0.5f;
                     _damageRadius = 1.2f;
                     _damage = 7f;
                     break;
 
                 case 4:
+                    _spawnFrequency = 1.5f;
                     _moveSpeedReducePercent = 0.5f;
                     _damageRadius = 1.3f;
                     _damage = 7f;
                     break;
 
                 case 5:
+                    _spawnFrequency = 1f;
                     _moveSpeedReducePercent = 0.55f;
                     _damageRadius = 1.3f;
                     _damage = 9f;
                     break;
 
                 case 6:
+                    _spawnFrequency = 1f;
                     _moveSpeedReducePercent = 0.6f;
                     _damageRadius = 1.4f;
                     _damage = 9f;
                     break;
 
                 case 7:
+                    _spawnFrequency = 1f;
                     _moveSpeedReducePercent = 0.6f;
                     _damageRadius = 1.4f;
                     _damage = 11f;
                     break;
 
                 case 8:
+                    _spawnFrequency = 0.5f;
                     _moveSpeedReducePercent = 0.7f;
                     _damageRadius = 1.5f;
                     _damage = 11f;

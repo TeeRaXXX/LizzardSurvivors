@@ -64,8 +64,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.06, y: 0}
-  m_Size: {x: 0.44, y: 0.74}
+  m_Offset: {x: 0, y: -0.12}
+  m_Size: {x: 0.44, y: 0.5}
   m_Direction: 0
 --- !u!1 &4239325755424782172
 GameObject:
@@ -84,7 +84,7 @@ GameObject:
   - component: {fileID: 6120897895792922451}
   - component: {fileID: 2636511646015779458}
   m_Layer: 0
-  m_Name: P_Kikimora_01
+  m_Name: P_Frog_01
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -152,7 +152,7 @@ MonoBehaviour:
   _enemyAnimator: {fileID: 5952047227677994976}
   _followPlayerComponent: {fileID: 2504083351737121902}
   _healthComponent: {fileID: 5423103506854328110}
-  _enemyParams: {fileID: 11400000, guid: aeb21c8dde2bd6041a2a370e9da91645, type: 2}
+  _enemyParams: {fileID: 11400000, guid: e30b56025c11d884d97466cc8112cd4a, type: 2}
   _spriteFlipper: {fileID: 8841142161130953768}
   _damageDigitView: {fileID: 8385778797898642923, guid: 9a40cbae0e40ae647a2c363471140c0e, type: 3}
   _damageDigitViewPosition: {fileID: 3366313941017750381}
@@ -218,7 +218,7 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.16, y: -0.15}
+  m_Offset: {x: -0.02, y: -0.15}
   m_Size: {x: 0.8, y: 0.8}
   m_Direction: 0
 --- !u!114 &6120897895792922451
@@ -320,7 +320,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 765211458, guid: e989868a50d1dc544844947142c38549, type: 3}
+  m_Sprite: {fileID: 849013857, guid: 4120044fdff0c8c4da77367840666099, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -341,7 +341,7 @@ Animator:
   m_GameObject: {fileID: 5976161744550932073}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 2464f723290502f45b7a137ffd132541, type: 2}
+  m_Controller: {fileID: 9100000, guid: 690a091dcf4ba6e4082f34dde56f9e36, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -423,7 +423,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6535635679095075172}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.163, y: -0.15, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -475,9 +475,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.1}
+  m_Offset: {x: 0, y: -0.13}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.35
 --- !u!50 &3373691778057669013
 Rigidbody2D:
   serializedVersion: 4

@@ -7,5 +7,8 @@ using System;
     SnailMedium,
     SnailLarge,
     Kikimora,
-    SnailLargeBoss
+    SnailLargeBoss,
+    FrogBase,
+    ChameleonBase
+
 }

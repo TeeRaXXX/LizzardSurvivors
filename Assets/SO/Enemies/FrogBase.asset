@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 510b5ecc2b3021444be610aa2dacbb13, type: 3}
+  m_Name: FrogBase
+  m_EditorClassIdentifier: 
+  EnemyName: Frog
+  EnemyDescription: Frog
+  EnemyBaseSprite: {fileID: 849013857, guid: 4120044fdff0c8c4da77367840666099, type: 3}
+  EnemyAnimationController: {fileID: 9100000, guid: b445704621454c6479a4178eb03dbca4, type: 2}
+  EnemyBaseStats:
+    _healthRecovery: 0
+    _maxHealth: 25
+    _armor: 5
+    _moveSpeed: 1.4
+    _damage: 3
+    _attackSpeed: 0.1
+    _attackRadius: 0.4
+  EnemyType: 6
+  EnemyPrefab: {fileID: 4239325755424782172, guid: 4acb2cb85d790d64186f243159e6e335, type: 3}
+  Drops:
+  - DropPrefab: {fileID: 858945274545618952, guid: 8df36d66a40e3064c9b62dcc92fc7f75, type: 3}
+    DropChance: 0.6
+  ExperienceMin: 20
+  ExperienceMax: 25
