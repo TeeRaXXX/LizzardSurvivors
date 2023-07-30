@@ -85,6 +85,14 @@ MonoBehaviour:
     IsEvolution: 0
     SkillPrefab: {fileID: 2833199398546552833, guid: ae4394dcce77ea249917a9b2b7865bd4, type: 3}
     SkillLogo: {fileID: 21300000, guid: d8947d9d74c63af42a36e8e957efd42c, type: 3}
+  - SkillType: 12
+    Name: Roots
+    Description: Roots
+    MaxLevel: 8
+    IsActive: 1
+    IsEvolution: 0
+    SkillPrefab: {fileID: 2833199398546552833, guid: 6f41033c73d98ee4d816f66209924798, type: 3}
+    SkillLogo: {fileID: 21300000, guid: 9e7b36d0b2481e644895c8f6a9b16819, type: 3}
   SkillsEvolutionList:
   - FirstSkill: 1
     SecondSkill: 7

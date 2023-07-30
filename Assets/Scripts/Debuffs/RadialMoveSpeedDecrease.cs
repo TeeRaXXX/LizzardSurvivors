@@ -24,15 +24,26 @@ public class RadialMoveSpeedDecrease : MonoBehaviour, IDebuff
         End();
     }
 
-    public void Initialize(float moveSpeedReducePercent, List<string> tagsToDebuff, float moveSpeedReduceRadius, float lifeTime)
+    public void Initialize(float moveSpeedReducePercent, List<string> tagsToDebuff, float moveSpeedReduceRadius, float lifeTime = -1)
     {
         _enemiesDebuffs = new List<DebuffsHandler>();
         _moveSpeedReducePercent = moveSpeedReducePercent;
         _tagsToDebuff = tagsToDebuff;
-        _lifeTime = lifeTime;
         transform.localScale = new Vector3(moveSpeedReduceRadius, moveSpeedReduceRadius, 1f);
         InitDebuff(_soBuffDebuffInfo.BuffsDebuffs.Find(obj => obj.Name == _debuffName));
-        StartCoroutine(OnLifeTime());
+        if (lifeTime > 0) 
+        {
+            _lifeTime = lifeTime;
+            StartCoroutine(OnLifeTime());
+        }
+    }
+
+    public void UpdateStats(float moveSpeedReducePercent, List<string> tagsToDebuff, float moveSpeedReduceRadius)
+    {
+        _enemiesDebuffs = new List<DebuffsHandler>();
+        _moveSpeedReducePercent = moveSpeedReducePercent;
+        _tagsToDebuff = tagsToDebuff;
+        transform.localScale = new Vector3(moveSpeedReduceRadius, moveSpeedReduceRadius, 1f);
     }
 
     public void InitDebuff(BuffDebuffInfoSO info)
