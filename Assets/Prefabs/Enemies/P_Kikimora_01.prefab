@@ -81,6 +81,8 @@ GameObject:
   - component: {fileID: 2504083351737121902}
   - component: {fileID: 5423103506854328110}
   - component: {fileID: 6993678453238373743}
+  - component: {fileID: 6120897895792922451}
+  - component: {fileID: 2636511646015779458}
   m_Layer: 0
   m_Name: P_Kikimora_01
   m_TagString: Enemy
@@ -155,6 +157,8 @@ MonoBehaviour:
   _damageDigitView: {fileID: 8385778797898642923, guid: 9a40cbae0e40ae647a2c363471140c0e, type: 3}
   _damageDigitViewPosition: {fileID: 3366313941017750381}
   _radialDamage: {fileID: 1945318315037353241}
+  _buffsHandler: {fileID: 2636511646015779458}
+  _debuffsHandler: {fileID: 6120897895792922451}
 --- !u!114 &2504083351737121902
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,6 +221,30 @@ CapsuleCollider2D:
   m_Offset: {x: 0.16, y: -0.15}
   m_Size: {x: 0.8, y: 0.8}
   m_Direction: 0
+--- !u!114 &6120897895792922451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4239325755424782172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7bff441eb15b4c488b54151193574b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2636511646015779458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4239325755424782172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbbfec431aa5ebf429c3fdd1da7e69e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5976161744550932073
 GameObject:
   m_ObjectHideFlags: 0

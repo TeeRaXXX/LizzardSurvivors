@@ -262,6 +262,8 @@ GameObject:
   - component: {fileID: 505181491693312959}
   - component: {fileID: 6536083953165259908}
   - component: {fileID: 5463349280822813658}
+  - component: {fileID: 4115455688204234273}
+  - component: {fileID: 1598043745697928073}
   m_Layer: 0
   m_Name: P_Snail_Medium
   m_TagString: SnailMedium
@@ -308,6 +310,8 @@ MonoBehaviour:
   _damageDigitView: {fileID: 8385778797898642923, guid: 9a40cbae0e40ae647a2c363471140c0e, type: 3}
   _damageDigitViewPosition: {fileID: 93909599824075366}
   _radialDamage: {fileID: 203494184622120492}
+  _buffsHandler: {fileID: 4115455688204234273}
+  _debuffsHandler: {fileID: 1598043745697928073}
 --- !u!114 &6628282171582870138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -428,3 +432,27 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.25
+--- !u!114 &4115455688204234273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6017871896212215155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbbfec431aa5ebf429c3fdd1da7e69e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1598043745697928073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6017871896212215155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7bff441eb15b4c488b54151193574b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

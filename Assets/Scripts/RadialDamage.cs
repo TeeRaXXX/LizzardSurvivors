@@ -20,10 +20,13 @@ public class RadialDamage : MonoBehaviour
         _objectsToDamage = new List<Collider2D>();
     }
 
-    public void Initialize(List<string> tagsToDamage, float damageRadius, float damage, float damageFrequency)
+    public void Initialize(List<string> tagsToDamage, float damageRadius, float damage, float damageFrequency, float lifeTime = -1f)
     {
         UpdateStats(tagsToDamage, damageRadius, damage, damageFrequency);
         _isEnable = true;
+
+        if (lifeTime > 0f)
+            StartCoroutine(LifeTime(lifeTime));
     }
 
     public void UpdateStats(List<string> tagsToDamage, float damageRadius, float damage, float damageFrequency)
@@ -42,6 +45,11 @@ public class RadialDamage : MonoBehaviour
         {
             StartCoroutine(MakeDamage());
         }
+    }
+    private IEnumerator LifeTime(float lifeTime)
+    {
+        yield return new WaitForSeconds(lifeTime);
+        Destroy(gameObject);
     }
 
     private IEnumerator MakeDamage()

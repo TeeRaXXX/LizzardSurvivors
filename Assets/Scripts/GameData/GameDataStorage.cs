@@ -81,6 +81,7 @@ public class GameDataStorage
         GameData.AddOpenedSkill(SkillType.TotemProjectiles, true);
         GameData.AddOpenedSkill(SkillType.MusicEvolved, true);
         GameData.AddOpenedSkill(SkillType.Music, true);
+        GameData.AddOpenedSkill(SkillType.CurseDiarrhea, true);
 
         SaveData();
     }

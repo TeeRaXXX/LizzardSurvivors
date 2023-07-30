@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
-public class InputManager : MonoBehaviour, IInitializeable
+public class InputManager : MonoBehaviour
 {
     public static readonly UnityEvent<Vector2> OnMoveButtonPressed = new UnityEvent<Vector2>();
     public static readonly UnityEvent OnMoveButtonReleased = new UnityEvent();

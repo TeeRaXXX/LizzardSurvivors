@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class GameTimer : MonoBehaviour, IInitializeable
+public class GameTimer : MonoBehaviour
 {
     public static GameTimer Instance;
 

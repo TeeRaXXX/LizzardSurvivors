@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SOSkills
   m_EditorClassIdentifier: 
   SkillsList:
-  - SkillType: 0
+  - SkillType: 1
     Name: Music
     Description: Ochen plohaya muzika
     MaxLevel: 8
@@ -21,7 +21,7 @@ MonoBehaviour:
     IsEvolution: 0
     SkillPrefab: {fileID: 9093520788274658227, guid: 1d3d905b7bded0d47b8a87a40914f225, type: 3}
     SkillLogo: {fileID: 21300000, guid: 9df7a5f60b7aef64281b079a6beb9fe7, type: 3}
-  - SkillType: 1
+  - SkillType: 2
     Name: Music Evolved
     Description: Ochen horoshaya muzika
     MaxLevel: 8
@@ -29,15 +29,7 @@ MonoBehaviour:
     IsEvolution: 1
     SkillPrefab: {fileID: 9093520788274658227, guid: 43886762b89294442bf6ee9963fc7b96, type: 3}
     SkillLogo: {fileID: 21300000, guid: 6cc87acd14cff744aa1dd1140657d27e, type: 3}
-  - SkillType: 5
-    Name: Additionals projectiles
-    Description: Additionals projectiles
-    MaxLevel: 8
-    IsActive: 0
-    IsEvolution: 0
-    SkillPrefab: {fileID: 4142236178876412807, guid: d8ac93ee9cb22c841926afc583b14f21, type: 3}
-    SkillLogo: {fileID: 21300000, guid: efb70162ee6f6e641a7e15375afb09d5, type: 3}
-  - SkillType: 8
+  - SkillType: 9
     Name: Auto Heal
     Description: Auto heal player character
     MaxLevel: 8
@@ -45,7 +37,7 @@ MonoBehaviour:
     IsEvolution: 0
     SkillPrefab: {fileID: 4142236178876412807, guid: e9ec4dc991bd0d246afdd3269b573553, type: 3}
     SkillLogo: {fileID: 21300000, guid: 22a877a9c7cf8354299c74b6bbf6e220, type: 3}
-  - SkillType: 2
+  - SkillType: 3
     Name: Totem AOE Damage
     Description: Totems Huems
     MaxLevel: 8
@@ -53,7 +45,7 @@ MonoBehaviour:
     IsEvolution: 0
     SkillPrefab: {fileID: 1390659264823969448, guid: 41948db98fc19ad49be4be242583b18b, type: 3}
     SkillLogo: {fileID: 21300000, guid: 46a2b93b858e4db4fa02a460e7fe0121, type: 3}
-  - SkillType: 3
+  - SkillType: 4
     Name: Totem AOE Heal
     Description: Totems Huems
     MaxLevel: 8
@@ -61,7 +53,7 @@ MonoBehaviour:
     IsEvolution: 0
     SkillPrefab: {fileID: 1390659264823969448, guid: faa1e4541993f204ba797425572c203d, type: 3}
     SkillLogo: {fileID: 21300000, guid: c7cac832300b1b94f886df344ceeb094, type: 3}
-  - SkillType: 4
+  - SkillType: 5
     Name: Totem Projectiles
     Description: Totem Projectiles
     MaxLevel: 8
@@ -69,7 +61,7 @@ MonoBehaviour:
     IsEvolution: 0
     SkillPrefab: {fileID: 1390659264823969448, guid: 0ff78206bd5f2bc48aeb6db36ff01c84, type: 3}
     SkillLogo: {fileID: 21300000, guid: 4f51828bec2d314439ad8779ce8ec01d, type: 3}
-  - SkillType: 6
+  - SkillType: 7
     Name: Additional Projectiles
     Description: Additional Projectiles
     MaxLevel: 8
@@ -77,7 +69,7 @@ MonoBehaviour:
     IsEvolution: 0
     SkillPrefab: {fileID: 4142236178876412807, guid: d8ac93ee9cb22c841926afc583b14f21, type: 3}
     SkillLogo: {fileID: 21300000, guid: efb70162ee6f6e641a7e15375afb09d5, type: 3}
-  - SkillType: 7
+  - SkillType: 8
     Name: Additional AOE Radius
     Description: Additional AOE Radius
     MaxLevel: 8
@@ -85,8 +77,16 @@ MonoBehaviour:
     IsEvolution: 0
     SkillPrefab: {fileID: 4142236178876412807, guid: 223aa8c0f80be7a4b97a53281896d025, type: 3}
     SkillLogo: {fileID: 21300000, guid: 50f6fe2b4cbf9424f9389ac56899f497, type: 3}
+  - SkillType: 14
+    Name: Curse Diarrhea
+    Description: Curse Diarrhea
+    MaxLevel: 8
+    IsActive: 1
+    IsEvolution: 0
+    SkillPrefab: {fileID: 2833199398546552833, guid: ae4394dcce77ea249917a9b2b7865bd4, type: 3}
+    SkillLogo: {fileID: 21300000, guid: d8947d9d74c63af42a36e8e957efd42c, type: 3}
   SkillsEvolutionList:
-  - FirstSkill: 0
-    SecondSkill: 6
-    EvolvedSkill: 1
-    SkillsToDeleteAfterEvolution: 00000000
+  - FirstSkill: 1
+    SecondSkill: 7
+    EvolvedSkill: 2
+    SkillsToDeleteAfterEvolution: 01000000

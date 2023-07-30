@@ -133,6 +133,8 @@ GameObject:
   - component: {fileID: 9051998896289869838}
   - component: {fileID: 2504083351737121902}
   - component: {fileID: 5423103506854328110}
+  - component: {fileID: 534641159751400165}
+  - component: {fileID: 5597546530018593302}
   - component: {fileID: 6993678453238373743}
   m_Layer: 0
   m_Name: P_Lizard_01
@@ -208,6 +210,8 @@ MonoBehaviour:
   _damageDigitView: {fileID: 8385778797898642923, guid: 9a40cbae0e40ae647a2c363471140c0e, type: 3}
   _damageDigitViewPosition: {fileID: 3366313941017750381}
   _radialDamage: {fileID: 1945318315037353241}
+  _buffsHandler: {fileID: 534641159751400165}
+  _debuffsHandler: {fileID: 5597546530018593302}
 --- !u!114 &2504083351737121902
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -233,6 +237,30 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0411f9d7b231ca947acb3953e56926f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &534641159751400165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4239325755424782172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbbfec431aa5ebf429c3fdd1da7e69e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5597546530018593302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4239325755424782172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7bff441eb15b4c488b54151193574b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!70 &6993678453238373743

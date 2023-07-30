@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerExperienceView : MonoBehaviour, IInitializeable
+public class PlayerExperienceView : MonoBehaviour
 {
     [SerializeField] private Transform _experienceBar;
 

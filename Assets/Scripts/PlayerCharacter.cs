@@ -13,6 +13,8 @@ public class PlayerCharacter : MonoBehaviour
     private PlayerStats _playerStats;
     private PlayerInventory _playerInventory;
     private SOCharacter _selectedCharacter;
+    private Buffs _buffs;
+    private Debuffs _debuffs;
 
     private readonly UnityEvent<float, float, GameObject> _onHealthChanged = new UnityEvent<float, float, GameObject>();
 
@@ -21,6 +23,8 @@ public class PlayerCharacter : MonoBehaviour
         _selectedCharacter = selectedCharacter;
         _playerStats = new PlayerStats();
         _playerStats.InitStats(_selectedCharacter);
+        _buffs = new Buffs();
+        _debuffs = new Debuffs();
 
         _PlayerHealthComponent.InitHealth(
             _selectedCharacter.CharacterBaseStats.GetMaxHealth(),

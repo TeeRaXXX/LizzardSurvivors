@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemiesSpawnHandler : MonoBehaviour, IInitializeable
+public class EnemiesSpawnHandler : MonoBehaviour
 {
     [SerializeField] private SOLevel _level;
     [SerializeField] private SOEnemies _allEnemies;

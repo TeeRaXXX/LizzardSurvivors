@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemiesDeathHandler : MonoBehaviour, IInitializeable
+public class EnemiesDeathHandler : MonoBehaviour
 {
     public void Initialize()
     {

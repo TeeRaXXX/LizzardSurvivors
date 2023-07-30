@@ -6,12 +6,25 @@ public class FollowObjectComponent : MonoBehaviour
     [SerializeField] private Rigidbody2D _rigidbody;
     [SerializeField] private float _moveSpeed;
 
+    private BuffsHandler _buffsHandler;
+    private DebuffsHandler _debuffsHandler;
     private bool _isEnable;
 
     private void Awake()
     {
         _isEnable = false;
     }
+
+    public void Initialize(float moveSpeed, Transform followObject, BuffsHandler buffsHandler, DebuffsHandler debuffsHandler)
+    {
+        _buffsHandler = buffsHandler;
+        _debuffsHandler = debuffsHandler;
+        _moveSpeed = moveSpeed;
+        _followObject = followObject;
+        _isEnable = true;
+    }
+
+    public void SetFollowObject(Transform followObject) => _followObject = followObject;
 
     private void FixedUpdate()
     {
@@ -20,16 +33,11 @@ public class FollowObjectComponent : MonoBehaviour
             var moveDirection = new Vector3(_followObject.position.x - transform.position.x,
                                             _followObject.position.y - transform.position.y,
                                             0f).normalized;
-            _rigidbody.MovePosition(transform.position + moveDirection * _moveSpeed * Time.deltaTime);
+
+            float moveSpeed = _moveSpeed - (_moveSpeed * _debuffsHandler.GetMoveSpeedDebuff()) + 
+                                           (_moveSpeed * _buffsHandler.GetMoveSpeedBuff());
+
+            _rigidbody.MovePosition(transform.position + moveDirection * moveSpeed * Time.deltaTime);
         }
     }
-
-    public void SetMoveSpeed(float moveSpeed) => _moveSpeed = moveSpeed;
-
-    public void SetFollowObject(Transform followObject)
-    {
-        _followObject = followObject;
-    }
-
-    public void SetActive(bool isEnable) => _isEnable = isEnable;
 }
