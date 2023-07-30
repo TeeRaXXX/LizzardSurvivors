@@ -3,6 +3,8 @@ using System;
 using UnityEditor;
 using UnityEngine;
 
+
+#if UNITY_EDITOR
 public class EditorGodMode : EditorWindow
 {
     private int index = 0;
@@ -110,3 +112,4 @@ public class EditorGodMode : EditorWindow
         }  
     }
 }
+#endif

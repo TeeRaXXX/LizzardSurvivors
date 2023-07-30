@@ -1,7 +1,8 @@
 using UnityEditor;
 using UnityEngine;
 
-public class EditorGameData : EditorWindow 
+#if UNITY_EDITOR
+public class EditorGameData : EditorWindow
 {
     [MenuItem("Nasty Doll/Game Data")]
     public static void ShowWindow()
@@ -17,3 +18,4 @@ public class EditorGameData : EditorWindow
         }
     }
 }
+#endif

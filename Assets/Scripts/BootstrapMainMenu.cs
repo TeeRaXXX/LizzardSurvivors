@@ -8,8 +8,6 @@ public class BootstrapMainMenu : MonoBehaviour
     private void Awake()
     {
         GameDataStorage.Instance.Initialize();
-
-        _inputManager.Initialize();
         _studioLogoView.Initialize();
     }
 }

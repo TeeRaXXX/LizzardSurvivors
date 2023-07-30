@@ -15,9 +15,14 @@ public class InputManager : MonoBehaviour
     public static void OnMenuButtonPressedEvent() => OnMenuButtonPressed.Invoke();
 
     private PlayerInputActions _inputActions;
+    private static bool _isInited;
 
-    public void Initialize()
+    public void Awake()
     {
+        if (_isInited)
+            Destroy(gameObject);
+
+        DontDestroyOnLoad(this);
         _inputActions = new PlayerInputActions();
         _inputActions.Player.Enable();
         _inputActions.UI.Enable();
@@ -27,6 +32,8 @@ public class InputManager : MonoBehaviour
 
         _inputActions.UI.Cancel.performed += BackButtonPressed;
         _inputActions.UI.Menu.performed += MenuButtonPressed;
+
+        _isInited = true;
     }
 
     ~InputManager()
