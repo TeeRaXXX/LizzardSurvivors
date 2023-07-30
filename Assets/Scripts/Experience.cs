@@ -34,6 +34,7 @@ public class Experience : MonoBehaviour, IDroppable
 
     public void OnTake()
     {
+        SoundManager.Instance.PlaySFX(AudioClipNames.GetClipExperiencePickup);
         PlayerLevel.Instance.GetExperience(_experienceCount);
         Destroy(gameObject);
     }
