@@ -12,7 +12,6 @@ public class ArrowPointer : MonoBehaviour
     private void Awake()
     {
         _basePosition = transform.localPosition;
-        _baseScale = transform.localScale;
         uiCamera = GameObject.FindGameObjectWithTag(TagsHandler.GetPlayerCamera()).GetComponent<Camera>();
     }
 
