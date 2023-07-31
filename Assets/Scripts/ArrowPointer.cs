@@ -8,12 +8,10 @@ public class ArrowPointer : MonoBehaviour
 
     private Camera uiCamera;
     private Vector3 _basePosition;
-    private Vector3 _baseScale;
 
     private void Awake()
     {
         _basePosition = transform.localPosition;
-        _baseScale = transform.localScale;
         uiCamera = GameObject.FindGameObjectWithTag(TagsHandler.GetPlayerCamera()).GetComponent<Camera>();
     }
 
@@ -21,7 +19,6 @@ public class ArrowPointer : MonoBehaviour
     {
         transform.localPosition = _basePosition;
         transform.eulerAngles = Vector3.zero;
-        transform.localScale = _baseScale;
 
 
         Vector3 _targetTransformScreenPoint = Camera.main.WorldToScreenPoint(_targetTransform.position);
@@ -30,7 +27,6 @@ public class ArrowPointer : MonoBehaviour
 
         if (isOffScreen)
         {
-            transform.localScale *= 1.5f;
             Vector3 cameraPosition = Camera.main.transform.position;
             cameraPosition.z = 0f;
             Vector3 direction = (cameraPosition - _targetTransform.position).normalized;
