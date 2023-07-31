@@ -245,7 +245,7 @@ MonoBehaviour:
   _enemyAnimator: {fileID: 2718214479488271459}
   _followPlayerComponent: {fileID: 2504083351737121902}
   _healthComponent: {fileID: 5423103506854328110}
-  _enemyParams: {fileID: 11400000, guid: 8eb157b77826d7d4f946179063db2cc1, type: 2}
+  _enemyParams: {fileID: 11400000, guid: ec303fb5e8e1d3549812e316db3d91c7, type: 2}
   _spriteFlipper: {fileID: 8000395224056481004}
   _damageDigitView: {fileID: 8385778797898642923, guid: 9a40cbae0e40ae647a2c363471140c0e, type: 3}
   _damageDigitViewPosition: {fileID: 6059010557553370890}

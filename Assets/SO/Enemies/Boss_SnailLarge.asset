@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 510b5ecc2b3021444be610aa2dacbb13, type: 3}
   m_Name: Boss_SnailLarge
   m_EditorClassIdentifier: 
-  EnemyName: Large Snail
-  EnemyDescription: The weakest lizard in the lizard army. Can be dangerous in a
-    large group
+  EnemyName: Large Snail Boss
+  EnemyDescription: Large Snail Boss
   EnemyBaseSprite: {fileID: -555305329, guid: 1d4f5e5c67f1b3242ac90f504ccc8944, type: 3}
   EnemyAnimationController: {fileID: 9100000, guid: cc2aa6a120a62974b88d6819ea484ae6, type: 2}
   EnemyBaseStats:
