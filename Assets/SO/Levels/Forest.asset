@@ -17,7 +17,7 @@ MonoBehaviour:
   EnemiesWaves:
   - Minute: 0
     SpawnFrequency: 1
-    Boss: 3
+    Boss: 5
     EnemiesPercents:
     - Enemy: 6
       Percent: 0.7

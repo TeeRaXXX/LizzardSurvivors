@@ -22,6 +22,26 @@ namespace NastyDoll.Utils {
             return (int)(baseSortingOrder - position.y) + offset;
         }
 
+        public static List<Vector3> GetRadialPoits(int pointsCount, float radius)
+        {
+            if (pointsCount == 1)
+                return new List<Vector3>{Vector3.zero};
+
+            if (radius < 0f)
+                radius = 0.2f;
+
+            List<Vector3> points = new List<Vector3>();
+            int angle = 360 / pointsCount;
+
+            for (int i = 0; i < pointsCount; i++)
+            {
+                points.Add(GetVectorFromAngle(angle) * radius);
+                angle += 360 / pointsCount;
+            }
+
+            return points;
+        }
+
         public static void Shuffle<T> (this IList<T> list)
         {
             int n = list.Count;

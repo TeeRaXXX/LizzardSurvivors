@@ -1,3 +1,4 @@
+using NastyDoll.Utils;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -80,16 +81,20 @@ public class EnemyCharacter : MonoBehaviour
     private void Drop()
     {
         if (_enemyParams.Drops.Count > 0)
-            foreach (var drop in _enemyParams.Drops)
-                if (Random.Range(0f, 1f) <= drop.DropChance)
+        {
+            var dropPositions = UtilsClass.GetRadialPoits(_enemyParams.Drops.Count, 0.3f);
+
+            for (int i = 0; i < _enemyParams.Drops.Count; i++)
+                if (Random.Range(0f, 1f) <= _enemyParams.Drops[i].DropChance)
                 {
-                    var spawnedDrop = Instantiate(drop.DropPrefab, transform.position, Quaternion.identity);
+                    var spawnedDrop = Instantiate(_enemyParams.Drops[i].DropPrefab, transform.position + dropPositions[i], Quaternion.identity);
 
                     IDroppable droppable;
 
                     if (spawnedDrop.TryGetComponent<IDroppable>(out droppable))
                         droppable.Drop(_enemyParams);
                 }
+        }
     }
 
     public EnemyStats GetStats() => _enemyParams.EnemyBaseStats;
