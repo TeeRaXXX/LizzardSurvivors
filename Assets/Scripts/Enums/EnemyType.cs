@@ -9,6 +9,7 @@ using System;
     Kikimora,
     SnailLargeBoss,
     FrogBase,
-    ChameleonBase
+    ChameleonBase,
+    VodianoyBoss
 
 }
