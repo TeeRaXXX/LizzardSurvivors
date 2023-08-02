@@ -10,6 +10,8 @@ TagManager:
   - SnailMedium
   - Drop
   - ExperienceTaker
+  - PlayerHealthBar
+  - SkillsHolder
   layers:
   - Default
   - TransparentFX

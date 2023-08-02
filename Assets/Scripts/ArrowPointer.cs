@@ -12,7 +12,7 @@ public class ArrowPointer : MonoBehaviour
     private void Awake()
     {
         _basePosition = transform.localPosition;
-        uiCamera = GameObject.FindGameObjectWithTag(TagsHandler.GetPlayerCamera()).GetComponent<Camera>();
+        uiCamera = GameObject.FindGameObjectWithTag(TagsHandler.GetPlayerCameraTag()).GetComponent<Camera>();
     }
 
     private void Update()

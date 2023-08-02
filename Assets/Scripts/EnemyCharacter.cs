@@ -82,7 +82,7 @@ public class EnemyCharacter : MonoBehaviour
     {
         if (_enemyParams.Drops.Count > 0)
         {
-            var dropPositions = UtilsClass.GetRadialPoits(_enemyParams.Drops.Count, 0.3f);
+            var dropPositions = UtilsClass.GetRadialPoints(_enemyParams.Drops.Count, 0.3f);
 
             for (int i = 0; i < _enemyParams.Drops.Count; i++)
                 if (Random.Range(0f, 1f) <= _enemyParams.Drops[i].DropChance)

@@ -16,6 +16,7 @@ public class GameplayUIManager : MonoBehaviour
 
     public void Initialize(SkillsSpawner skillsHandler)
     {
+        _playerHealthBar = GameObject.FindGameObjectWithTag(TagsHandler.GetPlayerHealthBarTag()).GetComponent<PlayerHealthView>();
         EventManager.OnNewGameSecond.AddListener(UpdateSecondsTimer);
         EventManager.OnLevelUp.AddListener(UpdatePlayerLevel);
         _playerHealthBar.Initialize();

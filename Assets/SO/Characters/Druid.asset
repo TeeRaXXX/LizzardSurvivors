@@ -28,4 +28,4 @@ MonoBehaviour:
     _projectilesBonus: 0
     _respawnTimes: 0
   CharacterType: 1
-  BaseActiveSkill: 2
+  BaseActiveSkill: 3

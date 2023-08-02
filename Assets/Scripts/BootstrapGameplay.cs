@@ -1,30 +1,34 @@
-using System.Linq;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class BootstrapGameplay : MonoBehaviour
 {
-    [SerializeField] private PlayerCharacter _playerCharacter;
-    [SerializeField] private EnemiesSpawnHandler _enemiesSpawnHandler;
-    [SerializeField] private GameTimer _gameTimer;
-    [SerializeField] private GameplayUIManager _gameplayUIManager;
-    [SerializeField] private SkillsSpawner _skillsSpawner;
+    [SerializeField] private GameObject _playerCharacter;
+    [SerializeField] private GameObject _enemiesSpawnHandler;
+    [SerializeField] private GameObject _gameTimer;
+    [SerializeField] private GameObject _gameplayUIManager;
+    [SerializeField] private GameObject _skillsSpawner;
     [SerializeField] private SOCharacters _charactersList;
-
-    [SerializeField] private int _startLevel;
+    public int StartLevel { get; private set; }
+    public GameObject GetPlayerCharacterPrefab => _playerCharacter;
+    public GameObject GetEnemiesSpawnHandlerPrefab => _enemiesSpawnHandler;
+    public GameObject GetGameTimerPrefab => _gameTimer;
+    public GameObject GetGameplayUIManagerPrefab => _gameplayUIManager;
+    public GameObject GetSkillsSpawnerPrefab => _skillsSpawner;
+    public SOCharacters GetCharactersList => _charactersList;
 
     private void Awake()
     {
         GameDataStorage.Instance.Initialize();
 
-#if UNITY_EDITOR
-        EditorGodMode.Initialize(_skillsSpawner);
-#endif
+        StartLevel = 1;
+        GameModeBuilder gameModeBuilder = new GameModeBuilder();
+        var gameMode = gameModeBuilder.GetGameMode(GameModes.Survival);
+        gameMode.Initialize(new List<CharacterType> { CharacterType.BabaYaga }, this);
+    }
 
-        _gameTimer.Initialize();
-        PlayerLevel.Instance.Initialize(_startLevel);
-        _enemiesSpawnHandler.Initialize();
-        _gameplayUIManager.Initialize(_skillsSpawner);
-        _playerCharacter.Initialize(_skillsSpawner,
-                                    _charactersList.CharactersList.FirstOrDefault(obj => obj.CharacterType == CharacterType.BabaYaga));
+    public GameObject SpawnGameplayObject(GameObject gameObject, Vector3 spawnPosition)
+    {
+        return Instantiate(gameObject, spawnPosition, Quaternion.identity);
     }
 }

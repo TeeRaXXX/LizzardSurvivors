@@ -17,6 +17,8 @@ public class SkillsSpawner : MonoBehaviour
 
     public void SpawnSkill(SkillType skillType, int level, out bool isMaxLevel)
     {
+        _skillsHolder = GameObject.FindGameObjectWithTag(TagsHandler.GetSkillsHolderTag()).GetComponent<Transform>();
+
         isMaxLevel = false;
 
         if (!_skills.ContainsKey(skillType))

@@ -22,7 +22,7 @@ namespace NastyDoll.Utils {
             return (int)(baseSortingOrder - position.y) + offset;
         }
 
-        public static List<Vector3> GetRadialPoits(int pointsCount, float radius)
+        public static List<Vector3> GetRadialPoints(int pointsCount, float radius)
         {
             if (pointsCount == 1)
                 return new List<Vector3>{Vector3.zero};

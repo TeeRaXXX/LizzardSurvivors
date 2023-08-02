@@ -95,32 +95,32 @@ public class SkillTotemAoeDamage : MonoBehaviour, IUpgradable
 
                 case 3:
                     _damage = 15f;
-                    _damageRadius = 1.1f;
+                    _damageRadius = 1.05f;
                     break;
 
                 case 4:
                     _damage = 20f;
-                    _damageRadius = 1.1f;
+                    _damageRadius = 1.05f;
                     break;
 
                 case 5:
                     _damage = 20f;
-                    _damageRadius = 1.2f;
+                    _damageRadius = 1.1f;
                     break;
 
                 case 6:
                     _damage = 25f;
-                    _damageRadius = 1.2f;
+                    _damageRadius = 1.1f;
                     break;
 
                 case 7:
                     _damage = 25f;
-                    _damageRadius = 1.3f;
+                    _damageRadius = 1.15f;
                     break;
 
                 case 8:
                     _damage = 30f;
-                    _damageRadius = 1.3f;
+                    _damageRadius = 1.15f;
                     break;
             }
 
