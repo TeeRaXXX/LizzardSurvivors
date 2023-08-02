@@ -1,12 +1,10 @@
-using UnityEngine;
-
 public enum GameModes
 {
     Survival,
     Ancients
 }
 
-public class GameModeBuilder : MonoBehaviour
+public class GameModeBuilder
 {
     public IGameMode GetGameMode(GameModes gameMode)
     {
