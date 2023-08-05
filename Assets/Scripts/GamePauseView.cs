@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 public class GamePauseView : MonoBehaviour
 {
     [SerializeField] private GameObject _gamePauseUI;
+    [SerializeField] private GameObject _playButton;
 
     private bool _paused;
 
@@ -22,20 +23,22 @@ public class GamePauseView : MonoBehaviour
                 _paused = true;
                 Time.timeScale = 0f;
                 _gamePauseUI.SetActive(true);
+                InputManager.Instance.EventSystem.SetSelectedGameObject(_playButton);
                 EventManager.OnActionMapSwitchEvent(ActionMaps.UI);
             }
             else if (_gamePauseUI.activeSelf)
             {
                 _paused = false;
+                EventManager.OnActionMapSwitchEvent(ActionMaps.Player);
                 Time.timeScale = 1f;
                 _gamePauseUI.SetActive(false);
-                EventManager.OnActionMapSwitchEvent(ActionMaps.Player);
             }
         }    
     }
 
     public void OnQuitPressed()
     {
+        EventManager.OnActionMapSwitchEvent(ActionMaps.UI);
         Time.timeScale = 1f;
         GameDataStorage.Instance.SaveData();
         SceneManager.LoadScene("MainMenu");
@@ -43,6 +46,7 @@ public class GamePauseView : MonoBehaviour
 
     public void OnPlayPressed()
     {
+        EventManager.OnActionMapSwitchEvent(ActionMaps.Player);
         Time.timeScale = 1f;
         _gamePauseUI.SetActive(false);
     }

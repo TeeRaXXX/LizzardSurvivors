@@ -47,6 +47,9 @@ public class PlayerSkillsView : MonoBehaviour
     private void InitializePlayer(PlayerCharacter playerCharacter)
     {
         _activeSkills[playerCharacter.PlayerIndex].CharacterLogo.sprite = playerCharacter.PlayerLogo;
+
+        if (playerCharacter.PlayerIndex == 0)
+            InputManager.Instance.EventSystem.SetSelectedGameObject(_skillsOfferFrames[0].gameObject);
     }
 
     private void AddSkill(SkillType skillType, int skillLevel, int playerIndex)
@@ -149,7 +152,7 @@ public class PlayerSkillsView : MonoBehaviour
         Time.timeScale = 0;
         ResetSkillsOfferWindow();
         _skillsOfferScreen.gameObject.SetActive(true);
-
+        InputManager.Instance.EventSystem.SetSelectedGameObject(_skillsOfferFrames[0].gameObject);
         var skillsToOffer = FindAnyObjectByType<PlayerCharacter>().PlayerInventory.GetNewSkills();
 
         for (int i = 0; i < skillsToOffer.Count; i++)
@@ -157,6 +160,7 @@ public class PlayerSkillsView : MonoBehaviour
             PlayerCharacter playerCharacter = GameObject.FindGameObjectsWithTag(TagsHandler.GetPlayerTag()).
                 FirstOrDefault(o => o.GetComponent<PlayerCharacter>().PlayerIndex == _skillsSpawner.CurrentPlayerToSpawnSkill).GetComponent<PlayerCharacter>();
             PlayerInventory playerInventory = playerCharacter.PlayerInventory;
+            InputManager.Instance.EnableSinglePlayerInputControl(playerCharacter.PlayerIndex);
 
             _characterLogoSkillSelect.sprite = playerCharacter.PlayerLogo;
             _currentChoice[i] = skillsToOffer[i];
@@ -185,6 +189,7 @@ public class PlayerSkillsView : MonoBehaviour
         if (_currentChoice[skillNumber] == SkillType.None)
             return;
 
+        InputManager.Instance.EventSystem.SetSelectedGameObject(_skillsOfferFrames[skillNumber].gameObject);
         Debug.Log(_currentChoice[skillNumber].ToString());
         PlayerInventory playerInventory = GameObject.FindGameObjectsWithTag(TagsHandler.GetPlayerTag()).
                 FirstOrDefault(o => o.GetComponent<PlayerCharacter>().PlayerIndex ==
@@ -201,12 +206,15 @@ public class PlayerSkillsView : MonoBehaviour
         {
             _skillsOfferScreen.gameObject.SetActive(false);
             EventManager.OnActionMapSwitchEvent(ActionMaps.Player);
+            InputManager.Instance.EnableAllPlayerInputs();
             Time.timeScale = 1;
         }
     }
 
     public void SkipSkillChoice()
     {
+        EventManager.OnActionMapSwitchEvent(ActionMaps.Player);
+        InputManager.Instance.EnableAllPlayerInputs();
         _skillsOfferScreen.gameObject.SetActive(false);
         Time.timeScale = 1;
     }

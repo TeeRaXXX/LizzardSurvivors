@@ -30,7 +30,7 @@ public class PlayerInputHandler : MonoBehaviour
     private void Awake()
     {
         _playerIndex = _playerInput.playerIndex;
-        //_playerInput.uiInputModule = InputManager.UIInputModule;
+        _playerInput.uiInputModule = InputManager.Instance.UIInputModule;
         if (InputManager.Instance.PlayersCount == 1)
         {
             _playerInput.neverAutoSwitchControlSchemes = false;
@@ -105,6 +105,7 @@ public class PlayerInputHandler : MonoBehaviour
                 Debug.Log("Action map set to Player");
                 break;
             case ActionMaps.UI:
+                OnMoveButtonPressedEvent(new Vector2(0f, 0f));
 
                 _playerInput.actions["Move"].performed -= MoveButtonPressed;
                 _playerInput.actions["Move"].canceled -= MoveButtonReleased;
@@ -117,6 +118,7 @@ public class PlayerInputHandler : MonoBehaviour
                 _playerInput.actions["Cancel"].performed += BackButtonPressed;
 
                 currentActionMap = ActionMaps.UI;
+
                 Debug.Log("Action map set to UI");
                 break;
         }

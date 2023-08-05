@@ -14,11 +14,13 @@ public class TagsHandler
     private static string _destroyVolume = "DestroyVolume";
     private static string _skillsHolder = "SkillsHolder";
     private static string _playerHealthBar = "PlayerHealthBar";
+    private static string _eventSystem = "EventSystem";
 
     public static string GetDropTag() => "Drop";
     public static string GetExperienceTakerTag() => "ExperienceTaker";
     public static bool IsEnemy(string tag) => _enemyTags.Contains(tag);
     public static string GetPlayerTag() => _playerTag;
+    public static string GetEventSystemTagTag() => _eventSystem;
     public static string GetPlayerHealthBarTag() => _playerHealthBar;
     public static string GetSkillsHolderTag() => _skillsHolder;
     public static string GetPlayerCameraTag() => _playerCamera;

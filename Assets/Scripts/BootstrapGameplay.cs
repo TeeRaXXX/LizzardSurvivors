@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem.UI;
 
 public class BootstrapGameplay : MonoBehaviour
 {
@@ -14,7 +13,7 @@ public class BootstrapGameplay : MonoBehaviour
     [SerializeField] private GameObject _soundManager;
     [SerializeField] private GameObject _inputManager;
     [SerializeField] private SOCharacters _charactersList;
-    [SerializeField] private InputSystemUIInputModule _uiInputModule;
+    private GameObject _eventSystem;
 
     public int StartLevel { get; private set; }
     public GameObject GetPlayerCharacterPrefab => _playerCharacter;
@@ -25,21 +24,22 @@ public class BootstrapGameplay : MonoBehaviour
     public GameObject GetSkillsSpawnerPrefab => _skillsSpawner;
     public GameObject GetSoundManagerPrefab => _soundManager;
     public GameObject GetPlayerInputPrefab => _playerInput;
+    public GameObject GetUIInputModule => _eventSystem;
     public SOCharacters GetCharactersList => _charactersList;
-    public InputSystemUIInputModule GetUIInputModule => _uiInputModule;
 
     private void Awake()
     {
         GameDataStorage.Instance.Initialize();
+        _eventSystem = GameObject.FindGameObjectWithTag(TagsHandler.GetEventSystemTagTag());
 
         StartLevel = 1;
         GameModeBuilder gameModeBuilder = new GameModeBuilder();
         var gameMode = gameModeBuilder.GetGameMode(GameModes.Survival);
         var charsList = new List<CharacterType> { CharacterType.BabaYaga, CharacterType.Druid};
+        var inputManager = SpawnGameplayObject(_inputManager, Vector3.zero).GetComponent<InputManager>();
+        inputManager.Initialize(_eventSystem, charsList.Count);
         GameObject uiPrefab = charsList.Count > 1 ? _multiplayerUI : _singleplayerUI;
         gameMode.Initialize(charsList, uiPrefab, this);
-        var inputManager = SpawnGameplayObject(_inputManager, Vector3.zero).GetComponent<InputManager>();
-        inputManager.Initialize(_uiInputModule, charsList.Count);
         EventManager.OnActionMapSwitchEvent(ActionMaps.Player);
     }
 

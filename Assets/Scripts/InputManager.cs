@@ -1,13 +1,18 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.UI;
 
 public class InputManager : MonoBehaviour
 {
     [SerializeField] private PlayerInputManager _playerInputManager;
-    public static InputSystemUIInputModule UIInputModule { get; private set; }
-
+    private List<PlayerInput> _playerInputs;
     private bool _isInited = false;
+
+    public InputSystemUIInputModule UIInputModule { get; private set; }
+    public EventSystem EventSystem { get; private set; }
     public int PlayersCount { get; private set; }
     public int ActivePlayers { get; private set; }
     public bool IsScreenSplitEnabled = false;
@@ -17,16 +22,38 @@ public class InputManager : MonoBehaviour
 
     public bool IsAllPlayersInited() => ActivePlayers == PlayersCount;
 
-    public void Initialize(InputSystemUIInputModule uiInputModule, int playersCount)
+    public void EnableSinglePlayerInputControl(int playerIndex)
+    {
+        foreach (var playerInput in _playerInputs)
+        {
+            playerInput.DeactivateInput();
+        }
+
+        _playerInputs[playerIndex].ActivateInput();
+        UIInputModule.actionsAsset = _playerInputs[playerIndex].actions;
+        Debug.Log($"Player {playerIndex} is controlls UI");
+    }
+
+    public void EnableAllPlayerInputs()
+    {
+        foreach (var playerInput in _playerInputs)
+        {
+            playerInput.ActivateInput();
+        }
+    }
+
+    public void Initialize(GameObject eventSystem, int playersCount)
     {
         if (_isInited)
             Destroy(gameObject);
 
+        _playerInputs = new List<PlayerInput>();
         IsScreenSplitEnabled = false;
         PlayersCount = playersCount;
         Instance = this;
         ActivePlayers = 0;
-        UIInputModule = uiInputModule;
+        UIInputModule = eventSystem.GetComponent<InputSystemUIInputModule>();
+        EventSystem = eventSystem.GetComponent<EventSystem>();
         _playerInputManager.onPlayerJoined += OnPlayerJoined;
         _isInited = true;
     }
@@ -52,11 +79,7 @@ public class InputManager : MonoBehaviour
     public void OnPlayerJoined(PlayerInput playerInput)
     {
         Debug.Log($"New Player was joined, index {playerInput.playerIndex}");
+        _playerInputs.Add(playerInput);
         ActivePlayers++;
-
-        //if (PlayersCount == 1)
-        //{
-        //    _playerInputManager.DisableJoining();
-        //}
     }
 }
