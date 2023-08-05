@@ -1,5 +1,6 @@
 using NastyDoll.Utils;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class GameModeSurvival : IGameMode
@@ -53,7 +54,7 @@ public class GameModeSurvival : IGameMode
 
     private void OnCharacterDied(int characterIndex)
     {
-        _players.Remove(_players[characterIndex]);
+        _players.Remove(_players.FirstOrDefault(p => p.PlayerIndex == characterIndex));
 
         if (_players.Count == 0)
             EventManager.OnGameOverEvent();
