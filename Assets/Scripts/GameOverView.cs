@@ -12,6 +12,7 @@ public class GameOverView : MonoBehaviour
     private void ShowWindow()
     {
         Time.timeScale = 0f;
+        EventManager.OnActionMapSwitchEvent(ActionMaps.UI);
         gameObject.SetActive(true);
     }
 

@@ -1,68 +1,62 @@
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.UI;
 
 public class InputManager : MonoBehaviour
 {
-    public static readonly UnityEvent<Vector2> OnMoveButtonPressed = new UnityEvent<Vector2>();
-    public static readonly UnityEvent OnMoveButtonReleased = new UnityEvent();
-    public static readonly UnityEvent OnBackButtonPressed = new UnityEvent();
-    public static readonly UnityEvent OnMenuButtonPressed = new UnityEvent();
+    [SerializeField] private PlayerInputManager _playerInputManager;
+    public static InputSystemUIInputModule UIInputModule { get; private set; }
 
-    public static void OnMovebuttonPressedEvent(Vector2 newMoveVector) => OnMoveButtonPressed.Invoke(newMoveVector);
-    public static void OnMoveButtonReleasedEvent() => OnMoveButtonReleased.Invoke();
-    public static void OnBackButtonPressedEvent() => OnBackButtonPressed.Invoke();
-    public static void OnMenuButtonPressedEvent() => OnMenuButtonPressed.Invoke();
+    private bool _isInited = false;
+    public int PlayersCount { get; private set; }
+    public int ActivePlayers { get; private set; }
+    public bool IsScreenSplitEnabled = false;
+    public static InputManager Instance;
 
-    private PlayerInputActions _inputActions;
-    private static bool _isInited;
+    public PlayerInputManager PlayerInputManager => _playerInputManager;
 
-    public void Awake()
+    public bool IsAllPlayersInited() => ActivePlayers == PlayersCount;
+
+    public void Initialize(InputSystemUIInputModule uiInputModule, int playersCount)
     {
         if (_isInited)
             Destroy(gameObject);
 
-        DontDestroyOnLoad(this);
-        _inputActions = new PlayerInputActions();
-        _inputActions.Player.Enable();
-        _inputActions.UI.Enable();
-
-        _inputActions.Player.Move.performed += MoveButtonPressed;
-        _inputActions.Player.Move.canceled += MoveButtonReleased;
-
-        _inputActions.UI.Cancel.performed += BackButtonPressed;
-        _inputActions.UI.Menu.performed += MenuButtonPressed;
-
+        IsScreenSplitEnabled = false;
+        PlayersCount = playersCount;
+        Instance = this;
+        ActivePlayers = 0;
+        UIInputModule = uiInputModule;
+        _playerInputManager.onPlayerJoined += OnPlayerJoined;
         _isInited = true;
     }
 
     ~InputManager()
     {
-        _inputActions.Player.Move.performed -= MoveButtonPressed;
-        _inputActions.Player.Move.canceled -= MoveButtonReleased;
-
-        _inputActions.UI.Cancel.performed -= BackButtonPressed;
-        _inputActions.UI.Menu.performed -= MenuButtonPressed;
+        _playerInputManager.onPlayerJoined -= OnPlayerJoined;
     }
 
-    private void MoveButtonPressed(InputAction.CallbackContext context)
+    public void EnableSplitScreen()
     {
-        Vector2 movement = context.ReadValue<Vector2>();
-        OnMovebuttonPressedEvent(movement);
+        if (ActivePlayers == PlayersCount)
+        {
+            _playerInputManager.splitScreen = true;
+        }
     }
 
-    private void MoveButtonReleased(InputAction.CallbackContext context)
+    public void DisableSplitScreen() 
     {
-        OnMovebuttonPressedEvent(new Vector2(0f, 0f));
+        _playerInputManager.splitScreen = false;
     }
 
-    private void BackButtonPressed(InputAction.CallbackContext context)
+    public void OnPlayerJoined(PlayerInput playerInput)
     {
-        OnBackButtonPressedEvent();
-    }
+        Debug.Log($"New Player was joined, index {playerInput.playerIndex}");
+        ActivePlayers++;
 
-    private void MenuButtonPressed(InputAction.CallbackContext context)
-    {
-        OnMenuButtonPressedEvent();
+        //if (PlayersCount == 1)
+        //{
+        //    _playerInputManager.DisableJoining();
+        //}
     }
 }

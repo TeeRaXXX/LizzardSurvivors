@@ -7,9 +7,7 @@ public class Experience : MonoBehaviour, IDroppable
     [SerializeField] private List<Sprite> _experienceSprites;
     [SerializeField] private List<float> _experienceMaxValue;
     [SerializeField] private Rigidbody2D _rigidbody;
-    [SerializeField] private float _bounceForce = 2f;
     [SerializeField] private float _speed = 4f;
-    [SerializeField] private float _bounceTime = 0.75f;
     [SerializeField] private float _speedMultiplier = 1.025f;
 
     private int _experienceCount;
@@ -32,7 +30,7 @@ public class Experience : MonoBehaviour, IDroppable
         _experienceSprite.sprite = _experienceSprites[_experienceMaxValue.Count - 1];
     }
 
-    public void OnTake()
+    public void OnTake(int playerIndex)
     {
         SoundManager.Instance.PlaySFX(AudioClipNames.GetClipExperiencePickup);
         PlayerLevel.Instance.GetExperience(_experienceCount);
@@ -43,12 +41,16 @@ public class Experience : MonoBehaviour, IDroppable
     {
         if (_isTaken)
         {
-            var moveDirection = new Vector3(transform.position.x - _captorTransform.position.x,
+            if (_captorTransform != null)
+            {
+                var moveDirection = new Vector3(transform.position.x - _captorTransform.position.x,
                                             transform.position.y - _captorTransform.position.y,
                                             0f).normalized;
-            _rigidbody.MovePosition(transform.position + moveDirection * _speed * Time.deltaTime);
+                _rigidbody.MovePosition(transform.position + moveDirection * _speed * Time.deltaTime);
 
-            _speed -= _speedMultiplier;
+                _speed -= _speedMultiplier;
+            }
+            else _isTaken = false;
         }
     }
 

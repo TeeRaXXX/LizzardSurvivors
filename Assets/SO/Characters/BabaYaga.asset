@@ -15,6 +15,7 @@ MonoBehaviour:
   CharacterName: Baba Yaga
   CharacterDescription: Baba Yaga
   CharacterBaseSprite: {fileID: -2088792614, guid: 09f76d842d5869247967e08ad7e34e18, type: 3}
+  CharacterLogo: {fileID: 1544876699, guid: ed9b1be907969d54f973c2a83b2d937c, type: 3}
   CharacterAnimationController: {fileID: 9100000, guid: 52d76178d2006cf4a968d9b653c24b20, type: 2}
   CharacterBaseStats:
     _healthRecovery: 0

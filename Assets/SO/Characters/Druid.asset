@@ -15,6 +15,7 @@ MonoBehaviour:
   CharacterName: Druid
   CharacterDescription: Druid
   CharacterBaseSprite: {fileID: -971898114, guid: e107f852e3df1764a90c9ee7465c6cf9, type: 3}
+  CharacterLogo: {fileID: 1689112574, guid: ed9b1be907969d54f973c2a83b2d937c, type: 3}
   CharacterAnimationController: {fileID: 9100000, guid: b952854a0c6f8cc44b894e661c981d94, type: 2}
   CharacterBaseStats:
     _healthRecovery: 0

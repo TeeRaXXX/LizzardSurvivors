@@ -34,7 +34,7 @@ public class EditorGodMode : EditorWindow
 
             if (GUILayout.Button("Add Skill"))
             {
-                _skillsSpawner.SpawnSkill((SkillType)index, 1, out bool isMaxLevel);
+                _skillsSpawner.SpawnSkill((SkillType)index, 1, 0, out bool isMaxLevel);
             }
             
             foreach (var skill in _skills)
@@ -43,11 +43,11 @@ public class EditorGodMode : EditorWindow
 
                 if (GUI.Button(rect, $"{Enum.GetName(typeof(SkillType), skill)}"))
                 {
-                    if (!_skillsSpawner.IsSkillOnMaxLevel(skill))
-                    {
-                        int skillLevel = _skillsSpawner.GetCurrentSkillLevel(skill) + 1;
-                        _skillsSpawner.SpawnSkill(skill, skillLevel, out bool isMaxLevel);
-                    }
+                    //if (!_skillsSpawner.IsSkillOnMaxLevel(skill))
+                    //{
+                    //    int skillLevel = _skillsSpawner.GetCurrentSkillLevel(skill) + 1;
+                    //    _skillsSpawner.SpawnSkill(skill, skillLevel, 0, out bool isMaxLevel);
+                    //}
                         
                 }
 
@@ -58,9 +58,9 @@ public class EditorGodMode : EditorWindow
                 style.normal.textColor = Color.green;
                 style.alignment = TextAnchor.MiddleRight;
 
-                if (!_skillsSpawner.IsSkillOnMaxLevel(skill))
-                    GUI.Label(rect, $"Level {_skillsSpawner.GetCurrentSkillLevel(skill)}", style);
-                else GUI.Label(rect, $"Max Level", style);
+                //if (!_skillsSpawner.IsSkillOnMaxLevel(skill))
+                //    GUI.Label(rect, $"Level {_skillsSpawner.GetCurrentSkillLevel(skill)}", style);
+                //else GUI.Label(rect, $"Max Level", style);
 
                 EditorGUILayout.EndHorizontal();
             }
@@ -68,13 +68,13 @@ public class EditorGodMode : EditorWindow
         }
     }
 
-    private static void OnNewSkillAdded(SkillType skill, int level)
+    private static void OnNewSkillAdded(SkillType skill, int level, int playerIndex)
     {
         if (!_skills.Contains(skill))
             _skills.Add(skill);
     }
 
-    private static void OnSkillDelete(SkillType skill, int level)
+    private static void OnSkillDelete(SkillType skill, int level, int playerIndex)
     {
         _skills.Remove(skill);
     }

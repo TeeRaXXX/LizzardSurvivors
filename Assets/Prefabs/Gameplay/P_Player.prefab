@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4913275662355175662}
+  - component: {fileID: 3295539246978195643}
   m_Layer: 0
   m_Name: Skills
   m_TagString: SkillsHolder
@@ -31,6 +32,18 @@ Transform:
   m_Father: {fileID: 7205413643672830204}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3295539246978195643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1866516337878700647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf078fda11b8cb347900e918398c7359, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2327821200362620280
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,7 +105,11 @@ MonoBehaviour:
   _playerMovement: {fileID: 1044438382056455400}
   _PlayerHealthComponent: {fileID: 5400630407861528725}
   _damageDigitView: {fileID: 8385778797898642923, guid: 9a40cbae0e40ae647a2c363471140c0e, type: 3}
+  _playerCameraObject: {fileID: 4878209127714348867}
   _damageDigitViewPosition: {fileID: 6932968541287564071}
+  _playerHealthView: {fileID: 3412548209195468264}
+  _skillsHolder: {fileID: 3295539246978195643}
+  _dropPicker: {fileID: 93590199868717259}
 --- !u!114 &1044438382056455400
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -790,9 +807,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4236527799955903281}
+  - component: {fileID: 93590199868717259}
   - component: {fileID: 2011005124739559079}
   - component: {fileID: 8530785371603950654}
-  - component: {fileID: 93590199868717259}
   m_Layer: 0
   m_Name: DropPicker
   m_TagString: Untagged
@@ -815,6 +832,19 @@ Transform:
   m_Father: {fileID: 7205413643672830204}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &93590199868717259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6870289462264533569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a4d5782eb0de0d47a43574fcd94e12d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pickupCollider: {fileID: 8530785371603950654}
 --- !u!50 &2011005124739559079
 Rigidbody2D:
   serializedVersion: 4
@@ -877,19 +907,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.4
---- !u!114 &93590199868717259
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6870289462264533569}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a4d5782eb0de0d47a43574fcd94e12d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _pickupCollider: {fileID: 8530785371603950654}
 --- !u!1 &7535786598643156712
 GameObject:
   m_ObjectHideFlags: 0

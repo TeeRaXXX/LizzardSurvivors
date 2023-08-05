@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using System.Linq;
 
 namespace NastyDoll.Utils {
 
@@ -42,6 +43,30 @@ namespace NastyDoll.Utils {
             return points;
         }
 
+        public static void MoveElementToBack<T>(Queue<T> queue, T elementToMove)
+        {
+            T item = default;
+            bool found = false;
+
+            for (int i = 0, n = queue.Count; i < n; ++i)
+            {
+                var current = queue.Dequeue();
+
+                if (!found && current.Equals(elementToMove))
+                {
+                    item = current;
+                    found = true;
+                }
+                else
+                {
+                    queue.Enqueue(current);
+                }
+            }
+
+            if (found)
+                queue.Enqueue(item);
+        }
+
         public static void Shuffle<T> (this IList<T> list)
         {
             int n = list.Count;
@@ -53,6 +78,27 @@ namespace NastyDoll.Utils {
                 list[k] = list[n];
                 list[n] = value;
             }
+        }
+
+        public static GameObject GetNearestObject(Vector3 position, List<GameObject> objects)
+        {
+            if (objects.Count == 0) return null;
+            if (objects.Count == 1) return objects[0];
+
+            GameObject closestObject = objects[0];
+            float oldDistance = Vector3.Distance(position, objects[0].transform.position);
+            
+            foreach (GameObject g in objects)
+            {
+                float dist = Vector3.Distance(position, g.transform.position);
+                if (dist < oldDistance)
+                {
+                    closestObject = g;
+                    oldDistance = dist;
+                }
+            }
+
+            return closestObject;
         }
 
         // Get Main Canvas Transform

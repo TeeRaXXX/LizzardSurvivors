@@ -15,6 +15,7 @@ MonoBehaviour:
   CharacterName: Monk
   CharacterDescription: Badass Monk who use music as powerfull weapon
   CharacterBaseSprite: {fileID: -694046192, guid: 0e843ca4d5c08cc42abde4ec4f080708, type: 3}
+  CharacterLogo: {fileID: 1215598031, guid: ed9b1be907969d54f973c2a83b2d937c, type: 3}
   CharacterAnimationController: {fileID: 9100000, guid: 958b7f39660bac24eb9284d65c3f001a, type: 2}
   CharacterBaseStats:
     _healthRecovery: 0

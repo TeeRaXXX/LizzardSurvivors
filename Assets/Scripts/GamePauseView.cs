@@ -10,24 +10,26 @@ public class GamePauseView : MonoBehaviour
     public void Initialize()
     {
         _gamePauseUI.SetActive(false);
-        InputManager.OnMenuButtonPressed.AddListener(Pause);
+        EventManager.OnPauseButtonPressed.AddListener(Pause);
     }
 
     private void Pause()
     {
         if (Time.timeScale != 0f || _paused)
         {
-            if (!_gamePauseUI.active)
+            if (!_gamePauseUI.activeSelf)
             {
                 _paused = true;
                 Time.timeScale = 0f;
                 _gamePauseUI.SetActive(true);
+                EventManager.OnActionMapSwitchEvent(ActionMaps.UI);
             }
-            else if (_gamePauseUI.active)
+            else if (_gamePauseUI.activeSelf)
             {
                 _paused = false;
                 Time.timeScale = 1f;
                 _gamePauseUI.SetActive(false);
+                EventManager.OnActionMapSwitchEvent(ActionMaps.Player);
             }
         }    
     }

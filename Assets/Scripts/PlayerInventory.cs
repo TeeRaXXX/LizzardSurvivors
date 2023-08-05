@@ -4,18 +4,19 @@ using UnityEngine;
 public class PlayerInventory
 {
     private SkillsSpawner _skillsSpawner;
-    private static int _maximumSkillsCount = 12;
     private List<SkillsEvolutionSO> _skillsEvolutionList;
     private List<SkillType> _skillsToAvoid;
     private int skillsToOfferCount;
+    private int _playerIndex;
 
-    public static Dictionary<SkillType, int> Skills { get; private set; }
-    public static int Coins { get; private set; } = 0;
-    public static int Level { get; private set; } = 1;
-    public static int LevelPoints { get; private set; } = 0;
+    public Dictionary<SkillType, int> Skills { get; private set; }
+    public int Coins { get; private set; } = 0;
+    public int Level { get; private set; } = 1;
+    public int LevelPoints { get; private set; } = 0;
 
-    public void InitInventory(SkillType baseSkill, SkillsSpawner skillsSpawner, int coins = 0)
+    public void InitInventory(SkillType baseSkill, SkillsSpawner skillsSpawner, int playerIndex, int coins = 0)
     {
+        _playerIndex = playerIndex;
         Skills = new Dictionary<SkillType, int>();
         _skillsToAvoid = new List<SkillType>();
         EventManager.OnLevelUp.AddListener(OnLevelUp);
@@ -27,27 +28,30 @@ public class PlayerInventory
         skillsToOfferCount = 3;
         LevelPoints = 0;
         Level = 1;
-        _skillsSpawner.SpawnSkill(baseSkill, 1, out bool isMaxLevel);
+        _skillsSpawner.SpawnSkill(baseSkill, 1, _playerIndex, out bool isMaxLevel);
+        Debug.Log($"Player's {playerIndex} inventory was initialized");
     }
 
-    public void AddSkill(SkillType skill, int level)
+    public void AddSkill(SkillType skill, int level, int playerIndex)
     {
+        if (playerIndex != _playerIndex)
+            return;
+
         if (!Skills.ContainsKey(skill))
         {
             Skills.Add(skill, level);
-            Debug.Log(skill.ToString() + Skills[skill].ToString());
         }
         else
         {
             Skills[skill]++; //increase level
-            Debug.Log(skill.ToString() + Skills[skill].ToString());
         }
     }
 
-    public void UpdateMaxSkillsCount(int skillsCount)
-    {
-        _maximumSkillsCount = skillsCount;
-    }
+    public bool ContainsSkill(SkillType skillType) => Skills.ContainsKey(skillType);
+
+    public int GetSkillLevel(SkillType skillType) => Skills.TryGetValue(skillType, out int level) ? level : 0;
+
+    public bool IsSkillOnMaxLevel(SkillType skillType) => Skills[skillType] == _skillsSpawner.GetMaxLevelOfSkill(skillType);
 
     private void OnLevelUp(int levelsToAdd)
     {
@@ -87,7 +91,7 @@ public class PlayerInventory
         return newSkills;
     }
 
-    private void OnChestPickUp()
+    private void OnChestPickUp(int playerIndex)
     {
         Coins += GetGold();
 
@@ -98,23 +102,22 @@ public class PlayerInventory
                 if (_skillsSpawner.IsEvolutionSkill(skill.Key) && _skillsSpawner.GetMaxLevelOfSkill(skill.Key) != skill.Value)
                 {
                     int skillLevel = skill.Value + 1;
-                    _skillsSpawner.SpawnSkill(skill.Key, skillLevel, out bool isMaxLevel);
+                    _skillsSpawner.SpawnSkill(skill.Key, skillLevel, _playerIndex, out bool isMaxLevel);
                     return;
                 }
-        
     }
 
     private void AddEvolvedSkill(SkillType skill, int level, List<SkillType> skillsToDelete)
     {
         foreach (var skillToDelete in skillsToDelete)
         {
+            EventManager.OnSkillDeletedEvent(skillToDelete, Skills[skillToDelete], _playerIndex);
             Skills.Remove(skillToDelete);
+            _skillsSpawner.DeleteSkill(skillToDelete, _playerIndex);
             _skillsToAvoid.Add(skillToDelete);
-            EventManager.OnSkillDeletedEvent(skillToDelete, _skillsSpawner.GetCurrentSkillLevel(skillToDelete));
-            _skillsSpawner.DeleteSkill(skillToDelete);
         }
 
-        _skillsSpawner.SpawnSkill(skill, level, out bool isMaxLevel);
+        _skillsSpawner.SpawnSkill(skill, level, _playerIndex, out bool isMaxLevel);
     }
 
     private bool TryCheckToEvolve()
@@ -132,8 +135,8 @@ public class PlayerInventory
                         if ((evolvedSkill.FirstSkill == maxedSkill && evolvedSkill.SecondSkill == secondSkill.Key) ||
                              evolvedSkill.FirstSkill == secondSkill.Key && evolvedSkill.SecondSkill == maxedSkill)
                         {
-                            int firstSkillLevel = _skillsSpawner.GetCurrentSkillLevel(firstSkill.Key);
-                            int secondSkillLevel = _skillsSpawner.GetCurrentSkillLevel(secondSkill.Key);
+                            int firstSkillLevel = Skills[firstSkill.Key];
+                            int secondSkillLevel = Skills[secondSkill.Key];
                             int maxLevel = firstSkillLevel < secondSkillLevel ? firstSkillLevel : secondSkillLevel;
                             AddEvolvedSkill(evolvedSkill.EvolvedSkill, maxLevel, evolvedSkill.SkillsToDeleteAfterEvolution);
                             return true;

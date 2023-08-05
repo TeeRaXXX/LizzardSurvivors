@@ -1,3 +1,5 @@
+using NastyDoll.Utils;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class FollowObjectComponent : MonoBehaviour
@@ -38,6 +40,11 @@ public class FollowObjectComponent : MonoBehaviour
                                            (_moveSpeed * _buffsHandler.GetMoveSpeedBuff());
 
             _rigidbody.MovePosition(transform.position + moveDirection * moveSpeed * Time.deltaTime);
+        }
+        else if (_followObject == null)
+        {
+            var objectToFollow = UtilsClass.GetNearestObject(transform.position, new List<GameObject>(GameObject.FindGameObjectsWithTag(TagsHandler.GetPlayerTag())));
+            SetFollowObject(objectToFollow.transform);
         }
     }
 }

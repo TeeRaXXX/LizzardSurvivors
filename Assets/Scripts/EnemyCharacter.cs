@@ -33,8 +33,9 @@ public class EnemyCharacter : MonoBehaviour
         _buffsHandler.Initialize(_buffs);
         _debuffsHandler.Initialize(_debuffs);
 
+        var objectToFollow = UtilsClass.GetNearestObject(transform.position, new List<GameObject>(GameObject.FindGameObjectsWithTag(TagsHandler.GetPlayerTag())));
         _followPlayerComponent.Initialize(_enemyParams.EnemyBaseStats.GetMoveSpeed(),
-                                          GameObject.FindGameObjectWithTag(TagsHandler.GetPlayerTag()).transform,
+                                          objectToFollow.transform,
                                           _buffsHandler,
                                           _debuffsHandler);
 

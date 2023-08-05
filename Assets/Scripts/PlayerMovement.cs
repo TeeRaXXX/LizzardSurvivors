@@ -12,14 +12,14 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 _movement;
     private bool _facingLeft = false;
 
-    public void InitMovement(SOCharacter character, SpriteRenderer spriteRenderer, Animator animator)
+    public void InitMovement(SOCharacter character, SpriteRenderer spriteRenderer, Animator animator, PlayerInputHandler playerInput)
     {
         _moveSpeed = character.CharacterBaseStats.GetMoveSpeed();
         _spriteRenderer = spriteRenderer;
         _animator = animator;
         _animator.runtimeAnimatorController = character.CharacterAnimationController;
-
-        InputManager.OnMoveButtonPressed.AddListener(UpdateMovement);
+        
+        playerInput.OnMoveButtonPressed.AddListener(UpdateMovement);
     }
 
     void UpdateMovement(Vector2 movement)

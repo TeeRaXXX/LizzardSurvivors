@@ -7,10 +7,9 @@ public class Chest : MonoBehaviour, IDroppable
         
     }
 
-    public void OnTake()
+    public void OnTake(int playerIndex)
     {
-        EventManager.OnChestPickUpEvent();
-
+        EventManager.OnChestPickUpEvent(playerIndex);
         Destroy(gameObject);
     }
 }

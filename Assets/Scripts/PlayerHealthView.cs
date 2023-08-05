@@ -9,7 +9,7 @@ public class PlayerHealthView : MonoBehaviour
         EventManager.OnPlayerHealthChanged.AddListener(UpdateHealthBar);
     }
 
-    private void UpdateHealthBar(float health, float maxHealth)
+    public void UpdateHealthBar(float health, float maxHealth, int playerIndex)
     {
         _healthBar.transform.localScale = new Vector3(health / maxHealth, 1f, 1f);
     }

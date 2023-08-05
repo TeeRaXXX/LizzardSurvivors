@@ -7,6 +7,7 @@ public class SOCharacter : ScriptableObject
     public string CharacterDescription;
 
     public Sprite CharacterBaseSprite;
+    public Sprite CharacterLogo;
     public RuntimeAnimatorController CharacterAnimationController;
     public PlayerStats CharacterBaseStats;
 

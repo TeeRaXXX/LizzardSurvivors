@@ -5,5 +5,5 @@ public interface IDroppable
 {
     void Drop(SOEnemy enemy);
 
-    void OnTake();
+    void OnTake(int playerIndex);
 }
