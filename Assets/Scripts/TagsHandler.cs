@@ -12,6 +12,7 @@ public class TagsHandler
     private static string _playerTag = "Player";
     private static string _playerCamera = "MainCamera";
     private static string _destroyVolume = "DestroyVolume";
+    private static string _experienceKillVolume = "ExperienceKillVolume";
     private static string _skillsHolder = "SkillsHolder";
     private static string _playerHealthBar = "PlayerHealthBar";
     private static string _eventSystem = "EventSystem";
@@ -25,5 +26,6 @@ public class TagsHandler
     public static string GetSkillsHolderTag() => _skillsHolder;
     public static string GetPlayerCameraTag() => _playerCamera;
     public static string GetDestroyVolumeTag() => _destroyVolume;
+    public static string GetDestroyExperienceTag() => _experienceKillVolume;
     public static List<string> GetEnemyTags() => _enemyTags;
 }

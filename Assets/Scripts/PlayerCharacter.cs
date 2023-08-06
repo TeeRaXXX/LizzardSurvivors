@@ -14,6 +14,7 @@ public class PlayerCharacter : MonoBehaviour
     [SerializeField] private PlayerHealthView _playerHealthView;
     [SerializeField] private SkillsHolder _skillsHolder;
     [SerializeField] private PlayersDropPicker _dropPicker;
+    [SerializeField] private CharacterPointer _characterPointer;
     [SerializeField] private float _smoothCameraSpeed = 0.25f;
 
     public static int PlayersCount { get; set; }
@@ -52,6 +53,8 @@ public class PlayerCharacter : MonoBehaviour
             _followPlayerCamera.SetFollowObject(gameObject);
         }
 
+        if (PlayersCount > 1)
+            _characterPointer.Initialize(selectedCharacter.CharacterLogo);
         _skillsHolder.Initialize(playerIndex);
         _dropPicker.Initialize(playerIndex);
         _playerIndex = playerIndex;

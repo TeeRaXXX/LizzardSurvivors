@@ -13,6 +13,7 @@ TagManager:
   - PlayerHealthBar
   - SkillsHolder
   - EventSystem
+  - ExperienceKillVolume
   layers:
   - Default
   - TransparentFX

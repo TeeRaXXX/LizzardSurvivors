@@ -169,6 +169,48 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: SS_CharactersIconsAtlas_01_3
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 240
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6acc4de191a409246bdd5d0f06e40f34
+      internalID: 186338041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SS_CharactersIconsAtlas_01_4
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 240
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08642eed75aa066458f8b8813994812b
+      internalID: 1547023493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -183,6 +225,8 @@ TextureImporter:
       SS_CharactersIconsAtlas_01_0: 1544876699
       SS_CharactersIconsAtlas_01_1: 1689112574
       SS_CharactersIconsAtlas_01_2: 1215598031
+      SS_CharactersIconsAtlas_01_3: 186338041
+      SS_CharactersIconsAtlas_01_4: 1547023493
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

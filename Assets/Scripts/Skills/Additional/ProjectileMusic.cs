@@ -32,7 +32,7 @@ public class ProjectileMusic : MonoBehaviour
     {
         if (other.tag == TagsHandler.GetDestroyVolumeTag())
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
     }
 }

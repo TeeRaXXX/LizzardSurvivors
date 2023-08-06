@@ -15,7 +15,7 @@ MonoBehaviour:
   CharacterName: Wize Tree
   CharacterDescription: Wize Tree
   CharacterBaseSprite: {fileID: -399989931, guid: 8f90c718d9ff66b40a40f15da855e1ef, type: 3}
-  CharacterLogo: {fileID: 1689112574, guid: ed9b1be907969d54f973c2a83b2d937c, type: 3}
+  CharacterLogo: {fileID: 1547023493, guid: ed9b1be907969d54f973c2a83b2d937c, type: 3}
   CharacterAnimationController: {fileID: 9100000, guid: cc1d4f999e82b7c4fb535c0da25b128a, type: 2}
   CharacterBaseStats:
     _healthRecovery: 0

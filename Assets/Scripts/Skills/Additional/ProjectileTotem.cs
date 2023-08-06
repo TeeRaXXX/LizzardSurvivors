@@ -50,11 +50,12 @@ public class ProjectileTotem : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.tag == TagsHandler.GetDestroyVolumeTag())
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
     }
 }

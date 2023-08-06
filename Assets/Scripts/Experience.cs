@@ -63,5 +63,13 @@ public class Experience : MonoBehaviour, IDroppable
         }
     }
 
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.tag == TagsHandler.GetDestroyExperienceTag())
+        {
+            Destroy(gameObject);
+        }
+    }
+
     public float GetExperienceCount => _experienceCount;
 }

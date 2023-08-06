@@ -48,7 +48,7 @@ public class EnemiesSpawnHandler : MonoBehaviour
 
             GameObject enemyToSpawn = _allEnemies.EnemiesList.Find(obj => obj.EnemyType == enemy).EnemyPrefab;
             
-            for (int i = 0; i < spawnCount; i++)
+            for (int i = 0; i < spawnCount * InputManager.Instance.PlayersCount; i++)
             {
                 Instantiate(enemyToSpawn, GetSpawnPosition(), new Quaternion());
                 _currentEnemiesCount++;

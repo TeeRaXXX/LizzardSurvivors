@@ -15,7 +15,7 @@ MonoBehaviour:
   CharacterName: Knight
   CharacterDescription: Knight
   CharacterBaseSprite: {fileID: 1174807033, guid: 834b31183d43f01468c1a0c68d2404e0, type: 3}
-  CharacterLogo: {fileID: 1215598031, guid: ed9b1be907969d54f973c2a83b2d937c, type: 3}
+  CharacterLogo: {fileID: 186338041, guid: ed9b1be907969d54f973c2a83b2d937c, type: 3}
   CharacterAnimationController: {fileID: 9100000, guid: 039ac9b24af138f4a907e813934153cd, type: 2}
   CharacterBaseStats:
     _healthRecovery: 0
