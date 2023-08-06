@@ -37,7 +37,7 @@ public class BootstrapGameplay : MonoBehaviour
         StartLevel = 1;
         GameModeBuilder gameModeBuilder = new GameModeBuilder();
         var gameMode = gameModeBuilder.GetGameMode(GameModes.Survival);
-        var charsList = new List<CharacterType> { CharacterType.BabaYaga};
+        var charsList = new List<CharacterType> { CharacterType.Knight};
         var inputManager = SpawnGameplayObject(_inputManager, Vector3.zero).GetComponent<InputManager>();
         inputManager.Initialize(_eventSystem, charsList.Count);
         GameObject uiPrefab = charsList.Count > 1 ? _multiplayerUI : _singleplayerUI;

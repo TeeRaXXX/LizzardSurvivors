@@ -83,6 +83,7 @@ public class GameDataStorage
         GameData.AddOpenedSkill(SkillType.Music, true);
         GameData.AddOpenedSkill(SkillType.CurseDiarrhea, true);
         GameData.AddOpenedSkill(SkillType.Roots, true);
+        GameData.AddOpenedSkill(SkillType.Bulava, true);
 
         SaveData();
     }

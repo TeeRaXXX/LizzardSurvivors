@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
         _animator.runtimeAnimatorController = character.CharacterAnimationController;
         
         playerInput.OnMoveButtonPressed.AddListener(UpdateMovement);
+        playerInput.OnMoveButtonReleased.AddListener(UpdateMovement);
     }
 
     void UpdateMovement(Vector2 movement)
@@ -50,12 +51,11 @@ public class PlayerMovement : MonoBehaviour
     {
         _spriteRenderer.flipX = !_spriteRenderer.flipX;
         _facingLeft = !_facingLeft;
-        _lookVector = new Vector3(_lookVector.x * -1f, _lookVector.y, _lookVector.z);
     }
 
     public Vector3 GetLookDirection()
     {
-        return _lookVector;
+        return _lookVector.normalized;
     }
 
     public float GetMoveSpeed()

@@ -31,6 +31,7 @@ public class PlayerCharacter : MonoBehaviour
     private readonly UnityEvent<float, float, GameObject> _onHealthChanged = new UnityEvent<float, float, GameObject>();
 
     public int PlayerIndex => _playerIndex;
+    public PlayerMovement PlayerMovement => _playerMovement;
     public PlayerInventory PlayerInventory => _playerInventory;
     public Sprite PlayerLogo => _playerLogo;
 
