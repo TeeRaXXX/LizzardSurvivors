@@ -6,5 +6,6 @@ using System;
     Druid,
     Dino,
     WiseTree,
-    BabaYaga
+    BabaYaga,
+    Knight
 }

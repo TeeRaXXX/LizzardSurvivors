@@ -15,11 +15,11 @@ public class PlayerInputHandler : MonoBehaviour
     [SerializeField] private PlayerInput _playerInput;
 
     public readonly UnityEvent<Vector2> OnMoveButtonPressed = new UnityEvent<Vector2>();
-    public readonly UnityEvent OnMoveButtonReleased = new UnityEvent();
+    public readonly UnityEvent<Vector2> OnMoveButtonReleased = new UnityEvent<Vector2>();
     public readonly UnityEvent OnBackButtonPressed = new UnityEvent();
 
     public void OnMoveButtonPressedEvent(Vector2 newMoveVector) => OnMoveButtonPressed.Invoke(newMoveVector);
-    public void OnMoveButtonReleasedEvent() => OnMoveButtonReleased.Invoke();
+    public void OnMoveButtonReleasedEvent(Vector2 newMoveVector) => OnMoveButtonReleased.Invoke(newMoveVector);
     public void OnBackButtonPressedEvent() => OnBackButtonPressed.Invoke();
 
     private int _playerIndex;
