@@ -101,6 +101,29 @@ namespace NastyDoll.Utils {
             return closestObject;
         }
 
+        public static GameObject GetNearestObjectExcept(Vector3 position, List<GameObject> objects, GameObject objectToAvoid)
+        {
+            if (objects.Count <= 1) return null;
+
+            if (objects.Contains(objectToAvoid) && objectToAvoid != null)
+                objects.Remove(objectToAvoid);
+
+            GameObject closestObject = objects[0];
+            float oldDistance = Vector3.Distance(position, objects[0].transform.position);
+            
+            foreach (GameObject g in objects)
+            {
+                float dist = Vector3.Distance(position, g.transform.position);
+                if (dist < oldDistance)
+                {
+                    closestObject = g;
+                    oldDistance = dist;
+                }
+            }
+
+            return closestObject;
+        }
+
         // Get Main Canvas Transform
         private static Transform cachedCanvasTransform;
         public static Transform GetCanvasTransform() {

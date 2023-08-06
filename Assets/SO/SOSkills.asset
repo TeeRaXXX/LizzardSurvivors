@@ -100,7 +100,15 @@ MonoBehaviour:
     IsActive: 1
     IsEvolution: 0
     SkillPrefab: {fileID: 8935110752363399202, guid: 4d7b52f3f02fcdc40b83e3c96fce2ecd, type: 3}
-    SkillLogo: {fileID: 21300000, guid: 9e7b36d0b2481e644895c8f6a9b16819, type: 3}
+    SkillLogo: {fileID: 21300000, guid: 28045b8f659a5664697975dde380bff8, type: 3}
+  - SkillType: 13
+    Name: Cones
+    Description: Cones
+    MaxLevel: 8
+    IsActive: 1
+    IsEvolution: 0
+    SkillPrefab: {fileID: 1174930662284178498, guid: 0156f1efac411224eab2f24bdcc36f25, type: 3}
+    SkillLogo: {fileID: 21300000, guid: 7e281eda6ad18de498ec57aba18fddeb, type: 3}
   SkillsEvolutionList:
   - FirstSkill: 1
     SecondSkill: 7

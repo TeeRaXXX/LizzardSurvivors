@@ -74,32 +74,32 @@ public class SkillBulava : MonoBehaviour, IUpgradable
                     break;
 
                 case 3:
-                    _damage = 35f;
+                    _damage = 45f;
                     _spawnPosition.localScale = new Vector3(1.3f, 1.3f, 1f);
                     break;
 
                 case 4:
-                    _damage = 35f;
+                    _damage = 45f;
                     _spawnPosition.localScale = new Vector3(1.6f, 1.6f, 1f);
                     break;
 
                 case 5:
-                    _damage = 45f;
+                    _damage = 65f;
                     _spawnPosition.localScale = new Vector3(1.6f, 1.6f, 1f);
                     break;
 
                 case 6:
-                    _damage = 45f;
+                    _damage = 65f;
                     _spawnPosition.localScale = new Vector3(1.9f, 1.9f, 1f);
                     break;
 
                 case 7:
-                    _damage = 55f;
+                    _damage = 85f;
                     _spawnPosition.localScale = new Vector3(1.9f, 1.9f, 1f);
                     break;
 
                 case 8:
-                    _damage = 55f;
+                    _damage = 85f;
                     _spawnPosition.localScale = new Vector3(2.2f, 2.2f, 1f);
                     break;
             }

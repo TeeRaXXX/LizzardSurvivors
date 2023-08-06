@@ -84,6 +84,7 @@ public class GameDataStorage
         GameData.AddOpenedSkill(SkillType.CurseDiarrhea, true);
         GameData.AddOpenedSkill(SkillType.Roots, true);
         GameData.AddOpenedSkill(SkillType.Bulava, true);
+        GameData.AddOpenedSkill(SkillType.Cones, true);
 
         SaveData();
     }
