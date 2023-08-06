@@ -19,7 +19,7 @@ public class SkillTotemProjectiles : MonoBehaviour, IUpgradable
 
     private bool _isActive;
 
-    private void Awake()
+    public void Initialize(int playerIndex)
     {
         _isActive = true;
 

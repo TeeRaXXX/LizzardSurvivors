@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -13,6 +14,10 @@ public class PlayerCharacter : MonoBehaviour
     [SerializeField] private PlayerHealthView _playerHealthView;
     [SerializeField] private SkillsHolder _skillsHolder;
     [SerializeField] private PlayersDropPicker _dropPicker;
+    [SerializeField] private float _smoothCameraSpeed = 0.25f;
+
+    public static int PlayersCount { get; set; }
+    private static FollowObject _followPlayerCamera;
 
     private PlayerStats _playerStats;
     private PlayerInventory _playerInventory;
@@ -21,7 +26,7 @@ public class PlayerCharacter : MonoBehaviour
     private int _playerIndex;
     private Buffs _buffs;
     private Debuffs _debuffs;
-    private Sprite _playerLogo; 
+    private Sprite _playerLogo;
 
     private readonly UnityEvent<float, float, GameObject> _onHealthChanged = new UnityEvent<float, float, GameObject>();
 
@@ -31,8 +36,20 @@ public class PlayerCharacter : MonoBehaviour
 
     public void Initialize(int playerIndex, SkillsSpawner skillsHandler, SOCharacter selectedCharacter)
     {
-        if (playerIndex > 0)
-            _playerCameraObject.SetActive(false);
+        if (playerIndex == 0)
+        {
+            _followPlayerCamera = Instantiate(_playerCameraObject,
+                new Vector3(transform.position.x, transform.position.y, -30f), Quaternion.identity).GetComponent<FollowObject>();
+            _followPlayerCamera.SetSaveStartZValue(true);
+
+            if (PlayersCount > 1)
+            {
+                _followPlayerCamera.SetSmoothFollow(true);
+                _followPlayerCamera.SetSmoothSpeed(_smoothCameraSpeed);
+            }
+
+            _followPlayerCamera.SetFollowObject(gameObject);
+        }
 
         _skillsHolder.Initialize(playerIndex);
         _dropPicker.Initialize(playerIndex);
@@ -98,8 +115,22 @@ public class PlayerCharacter : MonoBehaviour
 
     private void OnDeath(GameObject killer)
     {
+        PlayersCount--;
         Debug.Log($"Character has been killed by {killer.name}");
         EventManager.OnPlayerDiedEvent(_playerIndex);
+
+        if (PlayersCount == 1)
+        {
+            _followPlayerCamera.SetSmoothFollow(false);
+            _followPlayerCamera.SetFollowObject(GameObject.FindGameObjectsWithTag(TagsHandler.GetPlayerTag()).
+                FirstOrDefault(o => o.GetComponent<PlayerCharacter>().PlayerIndex != PlayerIndex));
+        }
+        else if (PlayersCount > 1)
+        {
+            _followPlayerCamera.SetFollowObject(GameObject.FindGameObjectsWithTag(TagsHandler.GetPlayerTag()).
+                FirstOrDefault(o => o.GetComponent<PlayerCharacter>().PlayerIndex != PlayerIndex));
+        }
+
         Destroy(gameObject);
     }
 }

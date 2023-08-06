@@ -1,5 +1,5 @@
 using System.Collections;
-using Unity.VisualScripting;
+using System.Linq;
 using UnityEngine;
 
 public class SkillAutoHeaal : MonoBehaviour, IUpgradable
@@ -12,11 +12,12 @@ public class SkillAutoHeaal : MonoBehaviour, IUpgradable
     private int _maxLevel;
     private int _currentLevel;
 
-    private void Awake()
+    public void Initialize(int playerIndex)
     {
         _currentLevel = 1;
         _maxLevel = 8;
-        _healComponent = GameObject.FindGameObjectWithTag("Player").GetComponent<HealthComponent>();
+        _healComponent = GameObject.FindGameObjectsWithTag(TagsHandler.GetPlayerTag()).
+            FirstOrDefault(p => p.GetComponent<PlayerCharacter>().PlayerIndex == playerIndex).GetComponent<HealthComponent>();
         _isHeal = false;
     }
 

@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,13 +15,13 @@ public class SkillRoots : MonoBehaviour, IUpgradable
     private float _damage;
     private float _moveSpeedReducePercent;
 
-    private void Awake()
+    public void Initialize(int playerIndex)
     {
         _currentLevel = 1;
         _maxLevel = 8;
 
         _moveSpeedReducePercent = 0.45f;
-        _damageRadius = 1f;
+        _damageRadius = 1f * GlobalBonuses.Instance.GetAdditionalAoeRadius();
         _damage = 10f;
         _damageFrequency = 0.3f;
         _tagsToDamage = new List<string>(TagsHandler.GetEnemyTags());
@@ -100,7 +99,7 @@ public class SkillRoots : MonoBehaviour, IUpgradable
                     _damageFrequency = 0.15f;
                     break;
             }
-
+            Debug.Log("level roots - " + _currentLevel);
             _damageRadius *= GlobalBonuses.Instance.GetAdditionalAoeRadius();
             _radialDamage.UpdateStats(_tagsToDamage, _damageRadius, _damage, _damageFrequency);
             _radialMoveSpeedDecrease.UpdateStats(_moveSpeedReducePercent, _tagsToDamage, _damageRadius);

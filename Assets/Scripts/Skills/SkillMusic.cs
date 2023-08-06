@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Linq;
 using UnityEngine;
 
 public sealed class SkillMusic : MonoBehaviour, IUpgradable
@@ -15,13 +16,14 @@ public sealed class SkillMusic : MonoBehaviour, IUpgradable
     private int _maxLevel;
     private int _currentLevel;
 
-    private void Awake()
+    public void Initialize(int playerIndex)
     {
         _maxLevel = 8;
         _currentLevel = 1;
         _projectileFrequency = 0.25f;
         _projectileCount = 3 + GlobalBonuses.Instance.GetAdditionalProjectilesCount();
-        _playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
+        _playerMovement = GameObject.FindGameObjectsWithTag(TagsHandler.GetPlayerTag()).
+            FirstOrDefault(p => p.GetComponent<PlayerCharacter>().PlayerIndex == playerIndex).GetComponent<PlayerMovement>();
         EventManager.OnProjectilesUpdate.AddListener(Upgrade);
     }
 

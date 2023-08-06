@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3dc3e797ff3e2ed43ac9265f0d3b407a, type: 3}
+  m_Name: WizeTree
+  m_EditorClassIdentifier: 
+  CharacterName: Wize Tree
+  CharacterDescription: Wize Tree
+  CharacterBaseSprite: {fileID: -399989931, guid: 8f90c718d9ff66b40a40f15da855e1ef, type: 3}
+  CharacterLogo: {fileID: 1689112574, guid: ed9b1be907969d54f973c2a83b2d937c, type: 3}
+  CharacterAnimationController: {fileID: 9100000, guid: cc1d4f999e82b7c4fb535c0da25b128a, type: 2}
+  CharacterBaseStats:
+    _healthRecovery: 0
+    _maxHealth: 80
+    _armor: 5
+    _moveSpeed: 2
+    _damageBonus: 0
+    _aoeRadiusBonus: 0
+    _cooldownReduceBonus: 0
+    _vampirismBonus: 0
+    _projectilesBonus: 0
+    _respawnTimes: 0
+  CharacterType: 3
+  BaseActiveSkill: 12

@@ -105,6 +105,7 @@ public class PlayerInputHandler : MonoBehaviour
                 Debug.Log("Action map set to Player");
                 break;
             case ActionMaps.UI:
+                InputManager.Instance.EnableAllPlayerInputs();
                 OnMoveButtonPressedEvent(new Vector2(0f, 0f));
 
                 _playerInput.actions["Move"].performed -= MoveButtonPressed;

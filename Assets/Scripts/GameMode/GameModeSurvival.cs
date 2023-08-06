@@ -12,6 +12,7 @@ public class GameModeSurvival : IGameMode
     private GameTimer _gameTimer;
     private SkillsSpawner _skillsSpawner;
     private SOCharacters _charactersList;
+    private FollowObject _destroyVolume;
     private IGameplayUI _gameplayUIManager;
 
     public void Initialize(List<CharacterType> playersCharacters, GameObject uiPrefab, BootstrapGameplay gameplay)
@@ -24,6 +25,7 @@ public class GameModeSurvival : IGameMode
         _skillsSpawner.Initialize(playersCharacters.Count);
         _gameplayUIManager = gameplay.SpawnGameplayObject(uiPrefab, Vector3.zero).GetComponent<IGameplayUI>();
         _gameplayUIManager.Initialize(_skillsSpawner, playersCharacters.Count);
+        _destroyVolume = gameplay.SpawnGameplayObject(gameplay.GetDestroyVolumePrefab, Vector3.zero).GetComponent<FollowObject>();
 
 #if UNITY_EDITOR
         EditorGodMode.Initialize(_skillsSpawner);
@@ -31,6 +33,7 @@ public class GameModeSurvival : IGameMode
 
         List<Vector3> startPositions = UtilsClass.GetRadialPoints(playersCharacters.Count, 1f);
         _players = new List<PlayerCharacter>();
+        PlayerCharacter.PlayersCount = playersCharacters.Count;
 
         for (int i = 0; i < playersCharacters.Count; i++)
         {
@@ -42,6 +45,7 @@ public class GameModeSurvival : IGameMode
                               _charactersList.CharactersList.Find(obj => obj.CharacterType == playersCharacters[i]));
         }
 
+        _destroyVolume.SetFollowObject(_players[0].gameObject);
         _enemiesSpawnHandler = gameplay.SpawnGameplayObject(gameplay.GetEnemiesSpawnHandlerPrefab, Vector3.zero).GetComponent<EnemiesSpawnHandler>();
 
         _gameTimer.Initialize();
@@ -58,6 +62,10 @@ public class GameModeSurvival : IGameMode
 
         if (_players.Count == 0)
             EventManager.OnGameOverEvent();
-        else _players[0].EnableCamera();
+        else
+        {
+            _players[0].EnableCamera();
+            _destroyVolume.SetFollowObject(_players[0].gameObject);
+        }
     }
 }

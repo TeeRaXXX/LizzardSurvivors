@@ -6,7 +6,7 @@ public class SkillProjectilesIncrease : MonoBehaviour, IUpgradable
     private int _maxLevel;
     private int _currentLevel;
 
-    private void Awake()
+    public void Initialize(int playerIndex)
     {
         _maxLevel = 8;
         _currentLevel = 1;

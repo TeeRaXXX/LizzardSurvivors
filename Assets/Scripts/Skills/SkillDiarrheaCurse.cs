@@ -18,7 +18,7 @@ public class SkillDiarrheaCurse : MonoBehaviour, IUpgradable
     private float _moveSpeedReducePercent;
     private bool _isActive;
 
-    private void Awake()
+    public void Initialize(int playerIndex)
     {
         _isActive = false;
 

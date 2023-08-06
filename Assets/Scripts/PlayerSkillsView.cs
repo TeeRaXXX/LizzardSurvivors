@@ -189,6 +189,7 @@ public class PlayerSkillsView : MonoBehaviour
         if (_currentChoice[skillNumber] == SkillType.None)
             return;
 
+        InputManager.Instance.EnableAllPlayerInputs();
         InputManager.Instance.EventSystem.SetSelectedGameObject(_skillsOfferFrames[skillNumber].gameObject);
         Debug.Log(_currentChoice[skillNumber].ToString());
         PlayerInventory playerInventory = GameObject.FindGameObjectsWithTag(TagsHandler.GetPlayerTag()).
@@ -213,6 +214,7 @@ public class PlayerSkillsView : MonoBehaviour
 
     public void SkipSkillChoice()
     {
+        _skillsSpawner.UpdateCurrentPlayerToSpawnSkill();
         EventManager.OnActionMapSwitchEvent(ActionMaps.Player);
         InputManager.Instance.EnableAllPlayerInputs();
         _skillsOfferScreen.gameObject.SetActive(false);

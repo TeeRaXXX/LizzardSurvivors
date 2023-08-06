@@ -96,7 +96,7 @@ MonoBehaviour:
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 3446575630047043852}
-    m_SelectOnRight: {fileID: 3446575630047043852}
+    m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
@@ -10105,7 +10105,7 @@ MonoBehaviour:
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 6706663811833172951}
+    m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 6706663811833172951}
   m_Transition: 1
   m_Colors:

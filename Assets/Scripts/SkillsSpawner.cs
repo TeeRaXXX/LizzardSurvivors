@@ -38,7 +38,7 @@ public class SkillsSpawner : MonoBehaviour
     }
 
     public int CurrentPlayerToSpawnSkill => _playersIndexes.Peek();
-    public int PlayersCount => _playersCount;
+    public int PlayersCount { get { return _playersCount; } private set { } }
 
     public void SpawnSkill(SkillType skillType, int level, int playerIndex, out bool isMaxLevel)
     {
@@ -56,15 +56,18 @@ public class SkillsSpawner : MonoBehaviour
             {
                 skillPrefab = Instantiate(GetSkillPrefab(skillType), skillsHolder);
                 _skills[playerIndex].Add(new Skill(skillType, skillPrefab));
+                skillPrefab.GetComponent<IUpgradable>().Initialize(playerIndex);
             }
             else
             {
-                for (int i = 0; i < PlayersCount; i++)
+                List<int> players = new List<int>(_playersIndexes);
+                for (int i = 0; i < _playersCount; i++)
                 {
                     skillsHolder = GameObject.FindGameObjectsWithTag(TagsHandler.GetSkillsHolderTag()).
-                        FirstOrDefault(o => o.GetComponent<SkillsHolder>().PlayerIndex == i).GetComponent<Transform>();
+                        FirstOrDefault(o => o.GetComponent<SkillsHolder>().PlayerIndex == players[i]).GetComponent<Transform>();
                     skillPrefab = Instantiate(GetSkillPrefab(skillType), skillsHolder);
-                    _skills[playerIndex].Add(new Skill(skillType, skillPrefab));
+                    _skills[players[i]].Add(new Skill(skillType, skillPrefab));
+                    skillPrefab.GetComponent<IUpgradable>().Initialize(players[i]);
                 }
             }
 
@@ -96,10 +99,11 @@ public class SkillsSpawner : MonoBehaviour
             }
             else
             {
-                for (int i = 0; i < PlayersCount; i++)
+                List<int> players = new List<int>(_playersIndexes);
+                for (int i = 0; i < _playersCount; i++)
                 {
-                    _skills[i].FirstOrDefault(skill => skill.SkillType == skillType).SkillPrefab.GetComponent<IUpgradable>().Upgrade(true);
-                    EventManager.OnSkillAddedEvent(skillType, level, i);
+                    _skills[players[i]].FirstOrDefault(skill => skill.SkillType == skillType).SkillPrefab.GetComponent<IUpgradable>().Upgrade(true);
+                    EventManager.OnSkillAddedEvent(skillType, level, players[i]);
                 }
             }
 
@@ -124,7 +128,7 @@ public class SkillsSpawner : MonoBehaviour
         _playersCount--;
     }
 
-    private void UpdateCurrentPlayerToSpawnSkill()
+    public void UpdateCurrentPlayerToSpawnSkill()
     {
         UtilsClass.MoveElementToBack(_playersIndexes, _playersIndexes.Peek());
     }

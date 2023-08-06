@@ -16,7 +16,7 @@ public class SkillTotemAoeDamage : MonoBehaviour, IUpgradable
     private int _currentLevel;
     private bool _isActive;
 
-    private void Awake()
+    public void Initialize(int playerIndex)
     {
         _isActive = true;
 

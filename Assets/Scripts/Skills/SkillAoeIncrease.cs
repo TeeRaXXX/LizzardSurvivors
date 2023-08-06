@@ -4,10 +4,9 @@ public class SkillAoeIncrease : MonoBehaviour, IUpgradable
 {
     private int _maxLevel;
     private int _currentLevel;
-
     private float _aoeMultiplier;
 
-    private void Awake()
+    public void Initialize(int playerIndex)
     {
         _currentLevel = 1;
         _maxLevel = 8;

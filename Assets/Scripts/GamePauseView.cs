@@ -24,6 +24,7 @@ public class GamePauseView : MonoBehaviour
                 Time.timeScale = 0f;
                 _gamePauseUI.SetActive(true);
                 InputManager.Instance.EventSystem.SetSelectedGameObject(_playButton);
+                InputManager.Instance.EnableAllPlayerInputs();
                 EventManager.OnActionMapSwitchEvent(ActionMaps.UI);
             }
             else if (_gamePauseUI.activeSelf)

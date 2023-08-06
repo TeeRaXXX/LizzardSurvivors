@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -28,10 +27,11 @@ public class InputManager : MonoBehaviour
         {
             playerInput.DeactivateInput();
         }
-
-        _playerInputs[playerIndex].ActivateInput();
-        UIInputModule.actionsAsset = _playerInputs[playerIndex].actions;
-        Debug.Log($"Player {playerIndex} is controlls UI");
+        if (_playerInputs[playerIndex] != null)
+        {
+            _playerInputs[playerIndex].ActivateInput();
+            UIInputModule.actionsAsset = _playerInputs[playerIndex].actions;
+        }
     }
 
     public void EnableAllPlayerInputs()
@@ -39,6 +39,7 @@ public class InputManager : MonoBehaviour
         foreach (var playerInput in _playerInputs)
         {
             playerInput.ActivateInput();
+            UIInputModule.actionsAsset = new PlayerInputActions().asset;
         }
     }
 
