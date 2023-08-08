@@ -10,6 +10,7 @@ using System;
     SnailLargeBoss,
     FrogBase,
     ChameleonBase,
-    VodianoyBoss
-
+    VodianoyBoss,
+    Skeleton,
+    Necromant
 }

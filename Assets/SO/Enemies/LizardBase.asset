@@ -19,10 +19,10 @@ MonoBehaviour:
   EnemyAnimationController: {fileID: 9100000, guid: da40fdb3f78aedc489ce03240c7d63f2, type: 2}
   EnemyBaseStats:
     _healthRecovery: 0
-    _maxHealth: 50
+    _maxHealth: 90
     _armor: 0
     _moveSpeed: 1
-    _damage: 1
+    _damage: 4
     _attackSpeed: 0.1
     _attackRadius: 1
   EnemyType: 0
@@ -31,6 +31,8 @@ MonoBehaviour:
   - DropPrefab: {fileID: 858945274545618952, guid: 8df36d66a40e3064c9b62dcc92fc7f75, type: 3}
     DropChance: 0.65
   - DropPrefab: {fileID: 8295958284329363171, guid: 516cfeb5279555441bb82486c5f64f0c, type: 3}
+    DropChance: 0.1
+  - DropPrefab: {fileID: 7236637165618389693, guid: 65773d9a9f12d3841bd8339346f9cc15, type: 3}
     DropChance: 0.1
   ExperienceMin: 20
   ExperienceMax: 30

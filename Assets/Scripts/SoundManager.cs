@@ -34,8 +34,8 @@ public class SoundManager : MonoBehaviour
     public void PlaySFX(string name)
     {
         var soundSet = soundSets.Find(set => set.Name == "SFX");
-        SoundClip sound = soundSet.Sounds.SoundClips.Find(clip => clip.Name == name);
-
-        soundSet.AudioSource.PlayOneShot(sound.Clip);
+        List <SoundClip> sounds = soundSet.Sounds.SoundClips.FindAll(clip => clip.Name == name);
+        if (sounds.Count > 0 && sounds != null)
+            soundSet.AudioSource.PlayOneShot(sounds[UnityEngine.Random.Range(0, sounds.Count - 1)].Clip);
     }
 }

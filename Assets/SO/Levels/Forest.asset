@@ -22,8 +22,8 @@ MonoBehaviour:
     - Enemy: 6
       Percent: 0.7
       SpawnCount: 2
-    - Enemy: 4
-      Percent: 0.3
+    - Enemy: 10
+      Percent: 0.1
       SpawnCount: 1
   - Minute: 1
     SpawnFrequency: 1

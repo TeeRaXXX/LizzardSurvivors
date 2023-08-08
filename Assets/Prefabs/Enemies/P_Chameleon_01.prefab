@@ -159,6 +159,7 @@ MonoBehaviour:
   _radialDamage: {fileID: 1945318315037353241}
   _buffsHandler: {fileID: 2636511646015779458}
   _debuffsHandler: {fileID: 6120897895792922451}
+  _behaviors: []
 --- !u!114 &2504083351737121902
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -317,8 +318,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 895761009
+  m_SortingLayer: 6
   m_SortingOrder: 5
   m_Sprite: {fileID: -2087507927, guid: fb4106738f17a3249ad115b1db69e14a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

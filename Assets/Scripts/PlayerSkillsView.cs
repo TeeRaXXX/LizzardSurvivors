@@ -189,7 +189,7 @@ public class PlayerSkillsView : MonoBehaviour
         if (_currentChoice[skillNumber] == SkillType.None)
             return;
 
-        InputManager.Instance.EnableAllPlayerInputs();
+        SoundManager.Instance.PlaySFX("SkillSelect");
         InputManager.Instance.EventSystem.SetSelectedGameObject(_skillsOfferFrames[skillNumber].gameObject);
         Debug.Log(_currentChoice[skillNumber].ToString());
         PlayerInventory playerInventory = GameObject.FindGameObjectsWithTag(TagsHandler.GetPlayerTag()).
@@ -206,8 +206,8 @@ public class PlayerSkillsView : MonoBehaviour
         else
         {
             _skillsOfferScreen.gameObject.SetActive(false);
-            EventManager.OnActionMapSwitchEvent(ActionMaps.Player);
             InputManager.Instance.EnableAllPlayerInputs();
+            EventManager.OnActionMapSwitchEvent(ActionMaps.Player);
             Time.timeScale = 1;
         }
     }
@@ -215,8 +215,8 @@ public class PlayerSkillsView : MonoBehaviour
     public void SkipSkillChoice()
     {
         _skillsSpawner.UpdateCurrentPlayerToSpawnSkill();
-        EventManager.OnActionMapSwitchEvent(ActionMaps.Player);
         InputManager.Instance.EnableAllPlayerInputs();
+        EventManager.OnActionMapSwitchEvent(ActionMaps.Player);
         _skillsOfferScreen.gameObject.SetActive(false);
         Time.timeScale = 1;
     }

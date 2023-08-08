@@ -43,6 +43,33 @@ namespace NastyDoll.Utils {
             return points;
         }
 
+        public static List<GameObject> GetObjectsInRadius(float radius, Vector3 center, string tag = "")
+        {
+            List<GameObject> objects = GameObject.FindGameObjectsWithTag(tag).ToList();
+            if (objects.Count == 0) return null;
+
+            List<GameObject> objectsToReturn = new List<GameObject>();
+
+            if (tag == "")
+            {
+                foreach (var obj in objects)
+                {
+                    if (Vector3.Distance(obj.transform.position, center) <= radius)
+                        objectsToReturn.Add(obj);
+                }
+            }
+            else 
+            {
+                foreach (var obj in objects)
+                {
+                    if (obj.CompareTag(tag) && Vector3.Distance(obj.transform.position, center) <= radius)
+                        objectsToReturn.Add(obj);
+                }
+            }
+
+            return objectsToReturn;
+        }
+
         public static void MoveElementToBack<T>(Queue<T> queue, T elementToMove)
         {
             T item = default;

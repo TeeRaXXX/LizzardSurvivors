@@ -10,8 +10,11 @@ public class CharacterPointer : MonoBehaviour
     private float _borderSize = 75f;
     private bool _isInited = false;
 
+    private void Awake() => gameObject.SetActive(false);
+
     public void Initialize(Sprite characterLogo)
     {
+        gameObject.SetActive(true);
         _characterLogoSprite = characterLogo;
         uiCamera = GameObject.FindGameObjectWithTag(TagsHandler.GetPlayerCameraTag()).GetComponent<Camera>();
         _isInited = true;

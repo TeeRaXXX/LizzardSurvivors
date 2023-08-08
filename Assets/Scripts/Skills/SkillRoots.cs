@@ -51,51 +51,58 @@ public class SkillRoots : MonoBehaviour, IUpgradable
             switch (_currentLevel)
             {
                 case 2:
-                    _moveSpeedReducePercent = 0.45f;
+                    _moveSpeedReducePercent = 0.25f;
                     _damageRadius = 1.25f;
-                    _damage = 10f;
+                    _damage = 5f;
                     _damageFrequency = 0.3f;
                     break;
 
                 case 3:
-                    _moveSpeedReducePercent = 0.5f;
+                    _moveSpeedReducePercent = 0.25f;
                     _damageRadius = 1.25f;
-                    _damage = 15f;
+                    _damage = 10f;
                     _damageFrequency = 0.25f;
                     break;
 
                 case 4:
-                    _moveSpeedReducePercent = 0.5f;
+                    _moveSpeedReducePercent = 0.3f;
                     _damageRadius = 1.35f;
-                    _damage = 15f;
+                    _damage = 10f;
                     _damageFrequency = 0.25f;
                     break;
 
                 case 5:
-                    _moveSpeedReducePercent = 0.55f;
+                    _moveSpeedReducePercent = 0.3f;
                     _damageRadius = 1.35f;
-                    _damage = 20f;
+                    _damage = 15f;
                     _damageFrequency = 0.2f;
                     break;
 
                 case 6:
-                    _moveSpeedReducePercent = 0.6f;
+                    _moveSpeedReducePercent = 0.35f;
                     _damageRadius = 1.45f;
-                    _damage = 20f;
+                    _damage = 15f;
                     _damageFrequency = 0.2f;
                     break;
 
                 case 7:
-                    _moveSpeedReducePercent = 0.6f;
+                    _moveSpeedReducePercent = 0.35f;
                     _damageRadius = 1.45f;
-                    _damage = 25f;
+                    _damage = 20f;
                     _damageFrequency = 0.15f;
                     break;
 
                 case 8:
-                    _moveSpeedReducePercent = 0.7f;
+                    _moveSpeedReducePercent = 0.5f;
                     _damageRadius = 1.6f;
-                    _damage = 25f;
+                    _damage = 20f;
+                    _damageFrequency = 0.15f;
+                    break;
+
+                default:
+                    _moveSpeedReducePercent = 0.5f;
+                    _damageRadius = 1.6f;
+                    _damage = 20f;
                     _damageFrequency = 0.15f;
                     break;
             }

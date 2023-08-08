@@ -103,6 +103,7 @@ public class PlayerCharacter : MonoBehaviour
 
     private void OnHelthChangedEvent(float newHealth, float oldHealth, GameObject damageSource)
     {
+        SoundManager.Instance.PlaySFX(oldHealth > newHealth ? "PlayerTakingDamage" : "PlayerTakingHeal");
         _playerHealthView.UpdateHealthBar(newHealth, _selectedCharacter.CharacterBaseStats.GetMaxHealth(), _playerIndex);
 
         if (oldHealth - newHealth <= 0)

@@ -14,6 +14,7 @@ TagManager:
   - SkillsHolder
   - EventSystem
   - ExperienceKillVolume
+  - Ashes
   layers:
   - Default
   - TransparentFX
@@ -50,4 +51,43 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: EnvironmentTile
+    uniqueID: 3823624443
+    locked: 0
+  - name: EnvironemntProp3
+    uniqueID: 2089650079
+    locked: 0
+  - name: EnvironemntProp2
+    uniqueID: 1577294797
+    locked: 0
+  - name: EnvironemntProp1
+    uniqueID: 2074924715
+    locked: 0
+  - name: SkillAOE
+    uniqueID: 3441382557
+    locked: 0
+  - name: Drop3
+    uniqueID: 2480399483
+    locked: 0
+  - name: Enemy
+    uniqueID: 895761009
+    locked: 0
+  - name: SkillProjectile
+    uniqueID: 3871554143
+    locked: 0
+  - name: Drop2
+    uniqueID: 2362448503
+    locked: 0
+  - name: Drop1
+    uniqueID: 913476293
+    locked: 0
+  - name: Totem
+    uniqueID: 1880413083
+    locked: 0
+  - name: Player
+    uniqueID: 971033425
+    locked: 0
+  - name: Lights
+    uniqueID: 1236350039
     locked: 0

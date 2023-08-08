@@ -15,3 +15,23 @@ MonoBehaviour:
   SoundClips:
   - Name: ExperiencePickup
     Clip: {fileID: 8300000, guid: a9f7f1ecaaf7c004eb46ecd240391260, type: 3}
+  - Name: ButtonsSwitch
+    Clip: {fileID: 8300000, guid: 75bd505f3722afd449c9f09a9b6c8b60, type: 3}
+  - Name: EnemyTakingDamage
+    Clip: {fileID: 8300000, guid: 50e374b189a1fe1499bec6281e5e3deb, type: 3}
+  - Name: LevelUp
+    Clip: {fileID: 8300000, guid: a4293f4f6fa25394fb592774302ed221, type: 3}
+  - Name: NecromantSkill
+    Clip: {fileID: 8300000, guid: 851afe8e8fad2514fb1aa87f1840aee0, type: 3}
+  - Name: PlayerTakingDamage
+    Clip: {fileID: 8300000, guid: b13b009ebf16ee445959adba6dd4f1a9, type: 3}
+  - Name: PlayerTakingDamage
+    Clip: {fileID: 8300000, guid: 4639da88109ec534e90fbc4aa0de1ad2, type: 3}
+  - Name: PlayerTakingDamage
+    Clip: {fileID: 8300000, guid: e59eb095652d5384394ddfdd2bde1db5, type: 3}
+  - Name: PlayerTakingHeal
+    Clip: {fileID: 8300000, guid: 8932c0cfa236fe44c9481a1a7f1eca82, type: 3}
+  - Name: SkeletonAppearance
+    Clip: {fileID: 8300000, guid: e4d35e01a4f59d84784df079fc58812b, type: 3}
+  - Name: SkillSelect
+    Clip: {fileID: 8300000, guid: 4a7ab0b8109444e46890c7ec0e318c00, type: 3}

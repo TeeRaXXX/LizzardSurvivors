@@ -16,11 +16,15 @@ public class EnemyCharacter : MonoBehaviour
     [SerializeField] private RadialDamage _radialDamage;
     [SerializeField] private BuffsHandler _buffsHandler;
     [SerializeField] private DebuffsHandler _debuffsHandler;
+    [SerializeField] private List<GameObject> _behaviors;
 
     private Buffs _buffs;
     private Debuffs _debuffs;
 
     private readonly UnityEvent<float, float, GameObject> _onHealthChanged = new UnityEvent<float, float, GameObject>();
+
+    public Animator Animator => _enemyAnimator;
+    public FollowObjectComponent followObjectComponent => _followPlayerComponent;
 
     public void Start()
     {
@@ -54,6 +58,8 @@ public class EnemyCharacter : MonoBehaviour
 
         _onHealthChanged.AddListener(OnHelthChangedEvent);
 
+        foreach (var behavior in _behaviors)
+            behavior.GetComponent<IEnemyBehavior>().Initialize(this);
     }
 
     public void AddBuff(IBuff buff) => _buffs.AddBuff(buff);
@@ -64,6 +70,8 @@ public class EnemyCharacter : MonoBehaviour
 
     private void OnHelthChangedEvent(float newHealth, float oldHealth, GameObject damageSource)
     {
+        if (oldHealth > newHealth)
+            SoundManager.Instance.PlaySFX("EnemyTakingDamage");
         var damageDigitView = Instantiate(_damageDigitView, _damageDigitViewPosition.position, Quaternion.identity);
         damageDigitView.GetComponent<DamageDigitView>().Initialize(oldHealth - newHealth);
 
