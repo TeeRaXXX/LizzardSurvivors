@@ -88,6 +88,11 @@ public class SkillTotemAoeDamage : MonoBehaviour, IUpgradable
         {
             switch (_currentLevel)
             {
+                case 1:
+                    _damage = 10f;
+                    _damageRadius = 1f;
+                    break;
+                    
                 case 2:
                     _damage = 15f;
                     _damageRadius = 1f;
@@ -119,6 +124,11 @@ public class SkillTotemAoeDamage : MonoBehaviour, IUpgradable
                     break;
 
                 case 8:
+                    _damage = 30f;
+                    _damageRadius = 1.15f;
+                    break;
+
+                default:
                     _damage = 30f;
                     _damageRadius = 1.15f;
                     break;

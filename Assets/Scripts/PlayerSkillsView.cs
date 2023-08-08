@@ -22,7 +22,10 @@ public class PlayerSkillsView : MonoBehaviour
     [SerializeField] Image _characterLogoSkillSelect;
     [SerializeField] GameObject _skillsOfferScreen;
     [SerializeField] List<Image> _skillsOfferFrames;
+    [SerializeField] List<Image> _skillsOfferSprites;
+    [SerializeField] List<TMP_Text> _skillsOfferNames;
     [SerializeField] List<TMP_Text> _skillsOfferDescriptions;
+    [SerializeField] List<TMP_Text> _skillsOfferLevels;
 
     private SkillsSpawner _skillsSpawner;
     private List<SkillType> _currentChoice;
@@ -164,9 +167,21 @@ public class PlayerSkillsView : MonoBehaviour
 
             _characterLogoSkillSelect.sprite = playerCharacter.PlayerLogo;
             _currentChoice[i] = skillsToOffer[i];
-            _skillsOfferFrames[i].sprite = _skillsSpawner.GetSkillLogo(skillsToOffer[i]);
-            _skillsOfferDescriptions[i].text = _skillsSpawner.GetSkillName(skillsToOffer[i])
-                + " level " + (playerInventory.GetSkillLevel(skillsToOffer[i]) + 1);
+            _skillsOfferSprites[i].sprite = _skillsSpawner.GetSkillLogo(skillsToOffer[i]);
+
+            _skillsOfferDescriptions[i].text = _skillsSpawner.GetSkillDescription(skillsToOffer[i]);
+            _skillsOfferNames[i].text = _skillsSpawner.GetSkillName(skillsToOffer[i]);
+
+            if (playerInventory.GetSkillLevel(skillsToOffer[i]) > 0)
+            {
+                _skillsOfferLevels[i].color = Color.white;
+                _skillsOfferLevels[i].text = $"Level {playerInventory.GetSkillLevel(skillsToOffer[i]) + 1}";
+            }
+            else
+            {
+                _skillsOfferLevels[i].color = Color.green;
+                _skillsOfferLevels[i].text = "New";
+            }
         }
 
         _skillsToOfferCount--;
@@ -179,7 +194,7 @@ public class PlayerSkillsView : MonoBehaviour
         for (int i = 0; i < _skillsOfferFrames.Count; i++)
         {
             _currentChoice.Add(SkillType.None);
-            _skillsOfferFrames[i].sprite = _skillSpritePlaceholder;
+            _skillsOfferSprites[i].sprite = _skillSpritePlaceholder;
             _skillsOfferDescriptions[i].text = string.Empty;
         }
     }
@@ -190,7 +205,7 @@ public class PlayerSkillsView : MonoBehaviour
             return;
 
         SoundManager.Instance.PlaySFX("SkillSelect");
-        InputManager.Instance.EventSystem.SetSelectedGameObject(_skillsOfferFrames[skillNumber].gameObject);
+        //InputManager.Instance.EventSystem.SetSelectedGameObject(_skillsOfferFrames[skillNumber].gameObject);
         Debug.Log(_currentChoice[skillNumber].ToString());
         PlayerInventory playerInventory = GameObject.FindGameObjectsWithTag(TagsHandler.GetPlayerTag()).
                 FirstOrDefault(o => o.GetComponent<PlayerCharacter>().PlayerIndex ==

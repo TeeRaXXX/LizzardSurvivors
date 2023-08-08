@@ -85,6 +85,11 @@ public class SkillTotemProjectiles : MonoBehaviour, IUpgradable
         {
             switch (_currentLevel)
             {
+                case 1:
+                    _damage = 25f;
+                    _projectilesCount = 1;
+                    break;
+                    
                 case 2:
                     _damage = 35f;
                     _projectilesCount = 1;
@@ -116,6 +121,11 @@ public class SkillTotemProjectiles : MonoBehaviour, IUpgradable
                     break;
 
                 case 8:
+                    _damage = 80f;
+                    _projectilesCount = 4;
+                    break;
+
+                default:
                     _damage = 80f;
                     _projectilesCount = 4;
                     break;

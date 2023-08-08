@@ -76,6 +76,12 @@ public class SkillTotemAoeHeal : MonoBehaviour, IUpgradable
         {
             switch (_currentLevel)
             {
+                case 1:
+                    _heal = 1f;
+                    _healFrequency = 0.5f;
+                    _healRadius = 1f;
+                    break;
+                    
                 case 2:
                     _heal = 1f;
                     _healFrequency = 0.45f;
@@ -113,6 +119,12 @@ public class SkillTotemAoeHeal : MonoBehaviour, IUpgradable
                     break;
 
                 case 8:
+                    _heal = 4f;
+                    _healFrequency = 0.3f;
+                    _healRadius = 1f;
+                    break;
+
+                default:
                     _heal = 4f;
                     _healFrequency = 0.3f;
                     _healRadius = 1f;

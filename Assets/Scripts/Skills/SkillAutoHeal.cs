@@ -50,6 +50,10 @@ public class SkillAutoHeaal : MonoBehaviour, IUpgradable
         {
             switch (_currentLevel)
             {
+                case 1:
+                    _healAmount = 1f;
+                    break;
+
                 case 2:
                     _healAmount = 1.5f;
                     break;
@@ -75,6 +79,10 @@ public class SkillAutoHeaal : MonoBehaviour, IUpgradable
                     break;
 
                 case 8:
+                    _healAmount = 4.5f;
+                    break;
+
+                default:
                     _healAmount = 4.5f;
                     break;
             }

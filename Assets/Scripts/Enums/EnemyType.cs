@@ -12,5 +12,8 @@ using System;
     ChameleonBase,
     VodianoyBoss,
     Skeleton,
-    Necromant
+    Necromant,
+    Mushroom_01,
+    Mushroom_02,
+    Mushroom_03
 }

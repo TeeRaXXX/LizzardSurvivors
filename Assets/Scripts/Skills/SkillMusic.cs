@@ -64,6 +64,12 @@ public sealed class SkillMusic : MonoBehaviour, IUpgradable
         {
             switch (_currentLevel)
             {
+                case 1:
+                    _projectileCount = 3;
+                    _coolDown = 0.35f;
+                    _projectileFrequency = 0.25f;
+                    break;
+                    
                 case 2:
                     _projectileCount = 4;
                     _coolDown = 0.35f;
@@ -101,6 +107,13 @@ public sealed class SkillMusic : MonoBehaviour, IUpgradable
                     break;
 
                 case 8:
+                    _projectileCount = 8;
+                    _coolDown = 0.0f;
+                    _projectileFrequency = 0.05f;
+                    _spawnAngle = 360f / _projectileFrequency * (_projectileCount + GlobalBonuses.Instance.GetAdditionalProjectilesCount());
+                    break;
+
+                default:
                     _projectileCount = 8;
                     _coolDown = 0.0f;
                     _projectileFrequency = 0.05f;

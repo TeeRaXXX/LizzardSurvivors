@@ -27,6 +27,10 @@ public class SkillProjectilesIncrease : MonoBehaviour, IUpgradable
         {
             switch (_currentLevel)
             {
+                case 1:
+                    _additionalProjectilesCount = 1;
+                    break;
+                    
                 case 2:
                     _additionalProjectilesCount = 2;
                     break;
@@ -52,6 +56,10 @@ public class SkillProjectilesIncrease : MonoBehaviour, IUpgradable
                     break;
 
                 case 8:
+                    _additionalProjectilesCount = 8;
+                    break;
+
+                default:
                     _additionalProjectilesCount = 8;
                     break;
             }

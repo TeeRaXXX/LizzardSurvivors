@@ -18,7 +18,7 @@ MonoBehaviour:
   EnemyAnimationController: {fileID: 9100000, guid: 4a7dc6c915891a1418a1936e8b71b1c0, type: 2}
   EnemyBaseStats:
     _healthRecovery: 0
-    _maxHealth: 30
+    _maxHealth: 70
     _armor: 0
     _moveSpeed: 1
     _damage: 0.1

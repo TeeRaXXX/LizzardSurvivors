@@ -28,6 +28,10 @@ public class SkillAoeIncrease : MonoBehaviour, IUpgradable
         {
             switch (_currentLevel)
             {
+                case 1:
+                    _aoeMultiplier = 1.1f;
+                    break;
+
                 case 2:
                     _aoeMultiplier = 1.15f;
                     break;
@@ -53,6 +57,10 @@ public class SkillAoeIncrease : MonoBehaviour, IUpgradable
                     break;
 
                 case 8:
+                    _aoeMultiplier = 1.45f;
+                    break;
+
+                default:
                     _aoeMultiplier = 1.45f;
                     break;
             }

@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 510b5ecc2b3021444be610aa2dacbb13, type: 3}
+  m_Name: Mushroom_02
+  m_EditorClassIdentifier: 
+  EnemyName: Mushroom 2
+  EnemyDescription: Mushroom 2
+  EnemyBaseSprite: {fileID: 1394981862, guid: 6157be21e74049448bb7e9e0568d8ad3, type: 3}
+  EnemyAnimationController: {fileID: 9100000, guid: 39c652bdf1fdc494bafac48817505e29, type: 2}
+  EnemyBaseStats:
+    _healthRecovery: 0
+    _maxHealth: 85
+    _armor: 2
+    _moveSpeed: 1.5
+    _damage: 5
+    _attackSpeed: 0.1
+    _attackRadius: 1
+  EnemyType: 12
+  EnemyPrefab: {fileID: 4636179052216643875, guid: 46cc8926845692040a25759f9d5c8ce3, type: 3}
+  Drops:
+  - DropPrefab: {fileID: 858945274545618952, guid: 8df36d66a40e3064c9b62dcc92fc7f75, type: 3}
+    DropChance: 0.65
+  - DropPrefab: {fileID: 8295958284329363171, guid: 516cfeb5279555441bb82486c5f64f0c, type: 3}
+    DropChance: 0.01
+  - DropPrefab: {fileID: 7236637165618389693, guid: 65773d9a9f12d3841bd8339346f9cc15, type: 3}
+    DropChance: 0.1
+  ExperienceMin: 60
+  ExperienceMax: 80

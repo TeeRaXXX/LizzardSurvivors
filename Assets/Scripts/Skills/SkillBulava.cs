@@ -68,6 +68,11 @@ public class SkillBulava : MonoBehaviour, IUpgradable
         {
             switch (_currentLevel)
             {
+                case 1:
+                    _damage = 25f;
+                    _spawnPosition.localScale = new Vector3 (1f, 1f, 1f);
+                    break;
+
                 case 2:
                     _damage = 25f;
                     _spawnPosition.localScale = new Vector3 (1.3f, 1.3f, 1f);
@@ -99,6 +104,11 @@ public class SkillBulava : MonoBehaviour, IUpgradable
                     break;
 
                 case 8:
+                    _damage = 85f;
+                    _spawnPosition.localScale = new Vector3(2.2f, 2.2f, 1f);
+                    break;
+
+                default:
                     _damage = 85f;
                     _spawnPosition.localScale = new Vector3(2.2f, 2.2f, 1f);
                     break;

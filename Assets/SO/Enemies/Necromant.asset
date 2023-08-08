@@ -21,7 +21,7 @@ MonoBehaviour:
     _maxHealth: 1200
     _armor: 0
     _moveSpeed: 0.5
-    _damage: 14
+    _damage: 9
     _attackSpeed: 0.1
     _attackRadius: 0.75
   EnemyType: 10

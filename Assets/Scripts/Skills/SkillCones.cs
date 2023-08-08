@@ -68,6 +68,12 @@ public class SkillCones : MonoBehaviour, IUpgradable
         {
             switch (_currentLevel)
             {
+                case 1:
+                    _damage = 15f;
+                    _bounceCount = 3;
+                    _spawnCount = 1;
+                    break;
+                    
                 case 2:
                     _damage = 15f;
                     _bounceCount = 4;
@@ -105,6 +111,12 @@ public class SkillCones : MonoBehaviour, IUpgradable
                     break;
 
                 case 8:
+                    _damage = 30f;
+                    _bounceCount = 10;
+                    _spawnCount = 1;
+                    break;
+
+                default:
                     _damage = 30f;
                     _bounceCount = 10;
                     _spawnCount = 1;

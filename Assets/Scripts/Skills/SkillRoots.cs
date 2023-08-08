@@ -20,9 +20,9 @@ public class SkillRoots : MonoBehaviour, IUpgradable
         _currentLevel = 1;
         _maxLevel = 8;
 
-        _moveSpeedReducePercent = 0.45f;
+        _moveSpeedReducePercent = 0.25f;
         _damageRadius = 1f * GlobalBonuses.Instance.GetAdditionalAoeRadius();
-        _damage = 10f;
+        _damage = 5f;
         _damageFrequency = 0.3f;
         _tagsToDamage = new List<string>(TagsHandler.GetEnemyTags());
 
@@ -50,6 +50,13 @@ public class SkillRoots : MonoBehaviour, IUpgradable
         {
             switch (_currentLevel)
             {
+                case 1:
+                    _moveSpeedReducePercent = 0.25f;
+                    _damageRadius = 1f;
+                    _damage = 5f;
+                    _damageFrequency = 0.3f;
+                    break;
+                    
                 case 2:
                     _moveSpeedReducePercent = 0.25f;
                     _damageRadius = 1.25f;
