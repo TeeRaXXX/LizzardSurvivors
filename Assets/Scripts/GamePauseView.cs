@@ -12,6 +12,7 @@ public class GamePauseView : MonoBehaviour
     {
         _gamePauseUI.SetActive(false);
         EventManager.OnPauseButtonPressed.AddListener(Pause);
+        InputManager.Instance.EventSystem.SetSelectedGameObject(_playButton);
     }
 
     private void Pause()

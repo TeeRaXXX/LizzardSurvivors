@@ -205,7 +205,7 @@ public class PlayerSkillsView : MonoBehaviour
             return;
 
         SoundManager.Instance.PlaySFX("SkillSelect");
-        //InputManager.Instance.EventSystem.SetSelectedGameObject(_skillsOfferFrames[skillNumber].gameObject);
+        InputManager.Instance.EventSystem.SetSelectedGameObject(_skillsOfferFrames[skillNumber].gameObject);
         Debug.Log(_currentChoice[skillNumber].ToString());
         PlayerInventory playerInventory = GameObject.FindGameObjectsWithTag(TagsHandler.GetPlayerTag()).
                 FirstOrDefault(o => o.GetComponent<PlayerCharacter>().PlayerIndex ==
