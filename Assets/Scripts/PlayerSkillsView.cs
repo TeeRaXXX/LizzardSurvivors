@@ -160,6 +160,7 @@ public class PlayerSkillsView : MonoBehaviour
 
         for (int i = 0; i < skillsToOffer.Count; i++)
         {
+            SoundManager.Instance.PlaySFX("LevelUp");
             PlayerCharacter playerCharacter = GameObject.FindGameObjectsWithTag(TagsHandler.GetPlayerTag()).
                 FirstOrDefault(o => o.GetComponent<PlayerCharacter>().PlayerIndex == _skillsSpawner.CurrentPlayerToSpawnSkill).GetComponent<PlayerCharacter>();
             PlayerInventory playerInventory = playerCharacter.PlayerInventory;

@@ -27,7 +27,7 @@ public class SoundManager : MonoBehaviour
 
         foreach (var set in soundSets)
         {
-            set.AudioSource.volume = 0.5f;
+            set.AudioSource.volume = 1f;
         }
     }
 
