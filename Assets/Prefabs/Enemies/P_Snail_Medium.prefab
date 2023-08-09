@@ -103,7 +103,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 895761009
-  m_SortingLayer: 6
+  m_SortingLayer: 7
   m_SortingOrder: 5
   m_Sprite: {fileID: -1547854746, guid: 1d4f5e5c67f1b3242ac90f504ccc8944, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -264,6 +264,7 @@ GameObject:
   - component: {fileID: 5463349280822813658}
   - component: {fileID: 4115455688204234273}
   - component: {fileID: 1598043745697928073}
+  - component: {fileID: 5015050028482984270}
   m_Layer: 0
   m_Name: P_Snail_Medium
   m_TagString: SnailMedium
@@ -302,6 +303,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemySpriteRenderer: {fileID: 3787406065409844670}
+  _rigidbody: {fileID: 6536083953165259908}
   _enemyAnimator: {fileID: 8802760046978869655}
   _followPlayerComponent: {fileID: 7418501207387865365}
   _healthComponent: {fileID: 505181491693312959}
@@ -313,6 +315,7 @@ MonoBehaviour:
   _buffsHandler: {fileID: 4115455688204234273}
   _debuffsHandler: {fileID: 1598043745697928073}
   _behaviors: []
+  _enemyTakingDamageEffect: {fileID: 5015050028482984270}
 --- !u!114 &6628282171582870138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -457,3 +460,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7bff441eb15b4c488b54151193574b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5015050028482984270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6017871896212215155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3bff0df95d2d894ea6410a2af0386ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damageEffectColor: {r: 0.7830189, g: 0.7830189, b: 0.7830189, a: 1}
+  _effectDuration: 0.15

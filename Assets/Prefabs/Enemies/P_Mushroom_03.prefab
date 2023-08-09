@@ -234,6 +234,7 @@ GameObject:
   - component: {fileID: 1720724229162849207}
   - component: {fileID: 4070715800741815206}
   - component: {fileID: 1899000733424604812}
+  - component: {fileID: 5732352734198646001}
   m_Layer: 0
   m_Name: P_Mushroom_03
   m_TagString: Enemy
@@ -258,7 +259,7 @@ Transform:
   - {fileID: 4455037209407130031}
   - {fileID: 2340208700680134634}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &620234558012317594
 Rigidbody2D:
@@ -300,6 +301,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemySpriteRenderer: {fileID: 8473590040671817912}
+  _rigidbody: {fileID: 620234558012317594}
   _enemyAnimator: {fileID: 5384495101849184630}
   _followPlayerComponent: {fileID: 558742536370563371}
   _healthComponent: {fileID: 3867398923371186676}
@@ -311,6 +313,7 @@ MonoBehaviour:
   _buffsHandler: {fileID: 1899000733424604812}
   _debuffsHandler: {fileID: 4070715800741815206}
   _behaviors: []
+  _enemyTakingDamageEffect: {fileID: 5732352734198646001}
 --- !u!114 &558742536370563371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -397,6 +400,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbbfec431aa5ebf429c3fdd1da7e69e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5732352734198646001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4636179052216643875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3bff0df95d2d894ea6410a2af0386ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damageEffectColor: {r: 0.7830189, g: 0.7830189, b: 0.7830189, a: 1}
+  _effectDuration: 0.15
 --- !u!1 &5152026375127196651
 GameObject:
   m_ObjectHideFlags: 0

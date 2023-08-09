@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class EnemyCharacter : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer _enemySpriteRenderer;
+    [SerializeField] private Rigidbody2D _rigidbody;
     [SerializeField] private Animator _enemyAnimator;
     [SerializeField] private FollowObjectComponent _followPlayerComponent;
     [SerializeField] private HealthComponent _healthComponent;
@@ -17,11 +18,11 @@ public class EnemyCharacter : MonoBehaviour
     [SerializeField] private BuffsHandler _buffsHandler;
     [SerializeField] private DebuffsHandler _debuffsHandler;
     [SerializeField] private List<GameObject> _behaviors;
+    [SerializeField] private EnemyTakingDamageEffect _enemyTakingDamageEffect;
 
     private Buffs _buffs;
     private Debuffs _debuffs;
-
-    private readonly UnityEvent<float, float, GameObject> _onHealthChanged = new UnityEvent<float, float, GameObject>();
+    private UnityEvent<float, float, GameObject> _onHealthChanged;
 
     public Animator Animator => _enemyAnimator;
     public FollowObjectComponent followObjectComponent => _followPlayerComponent;
@@ -51,12 +52,16 @@ public class EnemyCharacter : MonoBehaviour
                                      _enemyParams.EnemyBaseStats.GetAttackSpeed());
         }
 
+        _onHealthChanged = new UnityEvent<float, float, GameObject>();
+
         _healthComponent.InitHealth(
             _enemyParams.EnemyBaseStats.GetMaxHealth(),
             _enemyParams.EnemyBaseStats.GetArmor(),
             _onHealthChanged);
 
         _onHealthChanged.AddListener(OnHelthChangedEvent);
+
+        _enemyTakingDamageEffect.Initialize(_enemySpriteRenderer, _onHealthChanged);
 
         foreach (var behavior in _behaviors)
             behavior.GetComponent<IEnemyBehavior>().Initialize(this);
@@ -71,7 +76,11 @@ public class EnemyCharacter : MonoBehaviour
     private void OnHelthChangedEvent(float newHealth, float oldHealth, GameObject damageSource)
     {
         if (oldHealth > newHealth)
+        {
             SoundManager.Instance.PlaySFX("EnemyTakingDamage");
+            if (oldHealth - newHealth > 20f)
+                _rigidbody.AddForce(-damageSource.transform.position.normalized * Mathf.Clamp(20f * (oldHealth - newHealth), 0f, 700f));
+        }
         var damageDigitView = Instantiate(_damageDigitView, _damageDigitViewPosition.position, Quaternion.identity);
         damageDigitView.GetComponent<DamageDigitView>().Initialize(oldHealth - newHealth);
 
