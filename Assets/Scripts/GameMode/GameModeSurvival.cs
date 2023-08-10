@@ -54,6 +54,7 @@ public class GameModeSurvival : IGameMode
         gameplay.SpawnGameplayObject(gameplay.GetSoundManagerPrefab, Vector3.zero);
 
         EventManager.OnPlayerDied.AddListener(OnCharacterDied);
+
     }
 
     private void OnCharacterDied(int characterIndex)

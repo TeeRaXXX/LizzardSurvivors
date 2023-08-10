@@ -28,5 +28,5 @@ MonoBehaviour:
     _vampirismBonus: 0
     _projectilesBonus: 0
     _respawnTimes: 0
-  CharacterType: 3
+  CharacterType: 4
   BaseActiveSkill: 12

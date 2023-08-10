@@ -14,13 +14,15 @@ public class ProjectileMusicEvolved : MonoBehaviour
     private bool _isRotating = false;
     private bool _isChangingColor = false;
     private float _rotationSpeed;
+    private GameObject _pivot;
 
     public void Lounch(float rotationSpeed, GameObject pivot, int projectilesCount)
     {
-        int index = UnityEngine.Random.Range(0, Sprites.Count);
+        int index = Random.Range(0, Sprites.Count);
         SpriteRenderer.sprite = Sprites[index];
         _rotationSpeed = rotationSpeed;
         _isRotating = true;
+        _pivot = pivot;
         StartCoroutine(StartWithDelay());
     }
 
@@ -53,7 +55,7 @@ public class ProjectileMusicEvolved : MonoBehaviour
     {
         if (other.GetComponent<HealthComponent>() != null && other.tag != "Player")
         {
-            other.GetComponent<HealthComponent>().ApplyDamage(Damage, this.gameObject);
+            other.GetComponent<HealthComponent>().ApplyDamage(Damage, _pivot);
         }
     }
 }

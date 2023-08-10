@@ -35,6 +35,7 @@ public class PlayerCharacter : MonoBehaviour
     public PlayerMovement PlayerMovement => _playerMovement;
     public PlayerInventory PlayerInventory => _playerInventory;
     public Sprite PlayerLogo => _playerLogo;
+    public SOCharacter Character => _selectedCharacter;
 
     public void Initialize(int playerIndex, SkillsSpawner skillsHandler, SOCharacter selectedCharacter)
     {

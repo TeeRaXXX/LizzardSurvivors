@@ -61,6 +61,7 @@ public class SkillsSpawner : MonoBehaviour
             else
             {
                 List<int> players = new List<int>(_playersIndexes);
+
                 for (int i = 0; i < _playersCount; i++)
                 {
                     skillsHolder = GameObject.FindGameObjectsWithTag(TagsHandler.GetSkillsHolderTag()).
@@ -69,6 +70,20 @@ public class SkillsSpawner : MonoBehaviour
                     _skills[players[i]].Add(new Skill(skillType, skillPrefab));
                     skillPrefab.GetComponent<IUpgradable>().Initialize(players[i]);
                 }
+                if (level == GetMaxLevelOfSkill(skillType))
+                {
+                    isMaxLevel = true;
+                    return;
+                }
+
+                if (IsEvolutionSkill(skillType))
+                    skillPrefab.GetComponent<IEvolvedSkill>().Initialize(level);
+
+                for (int i = 0; i < _playersCount; i++)
+                    EventManager.OnSkillAddedEvent(skillType, level, players[i]);
+
+                UpdateCurrentPlayerToSpawnSkill();
+                return;
             }
 
             if (level == GetMaxLevelOfSkill(skillType))
@@ -80,7 +95,8 @@ public class SkillsSpawner : MonoBehaviour
             if (IsEvolutionSkill(skillType))
                 skillPrefab.GetComponent<IEvolvedSkill>().Initialize(level);
 
-            EventManager.OnSkillAddedEvent(skillType, level, playerIndex);
+            if (IsSkillActive(skillType))
+                EventManager.OnSkillAddedEvent(skillType, level, playerIndex);
 
             UpdateCurrentPlayerToSpawnSkill();
         }

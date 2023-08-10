@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class BootstrapGameplay : MonoBehaviour
@@ -37,7 +38,11 @@ public class BootstrapGameplay : MonoBehaviour
         StartLevel = 1;
         GameModeBuilder gameModeBuilder = new GameModeBuilder();
         var gameMode = gameModeBuilder.GetGameMode(GameModes.Survival);
-        var charsList = new List<CharacterType> { CharacterType.BabaYaga };
+
+#if UNITY_EDITOR
+        List<CharacterType> charsList = EditorGodMode.Instance.GetCharactersChoice().FindAll(c => c != CharacterType.None);
+#endif
+
         var inputManager = SpawnGameplayObject(_inputManager, Vector3.zero).GetComponent<InputManager>();
         inputManager.Initialize(_eventSystem, charsList.Count);
         GameObject uiPrefab = charsList.Count > 1 ? _multiplayerUI : _singleplayerUI;
