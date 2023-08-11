@@ -1,8 +1,11 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.UI;
+using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 
 public class InputManager : MonoBehaviour
 {
@@ -14,12 +17,13 @@ public class InputManager : MonoBehaviour
     public EventSystem EventSystem { get; private set; }
     public int PlayersCount { get; private set; }
     public int ActivePlayers { get; private set; }
-    public bool IsScreenSplitEnabled = false;
     public static InputManager Instance;
 
     public PlayerInputManager PlayerInputManager => _playerInputManager;
 
     public bool IsAllPlayersInited() => ActivePlayers == PlayersCount;
+
+    private void Awake() => Instance = this;
 
     public void EnableSinglePlayerInputControl(int playerIndex)
     {
@@ -49,9 +53,7 @@ public class InputManager : MonoBehaviour
             Destroy(gameObject);
 
         _playerInputs = new List<PlayerInput>();
-        IsScreenSplitEnabled = false;
         PlayersCount = playersCount;
-        Instance = this;
         ActivePlayers = 0;
         UIInputModule = eventSystem.GetComponent<InputSystemUIInputModule>();
         EventSystem = eventSystem.GetComponent<EventSystem>();
@@ -62,19 +64,6 @@ public class InputManager : MonoBehaviour
     ~InputManager()
     {
         _playerInputManager.onPlayerJoined -= OnPlayerJoined;
-    }
-
-    public void EnableSplitScreen()
-    {
-        if (ActivePlayers == PlayersCount)
-        {
-            _playerInputManager.splitScreen = true;
-        }
-    }
-
-    public void DisableSplitScreen() 
-    {
-        _playerInputManager.splitScreen = false;
     }
 
     public void OnPlayerJoined(PlayerInput playerInput)

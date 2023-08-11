@@ -3,14 +3,12 @@ using System;
 using UnityEditor;
 using UnityEngine;
 using System.Linq;
-using UnityEditor.PackageManager;
 
 #if UNITY_EDITOR
 public class EditorGodMode : EditorWindow
 {
     public static EditorGodMode Instance;
 
-    private int _indexCharacter = 0;
     private int _characterIndex0;
     private int _characterIndex1;
     private int _characterIndex2;

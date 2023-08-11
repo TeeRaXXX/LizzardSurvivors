@@ -43,8 +43,8 @@ public class BootstrapGameplay : MonoBehaviour
         List<CharacterType> charsList = EditorGodMode.Instance.GetCharactersChoice().FindAll(c => c != CharacterType.None);
 #endif
 
-        var inputManager = SpawnGameplayObject(_inputManager, Vector3.zero).GetComponent<InputManager>();
-        inputManager.Initialize(_eventSystem, charsList.Count);
+        SpawnGameplayObject(_inputManager, Vector3.zero);
+        InputManager.Instance.Initialize(_eventSystem, charsList.Count);
         GameObject uiPrefab = charsList.Count > 1 ? _multiplayerUI : _singleplayerUI;
         gameMode.Initialize(charsList, uiPrefab, this);
         EventManager.OnActionMapSwitchEvent(ActionMaps.Player);

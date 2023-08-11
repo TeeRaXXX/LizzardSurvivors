@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class GameModeSurvival : IGameMode
+public class GameModeBattleroyal : IGameMode
 {
     private BootstrapGameplay _gameplay;
 
@@ -43,7 +43,7 @@ public class GameModeSurvival : IGameMode
             player.Initialize(i,
                               _skillsSpawner,
                               _charactersList.CharactersList.Find(obj => obj.CharacterType == playersCharacters[i]),
-                              GameModes.Survival);
+                              GameModes.Battleroyal);
         }
 
         _destroyVolume.SetFollowObject(_players[0].gameObject);
