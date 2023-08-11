@@ -28,5 +28,6 @@ MonoBehaviour:
     _vampirismBonus: 0
     _projectilesBonus: 0
     _respawnTimes: 0
+  CharacterPrefab: {fileID: 2327821200362620280, guid: b7ef8660d264d994f9c3332281e92de6, type: 3}
   CharacterType: 2
   BaseActiveSkill: 3

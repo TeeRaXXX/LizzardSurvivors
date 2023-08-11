@@ -211,6 +211,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: SS_CharactersIconsAtlas_01_5
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 240
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2aa3f373df9acd941aed235697d33064
+      internalID: 1953196683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -227,6 +248,7 @@ TextureImporter:
       SS_CharactersIconsAtlas_01_2: 1215598031
       SS_CharactersIconsAtlas_01_3: 186338041
       SS_CharactersIconsAtlas_01_4: 1547023493
+      SS_CharactersIconsAtlas_01_5: 1953196683
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

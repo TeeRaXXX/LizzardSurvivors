@@ -109,6 +109,14 @@ MonoBehaviour:
     IsEvolution: 0
     SkillPrefab: {fileID: 1174930662284178498, guid: 0156f1efac411224eab2f24bdcc36f25, type: 3}
     SkillLogo: {fileID: 21300000, guid: 7e281eda6ad18de498ec57aba18fddeb, type: 3}
+  - SkillType: 15
+    Name: Fire Tracks
+    Description: Fire Tracks
+    MaxLevel: 8
+    IsActive: 1
+    IsEvolution: 0
+    SkillPrefab: {fileID: 8606321358700976944, guid: 66c232c05d190974fb31070d981a6dd9, type: 3}
+    SkillLogo: {fileID: 21300000, guid: 87df6dc65e690954fafbdde8f47f52bf, type: 3}
   SkillsEvolutionList:
   - FirstSkill: 1
     SecondSkill: 7

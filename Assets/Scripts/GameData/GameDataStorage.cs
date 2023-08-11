@@ -67,8 +67,6 @@ public class GameDataStorage
     {
         GameData = new GameData();
 
-        GameData.AddOpenedCharacter(CharacterType.Dino);
-        GameData.BuyCharacter(CharacterType.Dino);
         GameData.AddOpenedCharacter(CharacterType.BabaYaga);
         GameData.BuyCharacter(CharacterType.BabaYaga);
 
@@ -85,6 +83,7 @@ public class GameDataStorage
         GameData.AddOpenedSkill(SkillType.Roots, true);
         GameData.AddOpenedSkill(SkillType.Bulava, true);
         GameData.AddOpenedSkill(SkillType.Cones, true);
+        GameData.AddOpenedSkill(SkillType.FireTrack, true);
 
         SaveData();
     }

@@ -10,6 +10,7 @@ public class SOCharacter : ScriptableObject
     public Sprite CharacterLogo;
     public RuntimeAnimatorController CharacterAnimationController;
     public PlayerStats CharacterBaseStats;
+    public GameObject CharacterPrefab;
 
     public CharacterType CharacterType;
     public SkillType BaseActiveSkill;

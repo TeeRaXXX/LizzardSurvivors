@@ -37,7 +37,7 @@ public class GameModeBattleroyal : IGameMode
 
         for (int i = 0; i < playersCharacters.Count; i++)
         {
-            var playerPrefab = gameplay.SpawnGameplayObject(gameplay.GetPlayerCharacterPrefab, startPositions[i]);
+            var playerPrefab = gameplay.SpawnGameplayObject(gameplay.GetPlayerCharacterPrefab(playersCharacters[i]), startPositions[i]);
             var player = playerPrefab.GetComponent<PlayerCharacter>();
             _players.Add(player);
             player.Initialize(i,

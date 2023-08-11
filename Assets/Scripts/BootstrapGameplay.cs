@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class BootstrapGameplay : MonoBehaviour
 {
-    [SerializeField] private GameObject _playerCharacter;
     [SerializeField] private GameObject _enemiesSpawnHandler;
     [SerializeField] private GameObject _gameTimer;
     [SerializeField] private GameObject _singleplayerUI;
@@ -18,7 +17,8 @@ public class BootstrapGameplay : MonoBehaviour
     private GameObject _eventSystem;
 
     public int StartLevel { get; private set; }
-    public GameObject GetPlayerCharacterPrefab => _playerCharacter;
+    public GameObject GetPlayerCharacterPrefab(CharacterType type) =>
+        _charactersList.CharactersList.FirstOrDefault(c => c.CharacterType == type).CharacterPrefab;
     public GameObject GetEnemiesSpawnHandlerPrefab => _enemiesSpawnHandler;
     public GameObject GetGameTimerPrefab => _gameTimer;
     public GameObject GetSinglePlayerUIPrefab => _singleplayerUI;
