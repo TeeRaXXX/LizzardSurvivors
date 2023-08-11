@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 49784a60d246aab4186833d0d7596c50
+guid: b77b9f6eb16ba794daa65430b0f20b2a
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -107,7 +107,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SS_phenix_01_0
+      name: SS_FireBird_01_0
       rect:
         serializedVersion: 2
         x: 0
@@ -121,14 +121,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c7baa263e56706c46b4e580a1c2b0305
-      internalID: -1937575827
+      spriteID: 183166f3980adbe499aeae0225fb5c9e
+      internalID: 1310411163
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SS_phenix_01_1
+      name: SS_FireBird_01_1
       rect:
         serializedVersion: 2
         x: 64
@@ -142,14 +142,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 30962f0ecadedfa44ab2652890035a94
-      internalID: -1433387226
+      spriteID: 3d9945aa98324db4c8ece08cffafa29d
+      internalID: -244013347
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SS_phenix_01_2
+      name: SS_FireBird_01_2
       rect:
         serializedVersion: 2
         x: 128
@@ -163,8 +163,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8d277b5bc28b06042b5da7b40a11a5d6
-      internalID: 542629470
+      spriteID: ae3f0ee288de91445b92313e7abb920a
+      internalID: 754334156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SS_FireBird_01_3
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 189f8879a513af4439bc6e151533ec83
+      internalID: -1502778295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SS_FireBird_01_4
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6347cddc5c1fd644be7808bbd2eb259
+      internalID: -1586104420
       vertices: []
       indices: 
       edges: []
@@ -180,9 +222,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      SS_phenix_01_0: -1937575827
-      SS_phenix_01_1: -1433387226
-      SS_phenix_01_2: 542629470
+      SS_FireBird_01_0: 1310411163
+      SS_FireBird_01_1: -244013347
+      SS_FireBird_01_2: 754334156
+      SS_FireBird_01_3: -1502778295
+      SS_FireBird_01_4: -1586104420
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
