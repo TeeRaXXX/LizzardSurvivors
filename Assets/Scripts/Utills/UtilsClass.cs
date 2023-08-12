@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Linq;
+using UnityEditor;
 
 namespace NastyDoll.Utils {
 
@@ -41,6 +42,32 @@ namespace NastyDoll.Utils {
             }
 
             return points;
+        }
+
+        public static PlayerCharacter GetPlayerCharacter(int playerIndex)
+        {
+            List<GameObject> characterPrefabs = FindObjectsWithTagsList(TagsHandler.GetPlayerTags());
+            
+            foreach (var characterPrefab in characterPrefabs)
+                if (characterPrefab.GetComponent<PlayerCharacter>().PlayerIndex == playerIndex)
+                    return characterPrefab.GetComponent<PlayerCharacter>();
+
+            return null;
+        }
+
+        public static List<GameObject> FindObjectsWithTagsList(List<string> tags) 
+        {
+            if (tags == null || tags.Count == 0)
+                return null;
+
+            List<GameObject> objects = new List<GameObject>();
+
+            foreach (var tag in tags)
+            {
+                objects.AddRange(GameObject.FindGameObjectsWithTag(tag));
+            }
+
+            return objects;
         }
 
         public static List<GameObject> GetObjectsInRadius(float radius, Vector3 center, string tag = "")

@@ -1,3 +1,4 @@
+using NastyDoll.Utils;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,10 +21,7 @@ public class SkillTotemAoeHeal : MonoBehaviour, IUpgradable
     {
         _isActive = true;
 
-        _tagsToHeal = new List<string>()
-        {
-            TagsHandler.GetPlayerTag()
-        };
+        _tagsToHeal = new List<string>(UtilsClass.GetPlayerCharacter(playerIndex).TagsToHeal);
 
         _spawnFrequency = 3f;
         _totemLifeTime = 3f;

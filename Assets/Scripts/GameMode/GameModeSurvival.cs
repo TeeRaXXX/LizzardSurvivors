@@ -13,9 +13,9 @@ public class GameModeSurvival : IGameMode
     private SkillsSpawner _skillsSpawner;
     private SOCharacters _charactersList;
     private FollowObject _destroyVolume;
-    private IGameplayUI _gameplayUIManager;
+    private GameplayUI _gameplayUIManager;
 
-    public void Initialize(List<CharacterType> playersCharacters, GameObject uiPrefab, BootstrapGameplay gameplay)
+    public void Initialize(List<CharacterType> playersCharacters, BootstrapGameplay gameplay)
     {
         _gameplay = gameplay;
 
@@ -23,8 +23,12 @@ public class GameModeSurvival : IGameMode
         _gameTimer = gameplay.SpawnGameplayObject(gameplay.GetGameTimerPrefab, Vector3.zero).GetComponent<GameTimer>();
         _skillsSpawner = gameplay.SpawnGameplayObject(gameplay.GetSkillsSpawnerPrefab, Vector3.zero).GetComponent<SkillsSpawner>();
         _skillsSpawner.Initialize(playersCharacters.Count);
-        _gameplayUIManager = gameplay.SpawnGameplayObject(uiPrefab, Vector3.zero).GetComponent<IGameplayUI>();
-        _gameplayUIManager.Initialize(_skillsSpawner, playersCharacters.Count);
+
+        _gameplayUIManager = playersCharacters.Count > 1 ?
+            gameplay.SpawnGameplayObject(gameplay.GetMultiplayerUIPrefab, Vector3.zero).GetComponent<GameplayUI>() :
+            gameplay.SpawnGameplayObject(gameplay.GetSinglePlayerUIPrefab, Vector3.zero).GetComponent<GameplayUI>();
+
+        _gameplayUIManager.Initialize(_skillsSpawner, playersCharacters.Count, GameModes.Survival);
         _destroyVolume = gameplay.SpawnGameplayObject(gameplay.GetDestroyVolumePrefab, Vector3.zero).GetComponent<FollowObject>();
 
 #if UNITY_EDITOR

@@ -1,3 +1,4 @@
+using NastyDoll.Utils;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,11 +17,11 @@ public class SkillFireTracks : MonoBehaviour, IUpgradable
     private int _currentLevel;
     private bool _isActive;
 
-    public void Initialize(int playerIdnex)
+    public void Initialize(int playerIndex)
     {
         _isActive = true;
 
-        _tagsToDamage = new List<string>(TagsHandler.GetEnemyTags());
+        _tagsToDamage = new List<string>(UtilsClass.GetPlayerCharacter(playerIndex).TagsToDamage);
         _spawnFrequency = 0.4f;
         _fireTrackLifeTime = 3f;
         _damageFrequency = .5f;

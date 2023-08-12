@@ -1,3 +1,4 @@
+using NastyDoll.Utils;
 using UnityEngine;
 
 public class SnailBehavior : MonoBehaviour
@@ -15,8 +16,8 @@ public class SnailBehavior : MonoBehaviour
 
     private void Awake()
     {
-        _playerTransform = GameObject.FindGameObjectWithTag(TagsHandler.GetPlayerTag()).transform;
-
+        _playerTransform = UtilsClass.GetNearestObject(transform.position, UtilsClass.FindObjectsWithTagsList(TagsHandler.GetPlayerTags())).transform;
+        
         _otherSnail = null;
         _isSingle = true;
     }

@@ -1,3 +1,4 @@
+using NastyDoll.Utils;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,7 +25,7 @@ public class SkillTotemProjectiles : MonoBehaviour, IUpgradable
         _isActive = true;
 
         EventManager.OnProjectilesUpdate.AddListener(Upgrade);
-        _tagsToDamage = new List<string>(TagsHandler.GetEnemyTags());
+        _tagsToDamage = new List<string>(UtilsClass.GetPlayerCharacter(playerIndex).TagsToDamage);
         _spawnFrequency = 3f;
         _totemLifeTime = 3f;
         _shootingFrequency = 1f;

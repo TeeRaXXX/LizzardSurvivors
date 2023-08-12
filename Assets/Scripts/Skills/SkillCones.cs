@@ -28,7 +28,7 @@ public class SkillCones : MonoBehaviour, IUpgradable
         _speed = 5f;
         _coolDown = 1f;
         _spawnCount = 1 + GlobalBonuses.Instance.GetAdditionalProjectilesCount();
-        _tagsToDamage = new List<string>(TagsHandler.GetEnemyTags());
+        _tagsToDamage = new List<string>(UtilsClass.GetPlayerCharacter(playerIndex).TagsToDamage);
         EventManager.OnProjectilesUpdate.AddListener(Upgrade);
         _isReadyToWork = true;
     }

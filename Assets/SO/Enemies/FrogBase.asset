@@ -33,5 +33,7 @@ MonoBehaviour:
     DropChance: 0.01
   - DropPrefab: {fileID: 7236637165618389693, guid: 65773d9a9f12d3841bd8339346f9cc15, type: 3}
     DropChance: 0.1
+  - DropPrefab: {fileID: 3291764566432609683, guid: 971e82e11d063e74fb63090b9758c30a, type: 3}
+    DropChance: 0.2
   ExperienceMin: 20
   ExperienceMax: 25

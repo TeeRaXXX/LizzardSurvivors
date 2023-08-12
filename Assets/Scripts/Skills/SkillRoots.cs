@@ -1,3 +1,4 @@
+using NastyDoll.Utils;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -24,7 +25,7 @@ public class SkillRoots : MonoBehaviour, IUpgradable
         _damageRadius = 1f * GlobalBonuses.Instance.GetAdditionalAoeRadius();
         _damage = 5f;
         _damageFrequency = 0.3f;
-        _tagsToDamage = new List<string>(TagsHandler.GetEnemyTags());
+        _tagsToDamage = new List<string>(UtilsClass.GetPlayerCharacter(playerIndex).TagsToDamage);
 
         var _prefab = Instantiate(_effectsPrefab, transform);
 

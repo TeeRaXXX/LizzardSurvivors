@@ -4,9 +4,8 @@ using System.Collections;
 
 public class ProjectileMusicEvolved : MonoBehaviour
 {
-    [SerializeField] private float Damage = 25f;
     [SerializeField] private Rigidbody2D _rigidbody;
-    [SerializeField] private List<Sprite> Sprites;
+    [SerializeField] private List<Sprite> _sprites;
     [SerializeField] private SpriteRenderer SpriteRenderer;
     [SerializeField] private GameObject _additionalObject;
     [SerializeField] private float _changeSpriteTime = 3f;
@@ -14,12 +13,16 @@ public class ProjectileMusicEvolved : MonoBehaviour
     private bool _isRotating = false;
     private bool _isChangingColor = false;
     private float _rotationSpeed;
+    private float _damage = 25f;
+    private List<string> _tagsToDamage;
     private GameObject _pivot;
 
-    public void Lounch(float rotationSpeed, GameObject pivot, int projectilesCount)
+    public void Lounch(float rotationSpeed, GameObject pivot, int projectilesCount, List<string> tagsToDamage, float damage)
     {
-        int index = Random.Range(0, Sprites.Count);
-        SpriteRenderer.sprite = Sprites[index];
+        int index = Random.Range(0, _sprites.Count);
+        _damage = damage;
+        _tagsToDamage = new List<string>(tagsToDamage);
+        SpriteRenderer.sprite = _sprites[index];
         _rotationSpeed = rotationSpeed;
         _isRotating = true;
         _pivot = pivot;
@@ -35,8 +38,8 @@ public class ProjectileMusicEvolved : MonoBehaviour
     {
         _isChangingColor = true;
         yield return new WaitForSeconds(_changeSpriteTime);
-        int index = UnityEngine.Random.Range(0, Sprites.Count);
-        SpriteRenderer.sprite = Sprites[index];
+        int index = UnityEngine.Random.Range(0, _sprites.Count);
+        SpriteRenderer.sprite = _sprites[index];
         _isChangingColor = false;
     }
 
@@ -53,9 +56,9 @@ public class ProjectileMusicEvolved : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.GetComponent<HealthComponent>() != null && other.tag != "Player")
+        if (other.GetComponent<HealthComponent>() != null && _tagsToDamage.Contains(other.tag))
         {
-            other.GetComponent<HealthComponent>().ApplyDamage(Damage, _pivot);
+            other.GetComponent<HealthComponent>().ApplyDamage(_damage, _pivot);
         }
     }
 }

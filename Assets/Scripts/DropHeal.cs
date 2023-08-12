@@ -15,7 +15,7 @@ public class DropHeal : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag(TagsHandler.GetPlayerTag()))
+        if (TagsHandler.GetPlayerTags().Contains(other.tag))
         {
             other.GetComponent<HealthComponent>().ApplyHeal(_heal, gameObject);
             Destroy(gameObject);

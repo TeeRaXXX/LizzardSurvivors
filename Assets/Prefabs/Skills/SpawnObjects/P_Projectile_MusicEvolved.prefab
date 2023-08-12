@@ -131,9 +131,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c9a52123de469143a80f1b8cf7083e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 25
   _rigidbody: {fileID: 2218373524069880538}
-  Sprites:
+  _sprites:
   - {fileID: -1510778463, guid: c1f84537dd5f3fb49b90b69be50c1d25, type: 3}
   - {fileID: 1643483436, guid: c1f84537dd5f3fb49b90b69be50c1d25, type: 3}
   - {fileID: 591420977, guid: c1f84537dd5f3fb49b90b69be50c1d25, type: 3}

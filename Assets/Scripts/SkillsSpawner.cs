@@ -44,7 +44,7 @@ public class SkillsSpawner : MonoBehaviour
     {
         Transform skillsHolder = GameObject.FindGameObjectsWithTag(TagsHandler.GetSkillsHolderTag()).
             FirstOrDefault(o => o.GetComponent<SkillsHolder>().PlayerIndex == playerIndex).GetComponent<Transform>();
-        PlayerInventory playerInventory = GameObject.FindGameObjectsWithTag(TagsHandler.GetPlayerTag()).
+        PlayerInventory playerInventory = UtilsClass.FindObjectsWithTagsList(TagsHandler.GetPlayerTags()).
             FirstOrDefault(o => o.GetComponent<PlayerCharacter>().PlayerIndex == playerIndex).GetComponent<PlayerCharacter>().PlayerInventory;
         isMaxLevel = false;
 
@@ -77,7 +77,7 @@ public class SkillsSpawner : MonoBehaviour
                 }
 
                 if (IsEvolutionSkill(skillType))
-                    skillPrefab.GetComponent<IEvolvedSkill>().Initialize(level);
+                    skillPrefab.GetComponent<IEvolvedSkill>().Initialize(level, playerIndex);
 
                 for (int i = 0; i < _playersCount; i++)
                     EventManager.OnSkillAddedEvent(skillType, level, players[i]);
@@ -93,7 +93,7 @@ public class SkillsSpawner : MonoBehaviour
             }
 
             if (IsEvolutionSkill(skillType))
-                skillPrefab.GetComponent<IEvolvedSkill>().Initialize(level);
+                skillPrefab.GetComponent<IEvolvedSkill>().Initialize(level, playerIndex);
 
             if (IsSkillActive(skillType))
                 EventManager.OnSkillAddedEvent(skillType, level, playerIndex);

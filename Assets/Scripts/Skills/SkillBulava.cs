@@ -21,13 +21,13 @@ public class SkillBulava : MonoBehaviour, IUpgradable
     public void Initialize(int playerIndex)
     {
         _isReadyToWork = false;
-        _playerCharacter = GameObject.FindGameObjectsWithTag(TagsHandler.GetPlayerTag()).
+        _playerCharacter = UtilsClass.FindObjectsWithTagsList(TagsHandler.GetPlayerTags()).
             FirstOrDefault(p => p.GetComponent<PlayerCharacter>().PlayerIndex == playerIndex).GetComponent<PlayerCharacter>();
         _currentLevel = 1;
         _damage = 25f;
         _maxLevel = 8;
         _coolDown = 1f;
-        _tagsToDamage = new List<string>(TagsHandler.GetEnemyTags());
+        _tagsToDamage = new List<string>(UtilsClass.GetPlayerCharacter(playerIndex).TagsToDamage);
         _isReadyToWork = true;
     }
 

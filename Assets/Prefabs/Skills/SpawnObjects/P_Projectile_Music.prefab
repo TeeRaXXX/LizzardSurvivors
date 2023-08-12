@@ -131,17 +131,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e5a6cd8eccaa454aa1c5f64b005f2bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 25
-  Speed: 200
-  MinGravity: 0
-  MaxGravity: 0
-  Rigidbody: {fileID: 196440900906570114}
-  Sprites:
+  _rigidbody: {fileID: 196440900906570114}
+  _sprites:
   - {fileID: -1510778463, guid: c1f84537dd5f3fb49b90b69be50c1d25, type: 3}
   - {fileID: 1643483436, guid: c1f84537dd5f3fb49b90b69be50c1d25, type: 3}
   - {fileID: 591420977, guid: c1f84537dd5f3fb49b90b69be50c1d25, type: 3}
   - {fileID: -1019353111, guid: c1f84537dd5f3fb49b90b69be50c1d25, type: 3}
-  SpriteRenderer: {fileID: 3251967433615772473}
+  _spriteRenderer: {fileID: 3251967433615772473}
 --- !u!50 &196440900906570114
 Rigidbody2D:
   serializedVersion: 4
@@ -157,7 +153,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0.1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2

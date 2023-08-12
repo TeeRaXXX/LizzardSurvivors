@@ -1,36 +1,42 @@
+using NastyDoll.Utils;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class SkillMusicEvolved : MonoBehaviour, IUpgradable, IEvolvedSkill
 {
-    [SerializeField] private float _coolDown = 1f;
     [SerializeField] private GameObject _projectile;
     [SerializeField] private Transform _launchPoint;
-    [SerializeField] private int _projectileCount = 3;
-    [SerializeField] private float _positionOffset = 1.5f;
-    [SerializeField] private float _positionOffset2 = 0.1f;
-    [SerializeField] private float _rotationSpeed = 4f;
 
+    private float _coolDown = 1f;
+    private int _projectileCount = 3;
+    private float _positionOffset = 2f;
+    private float _positionOffset2 = 0f;
+    private float _rotationSpeed = 4f;
     private bool isAtacking = false;
     private PlayerMovement _playerMovement;
     private float _projectileFrequency;
+    private float _damage;
     private int _maxLevel;
     private int _currentLevel;
     private List<GameObject> _projectiles;
+    private List<string> _tagsToDamage;
 
-    private void Awake()
+
+    public void Initialize(int playerIndex) 
     {
         isAtacking = true;
         _projectiles = new List<GameObject>();
         _maxLevel = 8;
+        _damage = 10f;
+        _tagsToDamage = new List<string>(UtilsClass.GetPlayerCharacter(playerIndex).TagsToDamage);
         _projectileCount = 3 + GlobalBonuses.Instance.GetAdditionalProjectilesCount();
-        _playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
+        _playerMovement = UtilsClass.GetPlayerCharacter(playerIndex).PlayerMovement;
         _projectileFrequency = 360f / _projectileCount / _rotationSpeed;
         EventManager.OnProjectilesUpdate.AddListener(Upgrade);
     }
 
-    public void Initialize(int level)
+    public void Initialize(int level, int playerIndex)
     {
         _currentLevel = level;
         Upgrade(false);
@@ -58,7 +64,7 @@ public class SkillMusicEvolved : MonoBehaviour, IUpgradable, IEvolvedSkill
 
             _projectiles.Add(projectile);
 
-            projectile.GetComponent<ProjectileMusicEvolved>().Lounch(_rotationSpeed, _launchPoint.gameObject, _projectileCount);
+            projectile.GetComponent<ProjectileMusicEvolved>().Lounch(_rotationSpeed, _launchPoint.gameObject, _projectileCount, _tagsToDamage, _damage);
             addOffset = !addOffset;
             yield return new WaitForSeconds(_projectileFrequency);
         }
@@ -103,46 +109,55 @@ public class SkillMusicEvolved : MonoBehaviour, IUpgradable, IEvolvedSkill
                 case 1:
                     _rotationSpeed = 100f;
                     _projectileCount = 3;
+                    _damage = 10f;
                     break;
                     
                 case 2:
                     _rotationSpeed = 100f;
                     _projectileCount = 4;
+                    _damage = 10f;
                     break;
 
                 case 3:
                     _rotationSpeed = 150f;
                     _projectileCount = 4;
+                    _damage = 15f;
                     break;
 
                 case 4:
                     _rotationSpeed = 150f;
                     _projectileCount = 5;
+                    _damage = 15f;
                     break;
 
                 case 5:
                     _rotationSpeed = 200f;
                     _projectileCount = 5;
+                    _damage = 20f;
                     break;
 
                 case 6:
                     _rotationSpeed = 200f;
                     _projectileCount = 6;
+                    _damage = 20f;
                     break;
 
                 case 7:
                     _rotationSpeed = 300f;
                     _projectileCount = 6;
+                    _damage = 25f;
                     break;
 
                 case 8:
                     _rotationSpeed = 300f;
                     _projectileCount = 7;
+                    _damage = 25f;
                     break;
 
                 default:
                     _rotationSpeed = 300f;
                     _projectileCount = 7;
+                    _damage = 25f;
                     break;
             }
 

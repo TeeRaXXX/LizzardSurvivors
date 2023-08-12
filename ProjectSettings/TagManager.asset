@@ -15,6 +15,10 @@ TagManager:
   - EventSystem
   - ExperienceKillVolume
   - Ashes
+  - Player0
+  - Player1
+  - Player2
+  - Player3
   layers:
   - Default
   - TransparentFX

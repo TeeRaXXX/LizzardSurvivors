@@ -3,6 +3,7 @@ using System;
 using UnityEditor;
 using UnityEngine;
 using System.Linq;
+using NastyDoll.Utils;
 
 #if UNITY_EDITOR
 public class EditorGodMode : EditorWindow
@@ -13,6 +14,7 @@ public class EditorGodMode : EditorWindow
     private int _characterIndex1;
     private int _characterIndex2;
     private int _characterIndex3;
+    private int _gameMode;
     private static int _index = 0;
     private static bool _isPlaying = false;
     private static bool _charactersSaved = false;
@@ -37,7 +39,7 @@ public class EditorGodMode : EditorWindow
 
     private void InitializePlayers()
     {
-        List<GameObject> playersPrefabs = GameObject.FindGameObjectsWithTag(TagsHandler.GetPlayerTag()).ToList();
+        List<GameObject> playersPrefabs = new List<GameObject>(UtilsClass.FindObjectsWithTagsList(TagsHandler.GetPlayerTags()));
         _players = new List<PlayerCharacter>();
 
         for (int i = 0; i < playersPrefabs.Count; i++)
@@ -77,6 +79,7 @@ public class EditorGodMode : EditorWindow
         Repaint();
         if (!_isPlaying)
         {
+            _gameMode = EditorGUILayout.Popup($"Game Mode", _gameMode, GetGameModes());
             _characterIndex0 = EditorGUILayout.Popup($"Player 1", _characterIndex0, GetCharacters());
             _characterIndex1 = EditorGUILayout.Popup($"Player 2", _characterIndex1, GetCharacters());
             _characterIndex2 = EditorGUILayout.Popup($"Player 3", _characterIndex2, GetCharacters());
@@ -157,6 +160,8 @@ public class EditorGodMode : EditorWindow
         return characters;
     }
 
+    public GameModes GetGameModeChoice() => (GameModes)_gameMode;
+
     private static string[] GetSkills()
     {
         string[] skills = new string[Enum.GetNames(typeof(SkillType)).Length - 1];
@@ -172,12 +177,22 @@ public class EditorGodMode : EditorWindow
 
     private static string[] GetCharacters()
     {
-        string[] characters = new string[Enum.GetNames(typeof(CharacterType)).Length - 1];
+        string[] characters = new string[Enum.GetNames(typeof(CharacterType)).Length];
 
         for (int i = 0; i < characters.Length; i++)
             characters[i] = Enum.GetNames(typeof(CharacterType))[i];
 
         return characters;
+    }
+
+    private static string[] GetGameModes()
+    {
+        string[] gameModes = new string[Enum.GetNames(typeof(GameModes)).Length];
+
+        for (int i = 0; i < gameModes.Length; i++)
+            gameModes[i] = Enum.GetNames(typeof(GameModes))[i];
+
+        return gameModes;
     }
 
     private EditorGodMode()

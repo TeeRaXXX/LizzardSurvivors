@@ -1,3 +1,4 @@
+using NastyDoll.Utils;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,7 +21,7 @@ public class SkillTotemAoeDamage : MonoBehaviour, IUpgradable
     {
         _isActive = true;
 
-        _tagsToDamage = new List<string>(TagsHandler.GetEnemyTags());
+        _tagsToDamage = new List<string>(UtilsClass.GetPlayerCharacter(playerIndex).TagsToDamage);
         _spawnFrequency = 3f;
         _totemLifeTime = 3f;
         _damageFrequency = .5f;

@@ -22,7 +22,7 @@ public class SkillDiarrheaCurse : MonoBehaviour, IUpgradable
     {
         _isActive = false;
 
-        _tagsToDamage = new List<string>(TagsHandler.GetEnemyTags());
+        _tagsToDamage = new List<string>(UtilsClass.GetPlayerCharacter(playerIndex).TagsToDamage);
         _maxLevel = 8;
         _currentLevel = 1;
         _spawnFrequency = 1.5f;

@@ -8,6 +8,7 @@ public class BootstrapGameplay : MonoBehaviour
     [SerializeField] private GameObject _gameTimer;
     [SerializeField] private GameObject _singleplayerUI;
     [SerializeField] private GameObject _multiplayerUI;
+    [SerializeField] private GameObject _battleRoyaleUI;
     [SerializeField] private GameObject _destroyVolume;
     [SerializeField] private GameObject _skillsSpawner;
     [SerializeField] private GameObject _playerInput;
@@ -23,6 +24,7 @@ public class BootstrapGameplay : MonoBehaviour
     public GameObject GetGameTimerPrefab => _gameTimer;
     public GameObject GetSinglePlayerUIPrefab => _singleplayerUI;
     public GameObject GetMultiplayerUIPrefab => _multiplayerUI;
+    public GameObject GetBattleRoyaleUIPrefab => _battleRoyaleUI;
     public GameObject GetSkillsSpawnerPrefab => _skillsSpawner;
     public GameObject GetDestroyVolumePrefab => _destroyVolume;
     public GameObject GetSoundManagerPrefab => _soundManager;
@@ -37,16 +39,14 @@ public class BootstrapGameplay : MonoBehaviour
 
         StartLevel = 1;
         GameModeBuilder gameModeBuilder = new GameModeBuilder();
-        var gameMode = gameModeBuilder.GetGameMode(GameModes.Survival);
-
 #if UNITY_EDITOR
+        var gameMode = gameModeBuilder.GetGameMode(EditorGodMode.Instance.GetGameModeChoice());
         List<CharacterType> charsList = EditorGodMode.Instance.GetCharactersChoice().FindAll(c => c != CharacterType.None);
 #endif
 
         SpawnGameplayObject(_inputManager, Vector3.zero);
         InputManager.Instance.Initialize(_eventSystem, charsList.Count);
-        GameObject uiPrefab = charsList.Count > 1 ? _multiplayerUI : _singleplayerUI;
-        gameMode.Initialize(charsList, uiPrefab, this);
+        gameMode.Initialize(charsList, this);
         EventManager.OnActionMapSwitchEvent(ActionMaps.Player);
     }
 

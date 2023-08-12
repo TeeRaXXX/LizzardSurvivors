@@ -31,14 +31,14 @@ public class EnemyCharacter : MonoBehaviour
     {
         _enemySpriteRenderer.sprite = _enemyParams.EnemyBaseSprite;
         _enemyAnimator.runtimeAnimatorController = _enemyParams.EnemyAnimationController;
-        _spriteFlipper.Init(this.transform, _enemySpriteRenderer);
+        _spriteFlipper.Init(transform, _enemySpriteRenderer);
 
         _buffs = new Buffs();
         _debuffs = new Debuffs();
         _buffsHandler.Initialize(_buffs);
         _debuffsHandler.Initialize(_debuffs);
 
-        var objectToFollow = UtilsClass.GetNearestObject(transform.position, new List<GameObject>(GameObject.FindGameObjectsWithTag(TagsHandler.GetPlayerTag())));
+        var objectToFollow = UtilsClass.GetNearestObject(transform.position, new List<GameObject>(UtilsClass.FindObjectsWithTagsList(TagsHandler.GetPlayerTags())));
         _followPlayerComponent.Initialize(_enemyParams.EnemyBaseStats.GetMoveSpeed(),
                                           objectToFollow.transform,
                                           _buffsHandler,
@@ -46,7 +46,7 @@ public class EnemyCharacter : MonoBehaviour
 
         if (_radialDamage != null)
         {
-            _radialDamage.Initialize(new List<string>() { TagsHandler.GetPlayerTag() },
+            _radialDamage.Initialize(TagsHandler.GetPlayerTags(),
                                      _enemyParams.EnemyBaseStats.GetAttackRadius(),
                                      _enemyParams.EnemyBaseStats.GetDamage(),
                                      _enemyParams.EnemyBaseStats.GetAttackSpeed());

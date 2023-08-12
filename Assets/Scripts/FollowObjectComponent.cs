@@ -43,7 +43,7 @@ public class FollowObjectComponent : MonoBehaviour
         }
         else if (_followObject == null)
         {
-            var objectToFollow = UtilsClass.GetNearestObject(transform.position, new List<GameObject>(GameObject.FindGameObjectsWithTag(TagsHandler.GetPlayerTag())));
+            var objectToFollow = UtilsClass.GetNearestObject(transform.position, new List<GameObject>(UtilsClass.FindObjectsWithTagsList(TagsHandler.GetPlayerTags())));
             SetFollowObject(objectToFollow.transform);
         }
     }

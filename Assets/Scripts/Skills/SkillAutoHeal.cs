@@ -1,3 +1,4 @@
+using NastyDoll.Utils;
 using System.Collections;
 using System.Linq;
 using UnityEngine;
@@ -16,7 +17,7 @@ public class SkillAutoHeaal : MonoBehaviour, IUpgradable
     {
         _currentLevel = 1;
         _maxLevel = 8;
-        _healComponent = GameObject.FindGameObjectsWithTag(TagsHandler.GetPlayerTag()).
+        _healComponent = UtilsClass.FindObjectsWithTagsList(TagsHandler.GetPlayerTags()).
             FirstOrDefault(p => p.GetComponent<PlayerCharacter>().PlayerIndex == playerIndex).GetComponent<HealthComponent>();
         _isHeal = false;
     }

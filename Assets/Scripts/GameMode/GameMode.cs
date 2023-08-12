@@ -2,7 +2,7 @@ public enum GameModes
 {
     Survival,
     Ancients,
-    Battleroyal
+    Battleroyale
 }
 
 public class GameModeBuilder
@@ -15,8 +15,8 @@ public class GameModeBuilder
                 return new GameModeSurvival();
             case GameModes.Ancients:
                 return new GameModeAncients();
-            case GameModes.Battleroyal:
-                return new GameModeBattleroyal();
+            case GameModes.Battleroyale:
+                return new GameModeBattleroyale();
             default:
                 return new GameModeSurvival();
         }

@@ -871,7 +871,7 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -892,7 +892,7 @@ TextureImporter:
         width: 128
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -900,6 +900,27 @@ TextureImporter:
       bones: []
       spriteID: 8ac6d899e97b431418811ef68c70a725
       internalID: 1794139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SS_UIAtlas_01_38
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 545
+        width: 4
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed980929d1e580e4aab0b08a922becdd
+      internalID: 1904372120
       vertices: []
       indices: 
       edges: []
@@ -947,6 +968,7 @@ TextureImporter:
       SS_UIAtlas_01_35: 1040891985
       SS_UIAtlas_01_36: 1121469811
       SS_UIAtlas_01_37: 1794139
+      SS_UIAtlas_01_38: 1904372120
       SS_UIAtlas_01_4: 1838404988
       SS_UIAtlas_01_5: -217813795
       SS_UIAtlas_01_6: 905225670

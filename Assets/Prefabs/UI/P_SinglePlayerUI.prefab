@@ -1215,7 +1215,7 @@ GameObject:
   - component: {fileID: 926528237164174106}
   - component: {fileID: 1383791589764506190}
   m_Layer: 0
-  m_Name: P_SinglePlayerUI
+  m_Name: P_SingleplayerUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

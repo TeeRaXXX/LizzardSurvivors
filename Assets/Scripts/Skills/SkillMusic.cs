@@ -1,4 +1,6 @@
+using NastyDoll.Utils;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -15,14 +17,20 @@ public sealed class SkillMusic : MonoBehaviour, IUpgradable
     private PlayerMovement _playerMovement;
     private int _maxLevel;
     private int _currentLevel;
+    private List<string> _tagsToDamage;
+    private float _damage;
+    private float _projectileSpeed;
 
     public void Initialize(int playerIndex)
     {
         _maxLevel = 8;
         _currentLevel = 1;
         _projectileFrequency = 0.25f;
+        _damage = 25f;
+        _projectileSpeed = 200f;
+        _tagsToDamage = new List<string>(UtilsClass.GetPlayerCharacter(playerIndex).TagsToDamage);
         _projectileCount = 3 + GlobalBonuses.Instance.GetAdditionalProjectilesCount();
-        _playerMovement = GameObject.FindGameObjectsWithTag(TagsHandler.GetPlayerTag()).
+        _playerMovement = UtilsClass.FindObjectsWithTagsList(TagsHandler.GetPlayerTags()).
             FirstOrDefault(p => p.GetComponent<PlayerCharacter>().PlayerIndex == playerIndex).GetComponent<PlayerMovement>();
         EventManager.OnProjectilesUpdate.AddListener(Upgrade);
     }
@@ -39,7 +47,7 @@ public sealed class SkillMusic : MonoBehaviour, IUpgradable
             float spawnVectorY = playerLook.x * Mathf.Sin(angle / 360f) + playerLook.y * Mathf.Cos(angle / 360f);
             angle += _spawnAngle;
             var projectile = Instantiate(_projectile, _launchPoint.position, _launchPoint.rotation);
-            projectile.GetComponent<ProjectileMusic>().Lounch(new Vector3(spawnVectorX, spawnVectorY, 0).normalized);
+            projectile.GetComponent<ProjectileMusic>().Lounch(new Vector3(spawnVectorX, spawnVectorY, 0).normalized, _damage, _projectileSpeed, _tagsToDamage);
             yield return new WaitForSeconds(_projectileFrequency);
         }
         
