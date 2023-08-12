@@ -19,6 +19,7 @@ public class GameTimer : MonoBehaviour
         _localGameSecond = 0;
         _gameMinute = 0;
         _isTimerWorks = true;
+        EventManager.OnTimerStartedEvent();
     }
 
     private void Update()
