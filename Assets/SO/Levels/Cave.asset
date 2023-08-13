@@ -63,10 +63,10 @@ MonoBehaviour:
     EnemiesPercents:
     - Enemy: 2
       Percent: 0.5
-      SpawnCount: 2
+      SpawnCount: 1
     - Enemy: 3
       Percent: 0.2
-      SpawnCount: 2
+      SpawnCount: 1
     - Enemy: 6
       Percent: 0.1
       SpawnCount: 2
