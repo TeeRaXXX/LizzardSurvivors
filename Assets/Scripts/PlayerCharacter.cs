@@ -67,7 +67,7 @@ public class PlayerCharacter : MonoBehaviour
         _debuffs = new Debuffs();
 
         _PlayerHealthComponent.InitHealth(
-            _selectedCharacter.CharacterBaseStats.GetMaxHealth(),
+            gameMode == GameModes.Battleroyale ? _selectedCharacter.CharacterBaseStats.GetMaxHealth() * 100 : _selectedCharacter.CharacterBaseStats.GetMaxHealth(),
             _selectedCharacter.CharacterBaseStats.GetArmor(),
             _onHealthChanged);
 
@@ -192,7 +192,9 @@ public class PlayerCharacter : MonoBehaviour
     private void OnHelthChangedEvent(float newHealth, float oldHealth, GameObject damageSource)
     {
         SoundManager.Instance.PlaySFX(oldHealth > newHealth ? "PlayerTakingDamage" : "PlayerTakingHeal");
-        _playerHealthView.UpdateHealthBar(newHealth, _selectedCharacter.CharacterBaseStats.GetMaxHealth(), _playerIndex);
+        _playerHealthView.UpdateHealthBar(newHealth,
+                                          _gameMode == GameModes.Battleroyale ? _selectedCharacter.CharacterBaseStats.GetMaxHealth() * 100 : _selectedCharacter.CharacterBaseStats.GetMaxHealth(),
+                                          _playerIndex);
 
         if (oldHealth - newHealth <= 0)
         {
