@@ -1114,6 +1114,90 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: SS_Atlas_Environment_04_48
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 644c7bec0673cf744a13f7565389836f
+      internalID: 1731102015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SS_Atlas_Environment_04_49
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c26c81d983075a747aff08f165a20e7e
+      internalID: -1369129823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SS_Atlas_Environment_04_50
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 516b6adf36f19cb45bbca4bfecb79818
+      internalID: -1290979907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SS_Atlas_Environment_04_51
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2794dadc5584aa24688fd2aab48bdd19
+      internalID: -88538150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -1168,7 +1252,11 @@ TextureImporter:
       SS_Atlas_Environment_04_45: 856724318
       SS_Atlas_Environment_04_46: -450141616
       SS_Atlas_Environment_04_47: 1853431076
+      SS_Atlas_Environment_04_48: 1731102015
+      SS_Atlas_Environment_04_49: -1369129823
       SS_Atlas_Environment_04_5: -1130407604
+      SS_Atlas_Environment_04_50: -1290979907
+      SS_Atlas_Environment_04_51: -88538150
       SS_Atlas_Environment_04_6: -275301650
       SS_Atlas_Environment_04_7: -889866575
       SS_Atlas_Environment_04_8: 1602438779
