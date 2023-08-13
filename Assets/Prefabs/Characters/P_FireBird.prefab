@@ -763,7 +763,7 @@ Transform:
   - {fileID: 8536778099946846136}
   - {fileID: 5521563718483474805}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &9222055598575290774
 MonoBehaviour:
@@ -790,6 +790,7 @@ MonoBehaviour:
   _characterPointer: {fileID: 8694443445952979225}
   _smoothCameraSpeed: 0.25
   _splitCameraScale: 0.95
+  _followPlayerCamera: {fileID: 0}
 --- !u!114 &4232474376522930409
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -875,7 +876,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.1}
-  m_Size: {x: 1.2, y: 1.2}
+  m_Size: {x: 1, y: 1}
   m_Direction: 0
 --- !u!1 &8253554640365110041
 GameObject:

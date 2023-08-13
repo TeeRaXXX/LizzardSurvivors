@@ -67,6 +67,7 @@ public class TimesOfDayHandler : MonoBehaviour
         UtilsClass.MoveElementToBack(_timesOfDayQueue, _timesOfDayQueue.Peek());
         _currentTimeOfDay = _timesOfDayQueue.Peek();
         EventManager.OnTimeOfDayChangedEvent(_currentTimeOfDay.TimeOfDayType);
+        _timeOfDayChangeCurrentTime = _timeOfDayChangeTime;
         _isReadyToChangeTimeOfDay = true;
     }
 
@@ -75,7 +76,6 @@ public class TimesOfDayHandler : MonoBehaviour
         if (_timeOfDayChangeCurrentTime <= Time.deltaTime)
         {
             _globalLight.color = _currentTimeOfDay.TimeOfDayColor;
-            _timeOfDayChangeCurrentTime = _timeOfDayChangeTime;
             StartCoroutine(Cycle());
         }
         else

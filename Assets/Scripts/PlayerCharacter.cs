@@ -24,7 +24,7 @@ public class PlayerCharacter : MonoBehaviour
     public static GameModes _gameMode;
     private static FollowObject _generalPlayerCamera;
 
-    public FollowObject _followPlayerCamera;
+    private FollowObject _followPlayerCamera;
     private PlayerStats _playerStats;
     private PlayerInventory _playerInventory;
     private SOCharacter _selectedCharacter;
@@ -54,7 +54,7 @@ public class PlayerCharacter : MonoBehaviour
         SetPlayerTags();
         InitCamera(playerIndex, gameMode);
 
-        if (PlayersCount > 1)
+        if (PlayersCount > 1 && gameMode != GameModes.Battleroyale)
             _characterPointer.Initialize(selectedCharacter.CharacterLogo);
 
         _skillsHolder.Initialize(playerIndex);
@@ -124,6 +124,7 @@ public class PlayerCharacter : MonoBehaviour
                 camRect.width = 0.5f;
                 camRect.height = 1f;
                 camRect.x = playerIndex * 0.5f;
+                _followPlayerCamera.gameObject.GetComponent<Camera>().orthographicSize = 6.5f;
             }
             if (PlayersCount == 3)
             {
@@ -131,6 +132,7 @@ public class PlayerCharacter : MonoBehaviour
                 {
                     camRect.width = 0.5f;
                     camRect.height = 1f;
+                    _followPlayerCamera.gameObject.GetComponent<Camera>().orthographicSize = 6.5f;
                 }
                 else
                 {
@@ -146,6 +148,7 @@ public class PlayerCharacter : MonoBehaviour
                             camRect.x = 0.5f;
                             break;
                     }
+                    _followPlayerCamera.gameObject.GetComponent<Camera>().orthographicSize = 4.5f;
                 }
             }
             if (PlayersCount == 4)
@@ -171,6 +174,7 @@ public class PlayerCharacter : MonoBehaviour
                         camRect.y = 0f;
                         break;
                 }
+                _followPlayerCamera.gameObject.GetComponent<Camera>().orthographicSize = 5f;
             }
 
             _followPlayerCamera.gameObject.GetComponent<Camera>().rect = camRect;
@@ -243,6 +247,7 @@ public class PlayerCharacter : MonoBehaviour
                         camRect.height = 1f;
                         camRect.x = 0f;
                         camRect.y = 0f;
+                        _followPlayerCamera.gameObject.GetComponent<Camera>().orthographicSize = 6.5f;
                         break;
 
                     case 1:
@@ -250,6 +255,7 @@ public class PlayerCharacter : MonoBehaviour
                         camRect.height = 1f;
                         camRect.x = 0.5f;
                         camRect.y = 0f;
+                        _followPlayerCamera.gameObject.GetComponent<Camera>().orthographicSize = 6.5f;
                         break;
                 }
                 break;
@@ -260,6 +266,7 @@ public class PlayerCharacter : MonoBehaviour
                     case 0:
                         camRect.width = 0.5f;
                         camRect.height = 1f;
+                        _followPlayerCamera.gameObject.GetComponent<Camera>().orthographicSize = 6.5f;
                         break;
 
                     case 1:
@@ -267,12 +274,14 @@ public class PlayerCharacter : MonoBehaviour
                         camRect.height = 0.5f;
                         camRect.x = 0.5f;
                         camRect.y = 0.5f;
+                        _followPlayerCamera.gameObject.GetComponent<Camera>().orthographicSize = 5f;
                         break;
 
                     case 2:
                         camRect.width = 0.5f;
                         camRect.height = 0.5f;
                         camRect.x = 0.5f;
+                        _followPlayerCamera.gameObject.GetComponent<Camera>().orthographicSize = 5f;
                         break;
                 }
                 break;
