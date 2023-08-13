@@ -19,57 +19,148 @@ MonoBehaviour:
     SpawnFrequency: 1
     Boss: 5
     EnemiesPercents:
+    - Enemy: 9
+      Percent: 1
+      SpawnCount: 1
+    - Enemy: 10
+      Percent: 0
+      SpawnCount: 1
+    - Enemy: 11
+      Percent: 0
+      SpawnCount: 1
+    - Enemy: 11
+      Percent: 0
+      SpawnCount: 1
+    - Enemy: 13
+      Percent: 0
+      SpawnCount: 1
+  - Minute: 1
+    SpawnFrequency: 1
+    Boss: 4
+    EnemiesPercents:
+    - Enemy: 9
+      Percent: 0.5
+      SpawnCount: 1
+    - Enemy: 0
+      Percent: 0.5
+      SpawnCount: 1
+  - Minute: 1
+    SpawnFrequency: 1
+    Boss: 5
+    EnemiesPercents:
+    - Enemy: 9
+      Percent: 0.1
+      SpawnCount: 1
+    - Enemy: 0
+      Percent: 0.5
+      SpawnCount: 1
+    - Enemy: 1
+      Percent: 0.5
+      SpawnCount: 1
+  - Minute: 3
+    SpawnFrequency: 1
+    Boss: 8
+    EnemiesPercents:
+    - Enemy: 2
+      Percent: 0.5
+      SpawnCount: 1
+    - Enemy: 3
+      Percent: 0.2
+      SpawnCount: 1
+    - Enemy: 6
+      Percent: 0.1
+      SpawnCount: 1
     - Enemy: 6
       Percent: 0.4
-      SpawnCount: 2
+      SpawnCount: 1
+  - Minute: 1
+    SpawnFrequency: 1
+    Boss: 5
+    EnemiesPercents:
+    - Enemy: 3
+      Percent: 0.1
+      SpawnCount: 1
+    - Enemy: 4
+      Percent: 0.2
+      SpawnCount: 1
+    - Enemy: 6
+      Percent: 0.5
+      SpawnCount: 1
+    - Enemy: 7
+      Percent: 0.3
+      SpawnCount: 1
+  - Minute: 2
+    SpawnFrequency: 1
+    Boss: 7
+    EnemiesPercents:
     - Enemy: 10
       Percent: 0.2
       SpawnCount: 1
     - Enemy: 11
       Percent: 0.2
       SpawnCount: 1
-    - Enemy: 11
-      Percent: 0.2
-      SpawnCount: 1
-    - Enemy: 13
-      Percent: 0.2
-      SpawnCount: 1
-  - Minute: 1
-    SpawnFrequency: 1
-    Boss: 5
-    EnemiesPercents:
-    - Enemy: 0
+    - Enemy: 6
       Percent: 0.5
-      SpawnCount: 2
-    - Enemy: 4
-      Percent: 0.5
+      SpawnCount: 1
+    - Enemy: 7
+      Percent: 0.1
       SpawnCount: 1
   - Minute: 2
     SpawnFrequency: 1
-    Boss: 5
+    Boss: 8
     EnemiesPercents:
-    - Enemy: 4
-      Percent: 0.4
-      SpawnCount: 4
-    - Enemy: 2
+    - Enemy: 10
       Percent: 0.2
-      SpawnCount: 3
-    - Enemy: 7
-      Percent: 0.4
-      SpawnCount: 3
+      SpawnCount: 1
+    - Enemy: 12
+      Percent: 0.2
+      SpawnCount: 1
+    - Enemy: 13
+      Percent: 0.5
+      SpawnCount: 1
+    - Enemy: 5
+      Percent: 0.1
+      SpawnCount: 1
   - Minute: 3
     SpawnFrequency: 1
     Boss: 8
     EnemiesPercents:
-    - Enemy: 7
-      Percent: 0.3
-      SpawnCount: 4
     - Enemy: 4
-      Percent: 0.2
-      SpawnCount: 2
-    - Enemy: 3
-      Percent: 0.1
+      Percent: 0.5
       SpawnCount: 1
-    - Enemy: 6
-      Percent: 0.4
-      SpawnCount: 6
+    - Enemy: 13
+      Percent: 0.2
+      SpawnCount: 1
+    - Enemy: 8
+      Percent: 0.1
+      SpawnCount: 5
+    - Enemy: 3
+      Percent: 0.2
+      SpawnCount: 1
+  - Minute: 5
+    SpawnFrequency: 1
+    Boss: 5
+    EnemiesPercents:
+    - Enemy: 12
+      Percent: 0.3
+      SpawnCount: 1
+    - Enemy: 13
+      Percent: 0.6
+      SpawnCount: 1
+    - Enemy: 11
+      Percent: 0.1
+      SpawnCount: 5
+  - Minute: 6
+    SpawnFrequency: 2
+    Boss: 8
+    EnemiesPercents:
+    - Enemy: 13
+      Percent: 1
+      SpawnCount: 1
+  - Minute: 6
+    SpawnFrequency: 10
+    Boss: 10
+    EnemiesPercents:
+    - Enemy: 10
+      Percent: 1
+      SpawnCount: 1
